@@ -45,7 +45,7 @@ body {
 /* misc styles */
 .glass-fx {
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background-color: #ffffff75;
+  background-color: #ffffff88;
   /* background-color: #ffffff40; */
   /* background-color: #00000020; */
   backdrop-filter: blur(10px);
