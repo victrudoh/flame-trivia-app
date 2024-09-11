@@ -1,15 +1,13 @@
-"use client";
-
 import React from "react";
 
-const Page = () => {
+const chat = () => {
   return (
     <>
       <div className="bg-brand-main text-brand-secondary h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Flame of Hope
+        Chat
       </div>
     </>
   );
 };
 
-export default Page;
+export default chat;

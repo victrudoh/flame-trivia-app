@@ -1,15 +1,13 @@
-"use client";
-
 import React from "react";
 
-const Page = () => {
+const knowledge = () => {
   return (
     <>
       <div className="bg-brand-main text-brand-secondary h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Flame of Hope
+        Knowledge Base
       </div>
     </>
   );
 };
 
-export default Page;
+export default knowledge;
