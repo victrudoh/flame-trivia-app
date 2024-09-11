@@ -34,7 +34,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className="flex flex-col items-start gap-6">
           <div className="flex items-center gap-4">
             <ArrowLeft
-              className="transition-fx text-brand-dark rounded-full bg-brand-white hover:bg-brand-main hover:text-brand-white"
+              className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
             />
             <span className="font-bold text-xl text-brand-white">
@@ -50,7 +50,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         {/* bottom */}
-        <div className="w-full rounded-t-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish">
+        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish">
           <span className="max-w-[350px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
             repellat totam iste est, vitae nulla nobis dolor nemo voluptas culpa

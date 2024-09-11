@@ -18,7 +18,7 @@ const page = () => {
           />
         </div>
         {/* bottom */}
-        <div className="w-full rounded-t-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
+        <div className="w-full rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
           <ListItem />
           <ListItem />
           <ListItem />
