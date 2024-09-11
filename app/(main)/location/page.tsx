@@ -1,13 +1,13 @@
 import React from "react";
 
-const knowledge = () => {
+const page = () => {
   return (
     <>
       <div className="bg-brand-main text-brand-secondary h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Knowledge Base
+        Find Nearby People
       </div>
     </>
   );
 };
 
-export default knowledge;
+export default page;

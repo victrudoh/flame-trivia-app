@@ -1,13 +1,13 @@
 import React from "react";
 
-const location = () => {
+const page = () => {
   return (
     <>
       <div className="bg-brand-main text-brand-secondary h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Find Nearby People
+        Chat
       </div>
     </>
   );
 };
 
-export default location;
+export default page;
