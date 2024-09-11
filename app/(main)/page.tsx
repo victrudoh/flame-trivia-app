@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
+import Home from "./home/page";
 
 const Page = () => {
   return (
     <>
-      <div className="bg-brand-main text-brand-secondary h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Flame of Hope
-      </div>
+      <Home />
     </>
   );
 };

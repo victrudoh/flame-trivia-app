@@ -12,26 +12,15 @@ type NavItemProps = {
 
 const NavItem = ({ link, icon }: NavItemProps) => {
   const pathname = usePathname();
-
   return (
     <Link
       href={link}
-      className={`transition-fx cursor-pointer text-3xl text-brand-grayish hover:text-blue-500  ${
-        link === pathname && `text-blue-500`
+      className={`transition-fx cursor-pointer text-3xl text-brand-grayish hover:text-brand-main  ${
+        pathname.includes(link) && `text-brand-main`
       }`}
     >
       {icon}
     </Link>
-    // <Link href={link}>
-    //   <div
-    //     className={`group transition-fx flex items-center w-full p-2 py-4 pl-4 gap-2 cursor-pointer rounded-r-3xl font-geistsans font-normal text-sm hover:pl-8 hover:text-brand-white hover:bg-brand-main ${
-    //       link === pathname && `pl-8 border-main text-brand-white bg-brand-main`
-    //     }`}
-    //   >
-    //     <span>{icon}</span>
-    //     {title}
-    //   </div>
-    // </Link>
   );
 };
 

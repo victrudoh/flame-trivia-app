@@ -22,7 +22,8 @@ const config: Config = {
         brand: {
           dark: "#000000",
           white: "#FFFFFF",
-          main: "#1F0047",
+          // main: "#1F0047",
+          main: "#309EFF",
           secondary: "#B1D362",
           lightYellow: "#FCFF45",
           grayish: "#7B7B7B",

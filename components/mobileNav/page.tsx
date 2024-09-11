@@ -8,7 +8,7 @@ const MobileNav = () => {
   return (
     <>
       <div className="fixed bottom-0 w-full z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
-        <NavItem link="/" icon={<HomeIcon />} />
+        <NavItem link="/home" icon={<HomeIcon />} />
         <NavItem link="/knowledge" icon={<BookHeart />} />
         <NavItem link="/location" icon={<Navigation />} />
         <NavItem link="/chat" icon={<MessageCircle />} />
