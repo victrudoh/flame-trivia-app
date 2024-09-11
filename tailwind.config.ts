@@ -8,9 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      fontFamily: {
+        geistsans: ["var(--font-geist-sans)"],
+        geistmono: ["var(--font-geist-mono)"],
+      },
+
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        brand: {
+          dark: "#000000",
+          white: "#FFFFFF",
+          main: "#1F0047",
+          secondary: "#B1D362",
+          lightYellow: "#FCFF45",
+          grayish: "#7B7B7B",
+          // grayish: "#9CA3AF",
+          ash: "#F4F4F4",
+        },
       },
     },
   },
