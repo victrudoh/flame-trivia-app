@@ -29,7 +29,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8 py-8">
+      <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8">
         {/* top */}
         <div className="flex flex-col items-start gap-6">
           <div className="flex items-center gap-4">
