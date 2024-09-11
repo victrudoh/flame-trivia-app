@@ -40,7 +40,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             About HIV/AIDS
           </span>
         </div>
-        <div className="flex items-center justify-center rounded-xl w-[350px] h-[320px] bg-red-300">
+        <div className="flex items-center justify-center rounded-xl max-w-[350px] max-h-[320px] bg-red-300">
           <Image src={img} alt="img" className="object-cover" />
         </div>
       </div>
