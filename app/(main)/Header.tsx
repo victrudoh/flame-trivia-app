@@ -13,34 +13,6 @@ const Header = () => {
         <Link href={"/"} className="flex gap-2 items-center justify-center p-4">
           <Image src={logo} alt="logo" width={65} height={22} priority />
         </Link>
-        {/* middle */}
-        {/* <div className="flex items-center justify-evenly gap-10">
-          <Link
-            href={"/"}
-            className="transition-fx nav-hover-fx font-medium capitalize text-base text-brand-grayish font-geistsans hover:text-brand-main"
-          >
-            Home
-          </Link>
-          <Link
-            href={"/about"}
-            className="transition-fx nav-hover-fx font-medium capitalize text-base text-brand-grayish font-geistsans hover:text-brand-main"
-          >
-            About
-          </Link>{" "}
-          <Link
-            href={"/faqs"}
-            className="transition-fx nav-hover-fx font-medium capitalize text-base text-brand-grayish font-geistsans hover:text-brand-main"
-          >
-            FAQs
-          </Link>{" "}
-          <Link
-            href={"/contact"}
-            className="transition-fx nav-hover-fx font-medium capitalize text-base text-brand-grayish font-geistsans hover:text-brand-main"
-          >
-            Contact
-          </Link>
-        </div> */}
-        {/* right */}
         <Link
           href={"/auth"}
           className="transition-fx rounded-3xl cursor-pointer font-medium text-base uppercase py-2 px-4 bg-brand-main flex items-center justify-center gap-4 text-brand-white hover:bg-brand-main/25 hover:text-brand-main"

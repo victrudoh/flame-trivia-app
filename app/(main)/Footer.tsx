@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import logo from "@/assets/imgs/auth/pays_logo.png";
 import Link from "next/link";
-import MobileNav from "@/components/MobileHeader/page";
 
 const Footer = () => {
   return (
