@@ -32,7 +32,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8">
         {/* top */}
         <div className="flex flex-col items-start gap-6">
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             <ArrowLeft
               className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
@@ -40,6 +40,18 @@ const Page = ({ params }: { params: { id: string } }) => {
             <span className="font-bold text-xl text-brand-white">
               About HIV/AIDS
             </span>
+          </div> */}
+          {/* Top section */}
+          <div className="bg-brand-main py-8 w-full flex items-center justify-start sticky top-0 z-10 ">
+            <div className="flex items-center gap-4">
+              <ArrowLeft
+                className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
+                onClick={goBack}
+              />
+              <span className="font-bold text-xl text-brand-white">
+                About HIV/AIDS
+              </span>
+            </div>
           </div>
           <div className="flex items-center justify-center rounded-xl max-w-[350px] max-h-[320px] bg-red-300">
             <Image
