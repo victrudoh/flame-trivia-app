@@ -34,9 +34,9 @@ const Page = ({ params }: { params: { id: string } }) => {
       {/* <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8"> */}
       <MainContainer>
         <TopSection>
-          <div className="w-[80%] flex  py-12 gap-4">
+          <div className="w-[80%] flex items-center py-12 gap-4">
             <ArrowLeft
-              className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
+              className="bg-brand-white shadow-lg w-8 h-8 p-1 rounded-full hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
             />
             <span className="font-bold text-xl text-brand-white">
@@ -55,8 +55,8 @@ const Page = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         {/* bottom */}
-        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish">
-          <span className="max-w-[350px]">
+        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish h-max ">
+          <span className="max-w-[350px] pb-16 font-geistsans">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
             repellat totam iste est, vitae nulla nobis dolor nemo voluptas culpa
             praesentium saepe veniam, animi reiciendis exercitationem molestias
@@ -96,7 +96,22 @@ const Page = ({ params }: { params: { id: string } }) => {
             consequatur iusto odit molestiae nemo aspernatur labore atque.
             Dolorem in enim ducimus laudantium ad iusto fuga fugiat id!
             Consequatur quaerat, enim ipsa tempora, rem animi ipsum eaque
-            corrupti expedita eos perferendis.
+            corrupti expedita eos perferendis. Lorem ipsum, dolor sit amet
+            consectetur adipisicing elit. Velit sunt id fugiat nam minus
+            explicabo repellat ullam amet? In mollitia harum praesentium eius
+            impedit consectetur fuga ipsam itaque aliquam consequuntur ab quis
+            perspiciatis temporibus error ipsa laudantium dolore ad rem, esse
+            voluptas recusandae reiciendis perferendis. Doloribus amet quia odit
+            explicabo maiores? Labore, beatae distinctio officia veniam unde
+            rerum ipsa consequatur non ducimus a id molestias laudantium neque
+            saepe dolorem veritatis commodi eveniet nulla sequi recusandae
+            consequuntur quidem nesciunt repellendus? Necessitatibus doloribus
+            illo vel nam ut nobis tempore dolore excepturi quis incidunt,
+            possimus similique repellat fugiat maiores quaerat pariatur
+            blanditiis adipisci omnis, porro dolores aperiam quidem accusantium.
+            Quod voluptas numquam fugit molestias voluptatum, voluptatem sint,
+            minima nisi aliquam adipisci natus accusantium iusto tempore
+            impedit.
           </span>
         </div>
       </MainContainer>
