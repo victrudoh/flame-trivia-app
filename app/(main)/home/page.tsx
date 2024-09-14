@@ -1,13 +1,16 @@
 "use client";
 
+import MainContainer from "@/components/mainContainer/page";
+import TopSection from "@/components/topSection/page";
 import React from "react";
 
 const Home = () => {
   return (
     <>
-      <div className="bg-brand-main text-brand-dark h-screen flex items-center justify-center text-lg font-geistmono p-4">
-        Flame of Hope
-      </div>
+      <MainContainer>
+        <TopSection>YO!</TopSection>
+        FLame Of Hope
+      </MainContainer>
     </>
   );
 };

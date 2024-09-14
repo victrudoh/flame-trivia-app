@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import img from "@/assets/imgs/knowledge-base/article_img.jpg";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import TopSection from "@/components/topSection/page";
+import MainContainer from "@/components/mainContainer/page";
 
 const Page = ({ params }: { params: { id: string } }) => {
   console.log("🚀 ~ Page ~ params:", params);
@@ -29,10 +31,10 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8">
-        {/* top */}
-        <div className="flex flex-col items-start gap-6">
-          {/* <div className="flex items-center gap-4">
+      {/* <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8"> */}
+      <MainContainer>
+        <TopSection>
+          <div className="w-[80%] flex  py-12 gap-4">
             <ArrowLeft
               className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
@@ -40,19 +42,10 @@ const Page = ({ params }: { params: { id: string } }) => {
             <span className="font-bold text-xl text-brand-white">
               About HIV/AIDS
             </span>
-          </div> */}
-          {/* Top section */}
-          <div className="bg-brand-main py-8 w-full flex items-center justify-start sticky top-0 z-10 ">
-            <div className="flex items-center gap-4">
-              <ArrowLeft
-                className="transition-fx text-brand-dark rounded-full bg-brand-white cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
-                onClick={goBack}
-              />
-              <span className="font-bold text-xl text-brand-white">
-                About HIV/AIDS
-              </span>
-            </div>
           </div>
+        </TopSection>
+        {/* top */}
+        <div className="flex flex-col items-start gap-6">
           <div className="flex items-center justify-center rounded-xl max-w-[350px] max-h-[320px] bg-red-300">
             <Image
               src={img}
@@ -80,10 +73,34 @@ const Page = ({ params }: { params: { id: string } }) => {
             quia! Doloremque dolor, veritatis eos atque velit, quos tempore
             ducimus dolore totam dolorum molestias beatae. Fuga, vel dolorem?
             Aut consequuntur iure minus totam aliquid odio, iste, impedit
-            veritatis repellat at voluptas quae incidunt?
+            veritatis repellat at voluptas quae incidunt? Lorem ipsum dolor sit
+            amet consectetur, adipisicing elit. Inventore perspiciatis
+            repellendus beatae earum soluta tempora a cupiditate at totam, optio
+            nostrum libero placeat voluptas quos numquam veniam! Possimus nihil
+            deserunt animi beatae facere in dicta minima, nesciunt debitis
+            soluta libero nisi quidem unde reprehenderit ab, nulla corporis.
+            Nulla quaerat, cupiditate nesciunt tempore atque explicabo optio
+            nemo dicta distinctio accusantium quod veniam et vel adipisci
+            similique ut nisi quia asperiores necessitatibus animi voluptas!
+            Consectetur minus incidunt maxime corporis eius, repellat nostrum
+            enim recusandae cumque porro, totam commodi, veritatis deserunt.
+            Exercitationem officiis facilis doloribus magni, consectetur a omnis
+            ex minus tempore maiores, nesciunt id magnam ullam velit laborum
+            vero qui mollitia itaque eos. Quos, iste? Perspiciatis cum similique
+            deserunt hic laudantium quia quas aspernatur quod corporis inventore
+            modi at atque placeat veniam ut alias praesentium, facilis ipsum
+            itaque vero explicabo enim! Asperiores dicta beatae quia magni
+            itaque. Nam, odio alias? Quos, sint fugit optio doloremque quidem
+            repellendus officiis sapiente magnam, in nesciunt, fugiat harum
+            laborum quas cumque exercitationem velit quibusdam eveniet
+            consequatur iusto odit molestiae nemo aspernatur labore atque.
+            Dolorem in enim ducimus laudantium ad iusto fuga fugiat id!
+            Consequatur quaerat, enim ipsa tempora, rem animi ipsum eaque
+            corrupti expedita eos perferendis.
           </span>
         </div>
-      </div>
+      </MainContainer>
+      {/* </div> */}
     </>
   );
 };
