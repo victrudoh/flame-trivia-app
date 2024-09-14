@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <MainContainer>
-        <TopSection>YO!</TopSection>
+        <TopSection></TopSection>
         FLame Of Hope
       </MainContainer>
     </>

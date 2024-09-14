@@ -25,14 +25,12 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({
 }) => {
   const map = useMap();
 
-  // Set the map view to the user's position when available
   useEffect(() => {
     if (map && position) {
       map.setView(position, map.getZoom());
     }
   }, [map, position]);
 
-  // Call the onMapReady function when the map is initialized
   useEffect(() => {
     if (map) {
       onMapReady(map);
@@ -54,7 +52,6 @@ const LeafletMap: React.FC = () => {
   );
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
-  // Get user's current location using Geolocation API
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
@@ -62,12 +59,9 @@ const LeafletMap: React.FC = () => {
     });
   }, []);
 
-  // Fetch nearby hospitals using Overpass API
   useEffect(() => {
     if (userPosition) {
       const [latitude, longitude] = userPosition as any;
-
-      // Query hospitals near the user's location (within a 5km radius)
       const overpassQuery = `
         [out:json];
         (
@@ -79,7 +73,6 @@ const LeafletMap: React.FC = () => {
         overpassQuery
       )}`;
 
-      // Fetch hospital data
       fetch(overpassUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -98,7 +91,6 @@ const LeafletMap: React.FC = () => {
     }
   }, [userPosition]);
 
-  // Handler for when the map is ready
   const handleMapReady = (map: L.Map) => {
     if (userPosition) {
       map.setView(userPosition, 13); // Set the view to the user's location
@@ -107,20 +99,19 @@ const LeafletMap: React.FC = () => {
 
   return (
     <MapContainer
-      style={{ height: "100vh", width: "100%" }}
+      style={{ height: "100vh", width: "100%", zIndex: 0 }} // Lower the map's z-index
       center={userPosition || [51.505, -0.09]} // Default to London if user position is unavailable
       zoom={13}
       scrollWheelZoom={false}
+      className="relative z-0" // Use Tailwind z-0 utility
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {/* Location marker for the user's position */}
       <LocationMarker position={userPosition} onMapReady={handleMapReady} />
 
-      {/* Markers for nearby hospitals */}
       {hospitals.map((hospital, index) => (
         <Marker
           key={index}

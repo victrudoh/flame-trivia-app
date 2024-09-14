@@ -13,13 +13,12 @@ const page = () => {
     <>
       <MainContainer>
         <TopSection>
-          {" "}
           <span className="font-bold text-xl text-brand-white">
             Facilities Near Me
           </span>
         </TopSection>
         <LeafletMap />
-        <TopSection></TopSection>
+        {/* <TopSection></TopSection> */}
       </MainContainer>
     </>
   );
