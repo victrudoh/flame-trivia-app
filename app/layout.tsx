@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import GeneralProvider from "@/context/GenralContext";
 import { ToastContainer } from "react-toastify";
+// import bg from "@/assets/imgs/bg.png";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,14 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-        <body>
+        <body
+          className="bg-brand-dark/65"
+          // style={{
+          //   backgroundImage: `url(${bg.src})`, // Use bg.src to set the background image from the imported file
+          //   backgroundSize: "contain", // Ensures the background image covers the div
+          //   backgroundPosition: "center", // Centers the background image
+          // }}
+        >
           <GeneralProvider>
             <ToastContainer
               position="top-right"
