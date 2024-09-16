@@ -2,7 +2,15 @@
 
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
-import { Settings, User, Wallet } from "lucide-react";
+import {
+  BookHeart,
+  HomeIcon,
+  MessageCircle,
+  Navigation,
+  Settings,
+  User,
+  Wallet,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -38,7 +46,9 @@ const Page = () => {
         <div className="w-full overflow-y-auto  p-4 flex flex-col items-center justify-start gap-4 h-full">
           {/* cards */}
           <Link href={"/v1"} className="w-full rounded-lg shadow-lg flex">
-            <div className="bg-gradient-to-b from-green-300 to-yellow-300 w-[20%] rounded-l-xl"></div>
+            <div className="bg-gradient-to-b from-green-300 to-yellow-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
+              <HomeIcon />
+            </div>
             <div className="w-[80%] bg-brand-white p-6 flex flex-col items-start justify-center gap-1 rounded-r-xl">
               <div className="text-base font-bold font-geistsans">
                 Play Trivia Challenges
@@ -51,7 +61,9 @@ const Page = () => {
             </div>
           </Link>
           <Link href={"/v1/chat"} className="w-full rounded-lg shadow-lg flex">
-            <div className="bg-gradient-to-b from-yellow-300 to-purple-300 w-[20%] rounded-l-xl"></div>
+            <div className="bg-gradient-to-b from-yellow-300 to-purple-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
+              <MessageCircle />
+            </div>
             <div className="w-[80%] bg-brand-white p-6 flex flex-col items-start justify-center gap-1 rounded-r-xl">
               <div className="text-base font-bold font-geistsans">
                 Chat With Experts
@@ -67,7 +79,9 @@ const Page = () => {
             href={"/v1/knowledge"}
             className="w-full rounded-lg shadow-lg flex"
           >
-            <div className="bg-gradient-to-b from-purple-300 to-blue-300 w-[20%] rounded-l-xl"></div>
+            <div className="bg-gradient-to-b from-purple-300 to-blue-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
+              <BookHeart />
+            </div>
             <div className="w-[80%] bg-brand-white p-6 flex flex-col items-start justify-center gap-1 rounded-r-xl">
               <div className="text-base font-bold font-geistsans">
                 Health Knowledge Base
@@ -83,7 +97,9 @@ const Page = () => {
             href={"/v1/location"}
             className="w-full rounded-lg shadow-lg flex"
           >
-            <div className="bg-gradient-to-b from-blue-300 to-red-300 w-[20%] rounded-l-xl"></div>
+            <div className="bg-gradient-to-b from-blue-300 to-red-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
+              <Navigation />
+            </div>
             <div className="w-[80%] bg-brand-white p-6 flex flex-col items-start justify-center gap-1 rounded-r-xl">
               <div className="text-base font-bold font-geistsans">
                 Find Nearby Clinics
