@@ -2,10 +2,11 @@
 
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
-import { CookieIcon, Earth, User } from "lucide-react";
+import { ArrowLeft, CookieIcon, Earth, User } from "lucide-react";
 import React from "react";
-import ListItem from "../knowledge/ListItem";
 import img from "@/assets/imgs/card_thumbnail.png";
+import ListItem from "../knowledge/ListItem";
+import Link from "next/link";
 
 const Home = () => {
   const progress = (456 / 676) * 100; // Calculate progress percentage
@@ -17,6 +18,9 @@ const Home = () => {
           <div className="w-full px-4 flex items-center justify-between">
             {/* left */}
             <div className="flex gap-2 items-center">
+              <Link href={"/"}>
+                <ArrowLeft className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full cursor-pointer" />
+              </Link>
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
               <span className="font-normal font-geistsans text-base text-brand-white">
                 Edi Khan
