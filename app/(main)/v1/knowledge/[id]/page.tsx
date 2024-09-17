@@ -34,7 +34,16 @@ const Page = ({ params }: { params: { id: string } }) => {
       {/* <div className="bg-brand-main py-8 text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistsans gap-8"> */}
       <MainContainer>
         <TopSection>
-          <div className="w-[80%] flex items-center py-12 gap-4">
+          <div className="w-full flex items-center justify-start gap-8">
+            <ArrowLeft
+              className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
+              onClick={goBack}
+            />
+            <span className="font-bold text-xl text-brand-white">
+              About HIV/AIDS
+            </span>
+          </div>
+          {/* <div className="w-[80%] flex items-center py-12 gap-4">
             <ArrowLeft
               className="bg-brand-white shadow-lg w-10 h-10 p-1 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
@@ -42,7 +51,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             <span className="font-bold text-xl text-brand-white">
               About HIV/AIDS
             </span>
-          </div>
+          </div> */}
         </TopSection>
         {/* top */}
         <div className="flex flex-col items-start gap-6">
