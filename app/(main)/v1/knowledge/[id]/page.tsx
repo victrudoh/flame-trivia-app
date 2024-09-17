@@ -56,7 +56,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         </div>
         {/* bottom */}
         <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish h-max ">
-          <span className="max-w-[350px] pb-16 font-geistsans">
+          <span className="max-w-[350px] pb-2 font-geistsans">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
             repellat totam iste est, vitae nulla nobis dolor nemo voluptas culpa
             praesentium saepe veniam, animi reiciendis exercitationem molestias
