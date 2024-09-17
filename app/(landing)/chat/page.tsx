@@ -1,6 +1,5 @@
 "use client"; // Ensure client-side rendering for chat
 
-// import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
 import { ArrowLeft, Send, User } from "lucide-react";
 import Link from "next/link";
@@ -49,7 +48,6 @@ const ChatPage = () => {
 
   return (
     <>
-      {/* <MainContainer> */}
       <div className="text-brand-dark relative flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
         <TopSection>
           <div className="w-full flex items-center justify-start gap-4">
@@ -71,9 +69,7 @@ const ChatPage = () => {
         </TopSection>
 
         {/* Main Chat Section */}
-        {/* <div className="flex flex-col w-full relative"> */}
-        {/* Chat messages */}
-        <div className="flex-grow overflow-y-auto bg-blue-100/80 h-screen rounded-lg shadow-lg p-4 pb-24 w-full">
+        <div className="flex-grow overflow-y-auto bg-blue-100/80 h-screen rounded-lg shadow-lg p-2 pb-24 w-full">
           {messages.length === 0 ? (
             <p className="text-center text-gray-500 text-base font-geistsans font-bold">
               No messages yet.
@@ -82,18 +78,25 @@ const ChatPage = () => {
             messages.map((msg, index) => (
               <div
                 key={index}
-                className={`message p-2 mb-2 rounded-lg flex ${
+                className={`message p-2 mb-1 flex ${
                   msg.sender === "user" ? "justify-end" : "justify-start"
                 }`}
               >
                 <div
-                  className={`${
+                  className={`relative p-3 rounded-lg max-w-xs ${
                     msg.sender === "user"
-                      ? "bg-blue-500 text-white"
-                      : "bg-brand-white text-gray-800"
-                  } p-3 rounded-lg max-w-xs`}
+                      ? "bg-blue-500 text-white chat-bubble-user"
+                      : "bg-brand-white text-gray-800 chat-bubble-other"
+                  }`}
                 >
                   {msg.text}
+                  <div
+                    className={`absolute w-0 h-0 border-t-[10px] border-t-transparent ${
+                      msg.sender === "user"
+                        ? "border-l-[10px] border-l-blue-500 right-[-10px] top-1"
+                        : "border-r-[10px] border-r-brand-white left-[-10px] top-1"
+                    }`}
+                  ></div>
                 </div>
               </div>
             ))
@@ -101,8 +104,6 @@ const ChatPage = () => {
         </div>
 
         {/* Message input box (fixed to the bottom) */}
-        {/* </div> */}
-        {/* <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-300 p-2 py-4 flex items-center gap-3 shadow-lg"> */}
         <div className="glass-fx fixed bottom-0 max-w-screen-md w-full px-1 z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
           <input
             type="text"
@@ -119,7 +120,6 @@ const ChatPage = () => {
           </button>
         </div>
       </div>
-      {/* </MainContainer> */}
     </>
   );
 };
