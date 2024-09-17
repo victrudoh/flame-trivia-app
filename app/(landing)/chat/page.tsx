@@ -52,18 +52,20 @@ const ChatPage = () => {
       {/* <MainContainer> */}
       <div className="text-brand-dark relative flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
         <TopSection>
-          <div className="w-full flex items-center justify-start gap-8">
+          <div className="w-full flex items-center justify-start gap-4">
             <Link href={"/"}>
               <ArrowLeft className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark" />
             </Link>
-            <User className="bg-brand-white shadow-lg w-10 h-10 p-1 rounded-full cursor-pointer" />
-            <div className="flex flex-col items-start gap-1">
-              <span className="font-bold text-xl text-brand-white">
-                Edi Khan
-              </span>
-              <span className="font-normal text-sm text-brand-white">
-                Computer Science - Gaia.
-              </span>
+            <div className="flex items-center gap-2">
+              <User className="bg-brand-white shadow-lg w-10 h-10 p-1 rounded-full cursor-pointer" />
+              <div className="flex flex-col items-start gap-1">
+                <span className="font-bold text-xl text-brand-white">
+                  Edi Khan
+                </span>
+                <span className="font-normal text-sm text-brand-white">
+                  Computer Science - Gaia.
+                </span>
+              </div>
             </div>
           </div>
         </TopSection>
