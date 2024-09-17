@@ -16,7 +16,7 @@ import React from "react";
 const Page = () => {
   return (
     <>
-      <div className="text-brand-dark flex flex-col items-center justify-start text-lg font-geistmono gap-8 py-8">
+      <div className="text-brand-dark flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
         <TopSection>
           <div className="w-full px-4 flex items-center justify-between">
             {/* left */}

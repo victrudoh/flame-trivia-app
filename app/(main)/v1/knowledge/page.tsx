@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Page = () => {
   return (
-    // <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistmono gap-8 py-8">
+    // <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
     <MainContainer>
       {/* Top section */}
       <TopSection>
