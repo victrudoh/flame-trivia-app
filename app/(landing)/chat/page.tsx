@@ -1,5 +1,9 @@
 "use client"; // Ensure client-side rendering for chat
 
+// import MainContainer from "@/components/mainContainer/page";
+import TopSection from "@/components/topSection/page";
+import { ArrowLeft, Send, User } from "lucide-react";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 interface Message {
@@ -44,9 +48,30 @@ const ChatPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 p-4">
-      <div className="flex-grow overflow-auto bg-white rounded-lg shadow-lg p-4 mb-4">
-        <div className="overflow-y-auto h-[calc(100vh-200px)]">
+    <>
+      {/* <MainContainer> */}
+      <div className="text-brand-dark h-screen relative flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
+        <TopSection>
+          <div className="w-full flex items-center justify-start gap-8">
+            <Link href={"/"}>
+              <ArrowLeft className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark" />
+            </Link>
+            <User className="bg-brand-white shadow-lg w-10 h-10 p-1 rounded-full cursor-pointer" />
+            <div className="flex flex-col items-start gap-1">
+              <span className="font-bold text-xl text-brand-white">
+                Edi Khan
+              </span>
+              <span className="font-normal text-sm text-brand-white">
+                Computer Science - Gaia.
+              </span>
+            </div>
+          </div>
+        </TopSection>
+
+        {/* Main Chat Section */}
+        {/* <div className="flex flex-col w-full relative"> */}
+        {/* Chat messages */}
+        <div className="flex-grow overflow-y-auto bg-blue-100/80 rounded-lg shadow-lg p-4 pb-24 w-full">
           {messages.length === 0 ? (
             <p className="text-center text-gray-500">No messages yet.</p>
           ) : (
@@ -61,8 +86,8 @@ const ChatPage = () => {
                   className={`${
                     msg.sender === "user"
                       ? "bg-blue-500 text-white"
-                      : "bg-gray-300 text-gray-800"
-                  } p-2 rounded-lg max-w-xs`}
+                      : "bg-brand-white text-gray-800"
+                  } p-3 rounded-lg max-w-xs`}
                 >
                   {msg.text}
                 </div>
@@ -70,25 +95,27 @@ const ChatPage = () => {
             ))
           )}
         </div>
-      </div>
-      <div className="flex-shrink-0">
-        <div className="flex items-center border-t border-gray-300 bg-white p-2 rounded-lg shadow-md">
+
+        {/* Message input box (fixed to the bottom) */}
+        {/* </div> */}
+        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-300 p-2 py-4 flex items-center gap-3 shadow-lg">
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            className="flex-grow p-2 border border-gray-300 rounded-l-lg"
-            placeholder="Type a message..."
+            className="flex-grow p-3 border border-gray-300 rounded-lg font-geistsans font-semibold text-base"
+            placeholder="Send a Message"
           />
           <button
             onClick={handleSendMessage}
-            className="p-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600"
+            className="flex items-center justify-center p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
           >
-            Send
+            <Send />
           </button>
         </div>
       </div>
-    </div>
+      {/* </MainContainer> */}
+    </>
   );
 };
 
