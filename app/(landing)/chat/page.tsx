@@ -50,7 +50,7 @@ const ChatPage = () => {
   return (
     <>
       {/* <MainContainer> */}
-      <div className="text-brand-dark h-screen relative flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
+      <div className="text-brand-dark relative flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
         <TopSection>
           <div className="w-full flex items-center justify-start gap-8">
             <Link href={"/"}>
@@ -71,9 +71,11 @@ const ChatPage = () => {
         {/* Main Chat Section */}
         {/* <div className="flex flex-col w-full relative"> */}
         {/* Chat messages */}
-        <div className="flex-grow overflow-y-auto bg-blue-100/80 rounded-lg shadow-lg p-4 pb-24 w-full">
+        <div className="flex-grow overflow-y-auto bg-blue-100/80 h-screen rounded-lg shadow-lg p-4 pb-24 w-full">
           {messages.length === 0 ? (
-            <p className="text-center text-gray-500">No messages yet.</p>
+            <p className="text-center text-gray-500 text-base font-geistsans font-bold">
+              No messages yet.
+            </p>
           ) : (
             messages.map((msg, index) => (
               <div
@@ -98,7 +100,8 @@ const ChatPage = () => {
 
         {/* Message input box (fixed to the bottom) */}
         {/* </div> */}
-        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-300 p-2 py-4 flex items-center gap-3 shadow-lg">
+        {/* <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-300 p-2 py-4 flex items-center gap-3 shadow-lg"> */}
+        <div className="glass-fx fixed bottom-0 max-w-screen-md w-full px-1 z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
           <input
             type="text"
             value={newMessage}
