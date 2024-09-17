@@ -50,7 +50,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="w-full overflow-y-auto rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
+        <div className="w-full rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
           <span className="font-semibold text-base font-geistsans w-full text-left">
             Levels
           </span>
