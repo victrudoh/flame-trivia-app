@@ -11,7 +11,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
 
   const goBack = () => {
-    router.push("/");
+    router.push("/v1");
   };
 
   return (

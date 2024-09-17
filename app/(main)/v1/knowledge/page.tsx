@@ -31,7 +31,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -39,7 +39,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -47,7 +47,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -55,7 +55,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -63,7 +63,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -71,7 +71,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -79,7 +79,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -87,7 +87,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -95,7 +95,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -103,7 +103,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -111,7 +111,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -119,7 +119,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
         <ListItem
           title={"About HIV/AIDS"}
@@ -127,7 +127,7 @@ const Page = () => {
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
-          link={"/knowledge/12"}
+          link={"/v1/knowledge/12"}
         />
       </div>
     </MainContainer>

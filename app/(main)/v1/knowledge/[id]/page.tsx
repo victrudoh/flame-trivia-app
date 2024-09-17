@@ -26,7 +26,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   //   }, [params?.id]);
 
   const goBack = () => {
-    router.push("/knowledge");
+    router.push("/v1/knowledge");
   };
 
   return (

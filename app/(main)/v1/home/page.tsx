@@ -59,70 +59,70 @@ const Home = () => {
             level={"Level 1"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 2"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 3"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 4"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 5"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 6"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 7"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 8"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 9"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
           <ListItem
             title={"About HIV/AIDS"}
             level={"Level 10"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
-            link={"/trivia/12"}
+            link={"/v1/trivia/12"}
           />
         </div>
       </MainContainer>
