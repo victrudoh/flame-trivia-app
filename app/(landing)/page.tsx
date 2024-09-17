@@ -1,6 +1,5 @@
 "use client";
 
-import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
 import {
   BookHeart,
@@ -17,7 +16,7 @@ import React from "react";
 const Page = () => {
   return (
     <>
-      <MainContainer>
+      <div className="text-brand-dark flex flex-col items-center justify-start text-lg font-geistmono gap-8 py-8">
         <TopSection>
           <div className="w-full px-4 flex items-center justify-between">
             {/* left */}
@@ -112,7 +111,7 @@ const Page = () => {
             </div>
           </Link>
         </div>
-      </MainContainer>
+      </div>
     </>
   );
 };

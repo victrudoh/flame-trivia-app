@@ -1,9 +1,10 @@
 import React from "react";
 import ListItem from "./ListItem";
-import { Search } from "lucide-react";
+import { ArrowLeft, Search } from "lucide-react";
 import TopSection from "@/components/topSection/page";
 import MainContainer from "@/components/mainContainer/page";
 import img from "@/assets/imgs/knowledge-base/article_img.jpg";
+import Link from "next/link";
 
 const Page = () => {
   return (
@@ -11,6 +12,9 @@ const Page = () => {
     <MainContainer>
       {/* Top section */}
       <TopSection>
+        <Link href={"/"}>
+          <ArrowLeft className="bg-brand-white shadow-lg w-9 h-9 p-1 ml-2 rounded-full cursor-pointer" />
+        </Link>
         <div className="flex items-center justify-start gap-2 p-2 rounded-xl bg-brand-white w-[85%] m-auto">
           <Search className="text-brand-dark bg-brand-white rounded-l-xl" />
           <input
