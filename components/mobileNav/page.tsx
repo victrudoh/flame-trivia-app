@@ -10,7 +10,7 @@ const MobileNav = () => {
       <NavItem link="/v1/home" icon={<HomeIcon />} />
       <NavItem link="/v1/knowledge" icon={<BookHeart />} />
       <NavItem link="/v1/location" icon={<Navigation />} />
-      <NavItem link="/chat" icon={<MessageCircle />} />
+      <NavItem link="/v1/chat" icon={<MessageCircle />} />
     </div>
   );
 };
