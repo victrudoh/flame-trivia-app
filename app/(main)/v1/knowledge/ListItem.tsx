@@ -7,7 +7,10 @@ import Link from "next/link";
 const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
   return (
     <>
-      <div className="w-full p-4 border-brand-grayish/20 border-[0.5px] rounded-xl shadow-sm flex items-center justify-between">
+      <Link
+        href={link}
+        className="w-full p-4 border-brand-grayish/20 border-[0.5px] rounded-xl shadow-sm flex items-center justify-between"
+      >
         <div className="flex items-center gap-4">
           <div className="w-[58px] max-h-[58px]">
             <Image src={thumbnail} alt="img" className="rounded-lg" />
@@ -29,13 +32,10 @@ const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
             </span>
           </div>
         </div>
-        <Link
-          href={link}
-          className="transition-fx text-brand-main hover:animate-bounce"
-        >
+        <span className="transition-fx text-brand-main hover:animate-bounce">
           <ArrowRight />
-        </Link>
-      </div>
+        </span>
+      </Link>
     </>
   );
 };
