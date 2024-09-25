@@ -59,7 +59,7 @@ const Page = () => {
               </div>
             </div>
           </Link>
-          <Link href={"/chat"} className="w-full rounded-lg shadow-lg flex">
+          <Link href={"/v1/chat"} className="w-full rounded-lg shadow-lg flex">
             <div className="bg-gradient-to-b from-yellow-300 to-purple-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
               <MessageCircle />
             </div>
