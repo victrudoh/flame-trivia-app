@@ -66,7 +66,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           {Object.entries(facilities).map(([lga, facilityList]) => (
             <div key={lga} className="max-w-[350px] pb-2 font-geistsans">
               <h2 className="font-bold text-lg uppercase">{lga}</h2>
-              <ul className="list-disc pl-5 capitalize">
+              <ul className="list-disc pl-5 uppercase">
                 {facilityList.map((facility) => (
                   <li key={facility} className="py-2">
                     {facility}
