@@ -65,10 +65,12 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-start justify-start gap-4 font-normal text-sm text-brand-grayish h-max ">
           {Object.entries(facilities).map(([lga, facilityList]) => (
             <div key={lga} className="max-w-[350px] pb-2 font-geistsans">
-              <h2 className="font-bold text-lg">{lga}</h2>
-              <ul className="list-disc pl-5">
+              <h2 className="font-bold text-lg uppercase">{lga}</h2>
+              <ul className="list-disc pl-5 capitalize">
                 {facilityList.map((facility) => (
-                  <li key={facility}>{facility}</li>
+                  <li key={facility} className="py-2">
+                    {facility}
+                  </li>
                 ))}
               </ul>
             </div>

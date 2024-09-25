@@ -1,30 +1,31 @@
 const bornoStateFacilities = {
-  "Askira/Uba": [
-    "Uba General Hospital",
-    "Lassa General Hospital",
-    "Askira General Hospital",
-    "Wamdeo PHC",
-    "Rumirgo Model PHC",
+  "Askira/Uba LGA": [
+    "UBA GENERAL HOSPITAL",
+    "LASSA GENERAL HOSPITAL",
+    "ASKIRA GENERAL HOSPITAL",
+    "WAMDEO PHC",
+    "RUMIRGO MODEL PHC",
   ],
-  Shani: [
-    "Shani General Hospital",
-    "Shani PHC",
-    "Bargu MCH",
-    "Gassi PHC",
-    "Walama PHC",
-    "Kobo PHC",
-    "Kombo Dispensary",
-    "Buma Dispensary",
-    "Lakumdum PHC",
-    "Gwaskara Dispensary",
+  "Shani LGA": [
+    "SHANI GENERAL HOSPITAL",
+    "SHANI PHC",
+    "SHANI GENERAL HOSPITAL",
+    "BARGU MCH",
+    "GASSI PHC",
+    "WALAMA PHC",
+    "KOBO PHC",
+    "KOMBO DISPENSARY",
+    "BUMA DISPENSARY",
+    "LAKUMDUM PHC",
+    "GWASKARA DISPENSARY",
   ],
-  Hawul: [
+  "Hawul LGA": [
     "Marama General Hospital",
     "Azare General Hospital",
     "Ghuma PHC",
     "Shaffa PHC",
   ],
-  Bayo: [
+  "Bayo LGA": [
     "Briyel PHC",
     "Briyel General Hospital",
     "Jaragol PHC",
@@ -36,7 +37,7 @@ const bornoStateFacilities = {
     "Kuva PHC",
     "Telli PHC",
   ],
-  Jere: [
+  "Jere LGA": [
     "Molai General Hospital",
     "Molai COCIN Clinic",
     "Gomari PHC",
@@ -47,8 +48,8 @@ const bornoStateFacilities = {
     "Maimusari PHC",
     "Mairi PHC",
   ],
-  Bama: ["Banki FHI360 Camp Clinic", "Banki FHI360 IDPs Camp Clinic"],
-  Biu: [
+  "Bama LGA": ["Banki FHI360 Camp Clinic", "Banki FHI360 IDPs Camp Clinic"],
+  "Biu LGA": [
     "Biu General Hospital",
     "Biu MCH",
     "Biu Town Dispensary",
@@ -57,7 +58,7 @@ const bornoStateFacilities = {
     "Mandragrau PHC",
     "Gunda PHC",
   ],
-  MMC: [
+  "MMC LGA": [
     "Maiduguri State Specialist Hospital",
     "Muhammed Shuwa Memorial Hospital",
     "Yerwa MCH",
@@ -67,15 +68,15 @@ const bornoStateFacilities = {
     "Abbaganaram PHC",
     "Sunni Hospital",
   ],
-  Monguno: [
+  "Monguno LGA": [
     "Monguno General Hospital",
     "Monguno FSP",
     "Ladi Bida Dispensary",
     "Mintar Dispensary",
   ],
   Konduga: ["Konduga General Hospital", "Pompomari PHC"],
-  Ngala: ["Ngala ISS IDPs Camp Clinic", "Ngala GH ISS Camp Clinic"],
-  "Kwaya/Kusar": [
+  "Ngala LGA": ["Ngala ISS IDPs Camp Clinic", "Ngala GH ISS Camp Clinic"],
+  "Kwaya/Kusar LGA": [
     "Kwaya General Hospital",
     "Wandali EYN PHC",
     "Fisengo EYN PHC",
@@ -83,10 +84,10 @@ const bornoStateFacilities = {
     "Peta PHC",
     "Yimirthlang PHC",
   ],
-  Chibok: ["Chibok General Hospital", "Garu PHC", "Mbalala PHC"],
-  Gwoza: ["Gwoza General Hospital"],
-  Dikwa: ["Dikwa General Hospital"],
-  Kukawa: ["Teachers Village IDPs Camp Clinic"],
+  "Chibok LGA": ["Chibok General Hospital", "Garu PHC", "Mbalala PHC"],
+  "Gwoza LGA": ["Gwoza General Hospital"],
+  "Dikwa LGA": ["Dikwa General Hospital"],
+  "Kukawa LGA": ["Teachers Village IDPs Camp Clinic"],
 };
 
 export default bornoStateFacilities;
