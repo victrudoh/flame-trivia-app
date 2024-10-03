@@ -19,9 +19,21 @@ const slideTexts = [
     subtitle:
       "Take on fun and interactive health quizzes that boost your knowledge while competing with friends to see who’s the health champ!",
   },
-  { title: "Connect with Friends", subtitle: "Stay in touch" },
-  { title: "Explore the World", subtitle: "See what's out there" },
-  { title: "Get Started Today", subtitle: "Your journey begins here" },
+  {
+    title: "Talk to a Health Pro",
+    subtitle:
+      "Got health questions? Chat with friendly health experts and get answers you can trust, anytime",
+  },
+  {
+    title: "Explore Cool Health Tips",
+    subtitle:
+      "Browse through awesome articles on health topics that matter to you, from HIV/AIDS to everyday wellness hacks.",
+  },
+  {
+    title: "Find Clinics Near You",
+    subtitle:
+      "Need help? Use our map to quickly find clinics and health services close to you.",
+  },
 ];
 
 const Splash: React.FC = () => {
@@ -43,12 +55,12 @@ const Splash: React.FC = () => {
   return (
     <>
       <div className="flex flex-col gap-4 items-center justify-center h-screen overflow-hidden">
-        <div className="flex flex-col gap-4 items-center justify-between h-[80%] overflow-hidden md:h-[95%]">
+        <div className="flex flex-col gap-4 items-center justify-between h-[95%] overflow-hidden md:h-[95%]">
           {/* Skip button */}
           <div className="w-full flex justify-end px-4">
             <button
               onClick={nextImage}
-              className="transition-fx text-lg font-semibold text-brand-white font-geistsans hover:text-brand-secondary"
+              className="text-lg font-semibold text-brand-white font-geistsans"
             >
               {currentIndex === images.length - 1 ? "Finish" : "Skip"}
             </button>
