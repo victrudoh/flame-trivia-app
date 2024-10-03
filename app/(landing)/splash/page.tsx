@@ -30,7 +30,7 @@ const Splash: React.FC = () => {
 
   const nextImage = () => {
     if (currentIndex === images.length - 1) {
-      router.push("/"); // Navigate to login after the last image
+      router.push("/home"); // Navigate to login after the last image
     } else {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }
