@@ -1,14 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  HomeIcon,
-  BookHeart,
-  MessageCircle,
-  Navigation,
-  Gamepad,
-  Gamepad2,
-} from "lucide-react";
+import { BookHeart, MessageCircle, Navigation, Gamepad2 } from "lucide-react";
 import NavItem from "./NavItem";
 
 const MobileNav = () => {
