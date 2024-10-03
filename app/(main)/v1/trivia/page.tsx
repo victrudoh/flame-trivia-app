@@ -18,7 +18,7 @@ const Home = () => {
           <div className="w-full px-4 flex items-center justify-between">
             {/* left */}
             <div className="flex gap-2 items-center">
-              <Link href={"/"}>
+              <Link href={"/home"}>
                 <ArrowLeft className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full cursor-pointer" />
               </Link>
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />

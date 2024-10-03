@@ -12,7 +12,7 @@ const Page = () => {
       {/* Top section */}
       <TopSection>
         <div className="w-full flex items-center justify-start gap-8">
-          <Link href={"/"}>
+          <Link href={"/home"}>
             <ArrowLeft className="bg-brand-white shadow-lg w-9 h-9 p-1 ml-4 rounded-full cursor-pointer" />
           </Link>
           <span className="font-bold text-xl text-brand-white">
