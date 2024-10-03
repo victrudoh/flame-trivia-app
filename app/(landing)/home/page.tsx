@@ -3,7 +3,7 @@
 import TopSection from "@/components/topSection/page";
 import {
   BookHeart,
-  HomeIcon,
+  Gamepad2,
   MessageCircle,
   Navigation,
   Settings,
@@ -49,7 +49,7 @@ const Page = () => {
             className="w-full rounded-lg shadow-lg flex"
           >
             <div className="bg-gradient-to-b from-green-300 to-yellow-300 w-[20%] rounded-l-xl flex items-center justify-center text-brand-white">
-              <HomeIcon />
+              <Gamepad2 />
             </div>
             <div className="w-[80%] bg-brand-white p-6 flex flex-col items-start justify-center gap-1 rounded-r-xl">
               <div className="text-base font-bold font-geistsans">
