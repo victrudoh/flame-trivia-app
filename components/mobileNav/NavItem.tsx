@@ -8,7 +8,6 @@ import Image from "next/image";
 
 type NavItemProps = {
   link: string;
-  // icon: React.ReactNode;
   icon: any;
 };
 
@@ -22,7 +21,6 @@ const NavItem = ({ link, icon }: NavItemProps) => {
       }`}
     >
       <Image src={icon} alt="#" />
-      {/* {icon} */}
     </Link>
   );
 };

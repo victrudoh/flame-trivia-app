@@ -5,6 +5,7 @@ import TopSection from "@/components/topSection/page";
 import { ArrowLeft, CircleHelp } from "lucide-react";
 import React from "react";
 import { useRouter } from "next/navigation";
+import TriviaCard from "@/components/triviaCard/page";
 
 const Page = ({ params }: { params: { id: string } }) => {
   console.log("🚀 ~ Page ~ params:", params);
@@ -38,6 +39,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           />
         </TopSection>
         {params?.id}
+        <TriviaCard />
       </MainContainer>
     </>
   );
