@@ -1,16 +1,7 @@
 "use client";
 
 import TopSection from "@/components/topSection/page";
-import {
-  BookHeart,
-  Gamepad2,
-  MessageCircle,
-  Navigation,
-  Settings,
-  User,
-  Wallet,
-} from "lucide-react";
-import Image from "next/image";
+import { Settings, User, Wallet } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
