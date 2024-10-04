@@ -38,7 +38,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             onClick={goBack}
           />
         </TopSection>
-        {params?.id}
+        {/* {params?.id} */}
         <TriviaCard />
       </MainContainer>
     </>
