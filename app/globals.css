@@ -55,3 +55,7 @@ body {
 .transition-fx {
   transition: all 300ms ease-in-out;
 }
+
+.gradient-fx {
+  @apply bg-gradient-to-r from-brand-main via-brand-main to-indigo-500;
+}
