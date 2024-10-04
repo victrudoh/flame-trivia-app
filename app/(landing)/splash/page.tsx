@@ -9,6 +9,7 @@ import image1 from "@/assets/imgs/splash/1png.png";
 import image2 from "@/assets/imgs/splash/2png.png";
 import image3 from "@/assets/imgs/splash/3png.png";
 import image4 from "@/assets/imgs/splash/4png.png";
+import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 
 const images = [image1, image2, image3, image4];
 
@@ -42,10 +43,20 @@ const Splash: React.FC = () => {
 
   const nextImage = () => {
     if (currentIndex === images.length - 1) {
-      router.push("/home"); // Navigate to login after the last image
+      router.push("/"); // Redirect to home after the last image
     } else {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }
+  };
+
+  const previousImage = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
+  const handleSkip = () => {
+    router.push("/home");
   };
 
   const goToImage = (index: number) => {
@@ -59,7 +70,7 @@ const Splash: React.FC = () => {
           {/* Skip button */}
           <div className="w-full flex justify-end px-4">
             <button
-              onClick={nextImage}
+              onClick={handleSkip}
               className="text-lg font-semibold text-brand-white font-geistsans"
             >
               {currentIndex === images.length - 1 ? "Finish" : "Skip"}
@@ -79,7 +90,6 @@ const Splash: React.FC = () => {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{
                   width: "75%",
-                  height: "",
                   borderRadius: "30px",
                   overflow: "hidden",
                 }}
@@ -94,23 +104,36 @@ const Splash: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-8">
-            {/* Dots indicator */}
-            <div className="flex gap-2 my-4 space-x-2">
-              {images.map((_, index) => (
-                <div
-                  key={index}
-                  onClick={() => goToImage(index)}
-                  className={`w-3 h-3 rounded-full cursor-pointer ${
-                    index === currentIndex
-                      ? "bg-brand-white"
-                      : "bg-brand-grayish"
-                  }`}
-                ></div>
-              ))}
+            {/* Navigation buttons */}
+            <div className="flex items-center gap-2">
+              <CircleArrowLeft
+                onClick={previousImage}
+                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer hover:text-brand-grayish"
+              />
+
+              {/* Dots indicator */}
+              <div className="flex gap-2 space-x-2">
+                {images.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => goToImage(index)}
+                    className={`w-3 h-3 rounded-full cursor-pointer ${
+                      index === currentIndex
+                        ? "bg-brand-white"
+                        : "bg-brand-grayish"
+                    }`}
+                  ></div>
+                ))}
+              </div>
+
+              <CircleArrowRight
+                onClick={nextImage}
+                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer hover:text-brand-grayish"
+              />
             </div>
 
             {/* Dynamic Text below the slideshow */}
-            <div className=" text-center w-[80%] mx-auto flex flex-col gap-4">
+            <div className="text-center w-[80%] mx-auto flex flex-col gap-4">
               <h2 className="text-xl font-bold text-brand-white font-geistsans">
                 {slideTexts[currentIndex].title}
               </h2>
