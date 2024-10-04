@@ -8,7 +8,7 @@ const ListItem = ({ title, level, body, quizzes, link }: any) => {
     <>
       <Link
         href={link}
-        className="w-full p-4 border-brand-grayish/20 border-[0.5px] rounded-xl bg-brand-white shadow-sm flex items-center justify-between"
+        className="transition-fx group w-full p-4 border-brand-grayish/20 border-[0.3px] rounded-xl shadow-lg bg-brand-white flex items-center justify-between"
       >
         <div className="flex items-center gap-4">
           <div className="w-[58px] max-h-[58px]">
@@ -31,7 +31,7 @@ const ListItem = ({ title, level, body, quizzes, link }: any) => {
             </span>
           </div>
         </div>
-        <span className="transition-fx text-brand-main hover:animate-bounce">
+        <span className="transition-fx text-brand-main group-hover:animate-bounce">
           <MessageCircle />
         </span>
       </Link>
