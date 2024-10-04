@@ -3,7 +3,7 @@ import React from "react";
 const TriviaCard = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] rounded-xl px-6 py-8">
+      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] rounded-xl px-4 py-8">
         <span className="font-bold text-base">QUESTION 1</span>
         <div className="rounded-xl min-h-[25vh] bg-brand-grayish/20 text-center font-medium text-sm flex items-center justify-center p-4 border-brand-grayish/20 border-[0.3px]">
           Lorem ipsum dolor sit amet consectetur. Vel feugiat et in risus diam
