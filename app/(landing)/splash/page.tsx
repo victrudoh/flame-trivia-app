@@ -65,7 +65,7 @@ const Splash: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 items-center justify-center h-screen overflow-hidden">
+      <div className="flex flex-col gap-4 items-center justify-start pt-4 h-screen overflow-hidden">
         <div className="flex flex-col gap-2 items-center justify-between h-[85%] overflow-hidden md:h-[95%]">
           {/* Skip button */}
           <div className="w-full flex justify-end px-4">
