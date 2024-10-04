@@ -108,7 +108,7 @@ const Splash: React.FC = () => {
             <div className="flex items-center gap-2">
               <CircleArrowLeft
                 onClick={previousImage}
-                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer hover:text-brand-grayish"
+                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer"
               />
 
               {/* Dots indicator */}
@@ -128,7 +128,7 @@ const Splash: React.FC = () => {
 
               <CircleArrowRight
                 onClick={nextImage}
-                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer hover:text-brand-grayish"
+                className="text-base mx-8 w-12 h-12 font-semibold text-brand-white cursor-pointer"
               />
             </div>
 
