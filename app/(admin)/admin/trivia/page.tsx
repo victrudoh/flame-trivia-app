@@ -6,14 +6,16 @@ import axios from "axios";
 import { success, error } from "@/helpers/Alert";
 import Spinner from "@/components/spinner/Spinner";
 import { useGeneralContext } from "@/context/GenralContext";
+import Link from "next/link";
 
 const AllLevels = () => {
   const {
-    loading,
-    setLoading,
+    levelLoading,
+    setLevelLoading,
+    getOneLevel,
     getAllQuestions,
     getAllLevels,
-    getResultsByLevel,
+    // getResultsByLevel,
     allLevels,
   }: any = useGeneralContext();
   console.log("🚀 ~ AllLevels ~ allLevels:", allLevels);
@@ -22,20 +24,21 @@ const AllLevels = () => {
   const router = useRouter();
 
   const gotoLevel = async (id: string) => {
-    setLoading(true);
+    // setLevelLoading(true);
     await getAllQuestions(id);
-    await getResultsByLevel(id);
-    setLoading(false);
-    router.push(`/admin/levels/one?id=${id}`);
+    // await getResultsByLevel(id);
+    await getOneLevel(id);
+    router.push(`/admin/trivia/${id}`);
+    // setLevelLoading(false);
   };
 
-  const addLevel = () => {
-    router.push("/admin/levels/add");
-  };
+  // const addLevel = () => {
+  //   router.push("/admin/trivia/addLevel");
+  // };
 
   const deleteHandler = async (id: string) => {
     try {
-      setLoading(true);
+      setLevelLoading(true);
       const response = await axios.delete(
         `${base_url}/levels/delete?id=${id}`,
         { headers: { "content-type": "application/json" } }
@@ -45,11 +48,11 @@ const AllLevels = () => {
         success("Deleted Level successfully");
         getAllLevels();
       }
-      setLoading(false);
+      setLevelLoading(false);
     } catch (err: any) {
       console.error(err);
       error(err.response?.data?.error || "An error occurred");
-      setLoading(false);
+      setLevelLoading(false);
     }
   };
 
@@ -57,16 +60,17 @@ const AllLevels = () => {
     <div className="shadow-lg rounded-md bg-white p-4 w-full flex flex-col gap-4">
       <div className="flex justify-between items-center w-full">
         <div></div>
-        <button
+        <Link
+          href={"/admin/trivia/addLevel"}
           className="bg-teal-600 rounded-lg p-2 px-4 text-white hover:bg-teal-500"
-          onClick={addLevel}
+          // onClick={addLevel}
         >
           Add New Level
-        </button>
+        </Link>
       </div>
 
       <div className="w-full mx-auto mt-5 flex gap-12 p-4 flex-wrap ml-4">
-        {loading ? (
+        {levelLoading ? (
           <Spinner />
         ) : allLevels && allLevels.length > 0 ? (
           allLevels.map((item: any) => (
