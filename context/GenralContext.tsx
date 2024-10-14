@@ -144,6 +144,12 @@ const GeneralProvider = (props: any) => {
     getAllLevels();
   }, []);
 
+  useEffect(() => {
+    if (levelId) {
+      getAllQuestions(levelId);
+    }
+  }, [levelId]);
+
   return (
     <GeneralContext.Provider
       value={{

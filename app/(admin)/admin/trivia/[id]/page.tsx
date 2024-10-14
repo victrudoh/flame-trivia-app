@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 // import Students from "./Students";
 import Questions from "./Questions";
 import { useGeneralContext } from "@/context/GenralContext";
 
-const OneLevel = () => {
-  const { switchLevelPanel, setSwitchLevelPanel }: any = useGeneralContext();
+const OneLevel = ({ params }: { params: { id: string } }) => {
+  const { switchLevelPanel, setSwitchLevelPanel, setLevelId }: any =
+    useGeneralContext();
   const router = useRouter();
 
   const goBack = async () => {
@@ -15,8 +16,14 @@ const OneLevel = () => {
   };
 
   const gotoAddQuestion = async () => {
-    router.push("/admin/questions/add");
+    router.push("/admin/trivia/addQuestion");
   };
+
+  useEffect(() => {
+    if (params?.id) {
+      setLevelId(params?.id);
+    }
+  }, [params?.id]);
 
   return (
     <>
@@ -63,7 +70,7 @@ const OneLevel = () => {
           {switchLevelPanel === "students" && <>{/* <Students /> */}</>}
           {switchLevelPanel === "questions" && (
             <>
-              <Questions />
+              <Questions id={params?.id} />
             </>
           )}
         </div>

@@ -4,7 +4,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 import axios from "axios";
 import { error, success } from "@/helpers/Alert";
 
-const Questions = () => {
+const Questions = ({ id }: any) => {
   const router = useRouter();
 
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -51,8 +51,15 @@ const Questions = () => {
     const id = urlParams.get("id");
     if (id) {
       setLevelId(id);
+      getAllQuestions(id);
     }
   }, []);
+
+  useEffect(() => {
+    if (id) {
+      getAllQuestions(id);
+    }
+  }, [id]);
 
   return (
     <div className="w-[75%] shadow-lg bg-white p-8 flex flex-col gap-4 rounded-lg">
@@ -61,65 +68,65 @@ const Questions = () => {
         {/* card */}
         {allQuestions?.length > 0 ? (
           <>
-            {allQuestions.map(({ item, i }: any) => (
-              <>
-                <div key={i} className="flex gap-2 items-start">
-                  <div
-                    className="flex gap-4 px-2 justify-start items-between shadow-md rounded-md border-2  border-teal-600 w-[320px] cursor-pointer hover:shadow-2xl"
-                    onClick={() => gotoQuestion(item?._id)}
-                  >
-                    <span className="text-xl font-semibold">{sn++}</span>
-                    <div className=" w-full bg-white rounded-[8px] bg-cover bg-center shadow-xl p-4 flex flex-col items-center justify-start z-[1]">
-                      {/* Question */}
-                      <div className="w-full h-28 p-2 bg-teal-100 rounded-md font-poppins text-xs text-center text-gray-600 overflow-hidden">
-                        {item?.question}
+            {allQuestions.map((item: any, i: number) => (
+              // <>
+              <div key={i} className="flex gap-2 items-start">
+                <div
+                  className="flex gap-4 px-2 justify-start items-between shadow-md rounded-md border-2  border-teal-600 w-[320px] cursor-pointer hover:shadow-2xl"
+                  onClick={() => gotoQuestion(item?._id)}
+                >
+                  <span className="text-xl font-semibold">{sn++}</span>
+                  <div className=" w-full bg-white rounded-[8px] bg-cover bg-center shadow-xl p-4 flex flex-col items-center justify-start z-[1]">
+                    {/* Question */}
+                    <div className="w-full h-28 p-2 bg-teal-100 rounded-md font-poppins text-xs text-center text-gray-600 overflow-hidden">
+                      {item?.question}
+                    </div>
+                    {/* Answers */}
+                    <div className="flex gap-2 w-full items-start justify-start my-2 flex-wrap ml-2">
+                      {/* answer */}
+                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                        <div className="font-poppins text-xs text-left text-teal-700">
+                          A
+                        </div>
+                        <div className="font-poppins text-xs text-left text-gray-600">
+                          {item?.answer_a}
+                        </div>
                       </div>
-                      {/* Answers */}
-                      <div className="flex gap-2 w-full items-start justify-start my-2 flex-wrap ml-2">
-                        {/* answer */}
-                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                          <div className="font-poppins text-xs text-left text-teal-700">
-                            A
-                          </div>
-                          <div className="font-poppins text-xs text-left text-gray-600">
-                            {item?.answer_a}
-                          </div>
+                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                        <div className="font-poppins text-xs text-left text-teal-700">
+                          B
                         </div>
-                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                          <div className="font-poppins text-xs text-left text-teal-700">
-                            B
-                          </div>
-                          <div className="font-poppins text-xs text-left text-gray-600">
-                            {item?.answer_b}
-                          </div>
+                        <div className="font-poppins text-xs text-left text-gray-600">
+                          {item?.answer_b}
                         </div>
-                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                          <div className="font-poppins text-xs text-left text-teal-700">
-                            C
-                          </div>
-                          <div className="font-poppins text-xs text-left text-gray-600">
-                            {item?.answer_c}
-                          </div>
+                      </div>
+                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                        <div className="font-poppins text-xs text-left text-teal-700">
+                          C
                         </div>
-                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                          <div className="font-poppins text-xs text-left text-teal-700">
-                            D
-                          </div>
-                          <div className="font-poppins text-xs text-left text-gray-600">
-                            {item?.answer_d}
-                          </div>
+                        <div className="font-poppins text-xs text-left text-gray-600">
+                          {item?.answer_c}
+                        </div>
+                      </div>
+                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                        <div className="font-poppins text-xs text-left text-teal-700">
+                          D
+                        </div>
+                        <div className="font-poppins text-xs text-left text-gray-600">
+                          {item?.answer_d}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <span
-                    className="font-lg text-red-600 font-semibold hover:text-teal-500 cursor-pointer"
-                    onClick={() => deleteHandler(item?._id)}
-                  >
-                    x
-                  </span>
                 </div>
-              </>
+                <span
+                  className="font-lg text-red-600 font-semibold hover:text-teal-500 cursor-pointer"
+                  onClick={() => deleteHandler(item?._id)}
+                >
+                  x
+                </span>
+              </div>
+              // </>
             ))}
           </>
         ) : (
