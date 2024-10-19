@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useGeneralContext } from "@/context/GenralContext";
 import Image from "next/image";
@@ -75,4 +75,12 @@ const AddTopic = () => {
   );
 };
 
-export default AddTopic;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AddTopic />
+    </Suspense>
+  );
+};
+
+export default Page;

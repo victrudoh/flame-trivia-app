@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useGeneralContext } from "@/context/GenralContext";
 import axios from "axios";
 import { success, error } from "@/helpers/Alert";
 import Spinner from "@/components/spinner/Spinner";
 
-const AddTopic = () => {
+const EditTopic = () => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -151,4 +151,12 @@ const AddTopic = () => {
   );
 };
 
-export default AddTopic;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditTopic />
+    </Suspense>
+  );
+};
+
+export default Page;
