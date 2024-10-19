@@ -50,6 +50,7 @@ const GeneralProvider = (props: any) => {
 
   // KNOWLEDGE BASE
   const [allTopics, setAllTopics] = useState();
+  const [oneTopic, setOneTopic] = useState();
 
   //*******/
   //************/
@@ -71,8 +72,8 @@ const GeneralProvider = (props: any) => {
       setAllLevels(response.data.data.allLevels);
       setLevelLoading(false);
     } catch (ex: any) {
-      error(ex.response.data.message);
-      error(ex.response.data.error);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
       setLevelLoading(false);
       console.log(
         "🚀 ~ file: AppContext.jsx:72 ~ getAllLevels ~ error:",
@@ -92,8 +93,8 @@ const GeneralProvider = (props: any) => {
       console.log("🚀 ~ getOneLevel ~ response:", response);
       setOneLevel(response.data.data.level);
     } catch (err: any) {
-      error(err.response.data.message);
-      error(err.response.data.error);
+      error(err?.response?.data?.message);
+      error(err?.response?.data?.error);
       console.log("🚀 ~ file: AppContext.jsx:96 ~ getOneLevel ~ error:", error);
     }
   };
@@ -114,8 +115,8 @@ const GeneralProvider = (props: any) => {
       console.log("🚀 ~ getAllQuestions ~ response:", response);
       setAllQuestions(response.data.data.allQuestions);
     } catch (err: any) {
-      error(err.response.data.message);
-      error(err.response.data.error);
+      error(err?.response?.data?.message);
+      error(err?.response?.data?.error);
       console.log(
         "🚀 ~ file: AppContext.jsx:115 ~ getAllQuestions ~ error:",
         error
@@ -133,8 +134,8 @@ const GeneralProvider = (props: any) => {
       });
       setOneQuestion(response.data.data.question);
     } catch (err: any) {
-      error(err.response.data.message);
-      error(err.response.data.error);
+      error(err?.response?.data?.message);
+      error(err?.response?.data?.error);
       console.log(
         "🚀 ~ file: AppContext.jsx:132 ~ getOneQuestion ~ error:",
         error
@@ -146,7 +147,7 @@ const GeneralProvider = (props: any) => {
   // Get Topics
   const getAllTopics = async () => {
     try {
-      setLevelLoading(true);
+      setTopicLoading(true);
       const response = await axios.get(`${base_url}/topics/all`, {
         headers: {
           "content-type": "application/json",
@@ -154,12 +155,31 @@ const GeneralProvider = (props: any) => {
       });
       console.log("🚀 ~ getTopics ~ response:", response);
       setAllTopics(response.data.data.allTopics);
-      setLevelLoading(false);
+      setTopicLoading(false);
     } catch (ex: any) {
-      error(ex.response.data.message);
-      error(ex.response.data.error);
-      setLevelLoading(false);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setTopicLoading(false);
       console.log("🚀 ~ file: AppContext.jsx:72 ~ getTopics ~ error:", error);
+    }
+  };
+
+  // Get one question
+  const getOneTopic = async (id: any) => {
+    try {
+      const response = await axios.get(`${base_url}/topics/one?id=${id}`, {
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      setOneTopic(response.data.data.topic);
+    } catch (err: any) {
+      error(err?.response?.data?.message);
+      error(err?.response?.data?.error);
+      console.log(
+        "🚀 ~ file: AppContext.jsx:132 ~ getOneTopic ~ error:",
+        error
+      );
     }
   };
 
@@ -219,7 +239,10 @@ const GeneralProvider = (props: any) => {
         getAllQuestions,
 
         // Knowledge Base
+        oneTopic,
         allTopics,
+        setOneTopic,
+        getOneTopic,
         setAllTopics,
         getAllTopics,
       }}

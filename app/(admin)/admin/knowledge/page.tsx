@@ -1,5 +1,6 @@
 "use client";
 
+import Spinner from "@/components/spinner/Spinner";
 import { useGeneralContext } from "@/context/GenralContext";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -14,7 +15,7 @@ const AllTopics = () => {
   //   router.push(`/admin/students/one?id=${id}`);
   // };
 
-  const { setCourseId, allTopics }: any = useGeneralContext();
+  const { topicLoading, setCourseId, allTopics }: any = useGeneralContext();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -32,7 +33,7 @@ const AllTopics = () => {
             All Topics
           </span>
           <Link
-            href={"/admin/knowledge/addTopic"}
+            href={"/admin/knowledge/add"}
             className="bg-teal-600 rounded-lg p-2 px-4 text-white capitalize hover:bg-teal-500"
             // onClick={addLevel}
           >
@@ -40,13 +41,15 @@ const AllTopics = () => {
           </Link>
         </div>
         <div className="w-full flex flex-col gap-4 items-start justify-start p-2 bg-brand-ash rounded-xl">
-          {allTopics ? (
+          {topicLoading ? (
+            <Spinner />
+          ) : allTopics ? (
             <>
               {allTopics.map((item: any, i: number) => (
                 <Link
                   key={i}
                   // onClick={() => gotoStudent(item._id)}
-                  href={`/admin/students/one?id=${item?._id}`}
+                  href={`/admin/knowledge/one?id=${item?._id}`}
                   className="group transition-fx w-full p-4 border-brand-grayish/20 border-[0.3px] rounded-xl bg-brand-white shadow-xl flex items-center justify-between hover:bg-teal-400/40"
                 >
                   <div className="flex items-center gap-4">
@@ -80,11 +83,7 @@ const AllTopics = () => {
           ) : (
             <>
               <div className="w-full mx-auto text-lg p-4 h-12">
-                <td></td>
-                <td></td>
-                <td>No topics yet, add some</td>
-                <td></td>
-                <td></td>
+                <span>No topics yet, add some</span>
               </div>
             </>
           )}

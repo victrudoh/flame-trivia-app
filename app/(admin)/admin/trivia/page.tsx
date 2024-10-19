@@ -90,7 +90,9 @@ const AllLevels = () => {
             </div>
           ))
         ) : (
-          <span className="w-full mx-auto">No Levels, please add some</span>
+          <div className="w-full mx-auto text-lg p-4 h-12">
+            <span>No levels yet, add some</span>
+          </div>
         )}
       </div>
     </div>
