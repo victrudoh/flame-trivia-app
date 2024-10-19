@@ -12,6 +12,7 @@ const GeneralProvider = (props: any) => {
   // LOADERS
   const [authLoading, setAuthLoading] = useState(false);
   const [levelLoading, setLevelLoading] = useState(false);
+  const [topicLoading, setTopicLoading] = useState(false);
 
   // AUTH
   const [signupDetails, setSignupDetails] = useState({
@@ -45,8 +46,10 @@ const GeneralProvider = (props: any) => {
 
   // QUESTIONS
   const [allQuestions, setAllQuestions] = useState();
-  console.log("🚀 ~ GeneralProvider ~ allQuestions:", allQuestions);
   const [oneQuestion, setOneQuestion] = useState();
+
+  // KNOWLEDGE BASE
+  const [allTopics, setAllTopics] = useState();
 
   //*******/
   //************/
@@ -139,9 +142,31 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  // KNOWLEDGE BASE
+  // Get Topics
+  const getAllTopics = async () => {
+    try {
+      setLevelLoading(true);
+      const response = await axios.get(`${base_url}/topics/all`, {
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      console.log("🚀 ~ getTopics ~ response:", response);
+      setAllTopics(response.data.data.allTopics);
+      setLevelLoading(false);
+    } catch (ex: any) {
+      error(ex.response.data.message);
+      error(ex.response.data.error);
+      setLevelLoading(false);
+      console.log("🚀 ~ file: AppContext.jsx:72 ~ getTopics ~ error:", error);
+    }
+  };
+
   useEffect(() => {
     console.log("__3d1k4N.init");
     getAllLevels();
+    getAllTopics();
   }, []);
 
   useEffect(() => {
@@ -155,8 +180,10 @@ const GeneralProvider = (props: any) => {
       value={{
         // Loaders
         authLoading,
+        topicLoading,
         levelLoading,
         setAuthLoading,
+        setTopicLoading,
         setLevelLoading,
 
         // Auth
@@ -190,6 +217,11 @@ const GeneralProvider = (props: any) => {
         getOneQuestion,
         setAllQuestions,
         getAllQuestions,
+
+        // Knowledge Base
+        allTopics,
+        setAllTopics,
+        getAllTopics,
       }}
     >
       {props.children}
