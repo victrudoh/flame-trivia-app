@@ -201,15 +201,11 @@ const AddQuestion = () => {
           className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
         >
           <option>Choose Related Topic</option>
-          {allTopics.map((item: any, i: number) => (
+          {allTopics?.map((item: any, i: number) => (
             <option key={i} value={item?.id}>
               {item?.topic}
             </option>
           ))}
-          <option value="answer_a">Option A</option>
-          <option value="answer_b">Option B</option>
-          <option value="answer_c">Option C</option>
-          <option value="answer_d">Option D</option>
         </select>
       </div>
 
