@@ -84,38 +84,46 @@ const Questions = ({ id }: any) => {
                     {/* Answers */}
                     <div className="flex gap-2 w-full items-start justify-start my-2 flex-wrap ml-2">
                       {/* answer */}
-                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                        <div className="font-poppins text-xs text-left text-teal-700">
-                          A
+                      {item?.answer_a && (
+                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                          <div className="font-poppins text-xs text-left text-teal-700">
+                            A
+                          </div>
+                          <div className="font-poppins text-xs text-left text-gray-600">
+                            {item?.answer_a}
+                          </div>
                         </div>
-                        <div className="font-poppins text-xs text-left text-gray-600">
-                          {item?.answer_a}
+                      )}
+                      {item?.answer_b && (
+                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                          <div className="font-poppins text-xs text-left text-teal-700">
+                            B
+                          </div>
+                          <div className="font-poppins text-xs text-left text-gray-600">
+                            {item?.answer_b}
+                          </div>
                         </div>
-                      </div>
-                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                        <div className="font-poppins text-xs text-left text-teal-700">
-                          B
+                      )}
+                      {item?.answer_c && (
+                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                          <div className="font-poppins text-xs text-left text-teal-700">
+                            C
+                          </div>
+                          <div className="font-poppins text-xs text-left text-gray-600">
+                            {item?.answer_c}
+                          </div>
                         </div>
-                        <div className="font-poppins text-xs text-left text-gray-600">
-                          {item?.answer_b}
+                      )}
+                      {item?.answer_d && (
+                        <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
+                          <div className="font-poppins text-xs text-left text-teal-700">
+                            D
+                          </div>
+                          <div className="font-poppins text-xs text-left text-gray-600">
+                            {item?.answer_d}
+                          </div>
                         </div>
-                      </div>
-                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                        <div className="font-poppins text-xs text-left text-teal-700">
-                          C
-                        </div>
-                        <div className="font-poppins text-xs text-left text-gray-600">
-                          {item?.answer_c}
-                        </div>
-                      </div>
-                      <div className="w-[45%] rounded-md p-2 bg-gray-200 hover:bg-teal-100 cursor-pointer flex gap-2 items-start overflow-hidden h-20">
-                        <div className="font-poppins text-xs text-left text-teal-700">
-                          D
-                        </div>
-                        <div className="font-poppins text-xs text-left text-gray-600">
-                          {item?.answer_d}
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

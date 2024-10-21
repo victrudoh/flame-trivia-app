@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ListItem from "./ListItem";
 import { ArrowLeft, Search } from "lucide-react";
@@ -5,8 +7,12 @@ import TopSection from "@/components/topSection/page";
 import MainContainer from "@/components/mainContainer/page";
 import img from "@/assets/imgs/knowledge-base/article_img.jpg";
 import Link from "next/link";
+import { useGeneralContext } from "@/context/GenralContext";
 
 const Page = () => {
+  const { allTopics }: any = useGeneralContext();
+  console.log("🚀 ~ Page ~ allTopics:", allTopics);
+
   return (
     // <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
     <MainContainer>
@@ -29,110 +35,27 @@ const Page = () => {
 
       {/* Bottom section with scrolling */}
       <div className="w-full overflow-y-auto rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
-        <ListItem
+        {allTopics ? (
+          allTopics.map((item: any, i: number) => (
+            <ListItem
+              key={i}
+              title={item?.title}
+              body={item?.description}
+              thumbnail={img}
+              link={`/v1/knowledge/${item?._id}`}
+            />
+          ))
+        ) : (
+          <span className="p-4">No topic</span>
+        )}
+        {/* <ListItem
           title={"About HIV/AIDS"}
           body={
             "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
           }
           thumbnail={img}
           link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
-        <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        />
+        /> */}
       </div>
     </MainContainer>
     // </div>

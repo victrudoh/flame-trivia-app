@@ -11,9 +11,14 @@ const AddQuestion = () => {
   const router = useRouter();
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
-  const { levelLoading, setLevelLoading, levelId, getAllQuestions }: any =
-    useGeneralContext();
-  console.log("🚀 ~ AddQuestion ~ levelId:", levelId);
+  const {
+    levelLoading,
+    setLevelLoading,
+    levelId,
+    allTopics,
+    getAllQuestions,
+  }: any = useGeneralContext();
+  console.log("🚀 ~ AddQuestion ~ allTopics:", allTopics);
 
   const goBack = async () => {
     if (levelId) {
@@ -31,6 +36,7 @@ const AddQuestion = () => {
     answer_c: "",
     answer_d: "",
     correct_answer: "",
+    topicId: "",
   });
 
   const addQuestionHandler = async (e: any) => {
@@ -177,6 +183,29 @@ const AddQuestion = () => {
           className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
         >
           <option>Choose Correct Answer</option>
+          <option value="answer_a">Option A</option>
+          <option value="answer_b">Option B</option>
+          <option value="answer_c">Option C</option>
+          <option value="answer_d">Option D</option>
+        </select>
+      </div>
+      {/* pair */}
+      <div className="flex flex-col align-start justify-center gap-2 my-2">
+        <span className="text-gray-400">
+          Related Topic<span className="text-red-400">*</span>
+        </span>
+        <select
+          name="topicId"
+          id="topicId"
+          onChange={onchangeHandler}
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+        >
+          <option>Choose Related Topic</option>
+          {allTopics.map((item: any, i: number) => (
+            <option key={i} value={item?.id}>
+              {item?.topic}
+            </option>
+          ))}
           <option value="answer_a">Option A</option>
           <option value="answer_b">Option B</option>
           <option value="answer_c">Option C</option>

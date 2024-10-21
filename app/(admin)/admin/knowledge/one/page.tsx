@@ -8,13 +8,15 @@ import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
-const AddTopic = () => {
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+
+const OneTopic = () => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   const { getAllTopics, getOneTopic, oneTopic }: any = useGeneralContext();
 
@@ -32,6 +34,24 @@ const AddTopic = () => {
   return (
     <>
       <MainContainer>
+        {/* <div className="w-full flex items-center justify-between p-4">
+          <div className="w-full flex items-center justify-start gap-8">
+            <ArrowLeft
+              className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
+              onClick={goBack}
+            />
+            <span className="font-bold text-xl text-brand-dark">
+              {oneTopic?.title}
+            </span>
+          </div>
+          <Link
+            href={`/admin/knowledge/edit?id=${oneTopic?._id}`}
+            className="bg-teal-600 rounded-lg w-[120px] p-2 flex justify-center text-white capitalize hover:bg-teal-500"
+            // onClick={addLevel}
+          >
+            Edit Topic
+          </Link>
+        </div> */}
         <TopSection>
           <div className="w-full flex justify-between items-center p-2">
             <div className="w-full flex items-center justify-start gap-8">
@@ -67,7 +87,16 @@ const AddTopic = () => {
         {/* bottom */}
         <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-start gap-4 font-normal text-sm text-brand-grayish h-max ">
           <span className="max-w-[350px] pb-2 font-geistsans">
-            {oneTopic?.description}
+            {/* {oneTopic?.description} */}
+            <QuillEditor
+              value={oneTopic?.body}
+              theme="bubble"
+              readOnly
+              // style={{
+              //   fontSize: "34px",
+              // }}
+              className=""
+            />
           </span>
         </div>
       </MainContainer>
@@ -78,7 +107,7 @@ const AddTopic = () => {
 const Page = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <AddTopic />
+      <OneTopic />
     </Suspense>
   );
 };
