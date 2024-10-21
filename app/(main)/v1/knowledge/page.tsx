@@ -34,14 +34,14 @@ const Page = () => {
       </TopSection>
 
       {/* Bottom section with scrolling */}
-      <div className="w-full overflow-y-auto rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
+      <div className="w-full overflow-y-auto rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
         {allTopics ? (
           allTopics.map((item: any, i: number) => (
             <ListItem
               key={i}
               title={item?.title}
               body={item?.description}
-              thumbnail={img}
+              thumbnail={item?.image || img}
               link={`/v1/knowledge/${item?._id}`}
             />
           ))

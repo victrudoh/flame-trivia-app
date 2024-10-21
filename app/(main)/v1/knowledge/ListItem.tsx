@@ -13,7 +13,13 @@ const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
       >
         <div className="flex items-center gap-4">
           <div className="w-[58px] max-h-[58px]">
-            <Image src={thumbnail} alt="img" className="rounded-lg" />
+            <Image
+              src={thumbnail}
+              alt="img"
+              className="rounded-lg"
+              width={58}
+              height={58}
+            />
           </div>
           <div className="flex flex-col gap-2 items-start justify-between text-brand-dark">
             <span className="font-bold text-base">{title}</span>
