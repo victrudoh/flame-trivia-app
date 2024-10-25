@@ -9,8 +9,8 @@ import Spinner from "@/components/spinner/Spinner";
 
 const AddQuestion = () => {
   const router = useRouter();
-
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+
   const {
     levelLoading,
     setLevelLoading,
@@ -18,7 +18,6 @@ const AddQuestion = () => {
     allTopics,
     getAllQuestions,
   }: any = useGeneralContext();
-  console.log("🚀 ~ AddQuestion ~ allTopics:", allTopics);
 
   const goBack = async () => {
     if (levelId) {
@@ -39,51 +38,62 @@ const AddQuestion = () => {
     topicId: "",
   });
 
+  // Filter out empty values from questionDetails
+  const filterEmptyFields = (details: any) => {
+    return Object.fromEntries(
+      Object.entries(details).filter(([_, value]) => value !== "")
+    );
+  };
+
   const addQuestionHandler = async (e: any) => {
     e.preventDefault();
     setLevelLoading(true);
-    // console.log("QuestionDetails", questionDetails);
+
+    if (!questionDetails.answer_a || !questionDetails.answer_b) {
+      error("Answers A and B are required.");
+      setLevelLoading(false);
+      return;
+    }
+
     try {
+      const filteredDetails = filterEmptyFields(questionDetails);
+
       const response = await axios.post(
         `${base_url}/questions/add?levelId=${levelId}`,
-        questionDetails,
-        {
-          headers: { "content-type": "application/json" },
-        }
+        filteredDetails,
+        { headers: { "content-type": "application/json" } }
       );
-      console.log("🚀 ~ addQuestionHandler ~ response:", response);
+
       if (response.status === 200) {
         success("Added new question");
-        // getAllQuestions(levelId);
         goBack();
       }
-      setLevelLoading(false);
     } catch (err: any) {
       console.log(err);
-      error(err.response.data.error);
+      error(err.response?.data?.error || "An error occurred");
+    } finally {
       setLevelLoading(false);
     }
   };
 
-  const onchangeHandler = async (e: any) => {
-    e.persist();
-    setQuestionDetails((questionDetails) => ({
-      ...questionDetails,
-      [e.target.name]: e.target.value,
+  const onchangeHandler = (e: any) => {
+    const { name, value } = e.target;
+    setQuestionDetails((prev) => ({
+      ...prev,
+      [name]: value,
     }));
   };
 
   return (
-    // <div className="w-[70%] mx-auto my-5 shadow-lg bg-white p-8 flex flex-col gap-4 rounded-lg">
     <form
       onSubmit={addQuestionHandler}
       className="w-[70%] mx-auto my-5 shadow-lg bg-white p-8 flex flex-col gap-4 rounded-lg"
     >
-      {/* top stuff */}
+      {/* Header */}
       <div className="flex w-full gap-4 items-center justify-between">
         <span className="text-xl font-sans font-semibold">Add Question</span>
         <span
-          className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500 ml-14"
+          className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center text-white cursor-pointer hover:bg-teal-500 ml-14"
           onClick={goBack}
         >
           Back
@@ -91,140 +101,124 @@ const AddQuestion = () => {
       </div>
 
       {/* Question */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
+      <div className="flex flex-col gap-2 my-2">
         <span className="text-gray-400">
           Question <span className="text-red-400">*</span>
         </span>
         <textarea
-          // type="text"
           name="question"
-          id="question"
           required
           onChange={onchangeHandler}
           placeholder="Please add question here . . ."
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         />
       </div>
-      {/* Image */}
-      {/* <div className="flex flex-col align-start justify-center gap-2 my-2">
-        <span className="text-gray-400">Image</span>
-        <input
-          type="file"
-          name="image"
-          id="image"
-          className="bg-gray-300/40 p-2 w-full rounded-lg"
-        />
-      </div> */}
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
+
+      {/* Answer A */}
+      <div className="flex flex-col gap-2 my-2">
         <span className="text-gray-400">
           Answer A <span className="text-red-400">*</span>
         </span>
         <input
           type="text"
           name="answer_a"
-          id="answer_a"
+          required
           onChange={onchangeHandler}
           placeholder="Input option A . . ."
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         />
       </div>
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
+
+      {/* Answer B */}
+      <div className="flex flex-col gap-2 my-2">
         <span className="text-gray-400">
           Answer B <span className="text-red-400">*</span>
         </span>
         <input
           type="text"
           name="answer_b"
-          id="answer_b"
+          required
           onChange={onchangeHandler}
           placeholder="Input option B . . ."
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         />
       </div>
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
-        <span className="text-gray-400">
-          Answer C <span className="text-red-400">*</span>
-        </span>
+
+      {/* Answer C (Optional) */}
+      <div className="flex flex-col gap-2 my-2">
+        <span className="text-gray-400">Answer C (Optional)</span>
         <input
           type="text"
           name="answer_c"
-          id="answer_c"
           onChange={onchangeHandler}
-          placeholder="Input option C . . ."
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          placeholder="Input option C (optional) . . ."
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         />
       </div>
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
-        <span className="text-gray-400">
-          Answer D <span className="text-red-400">*</span>
-        </span>
+
+      {/* Answer D (Optional) */}
+      <div className="flex flex-col gap-2 my-2">
+        <span className="text-gray-400">Answer D (Optional)</span>
         <input
           type="text"
           name="answer_d"
-          id="answer_d"
           onChange={onchangeHandler}
-          placeholder="Input option D . . ."
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          placeholder="Input option D (optional) . . ."
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         />
       </div>
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
+
+      {/* Correct Answer */}
+      <div className="flex flex-col gap-2 my-2">
         <span className="text-gray-400">
-          Correct Answer<span className="text-red-400">*</span>
+          Correct Answer <span className="text-red-400">*</span>
         </span>
         <select
           name="correct_answer"
-          id="correct_answer"
+          required
           onChange={onchangeHandler}
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         >
-          <option>Choose Correct Answer</option>
+          <option value="">Choose Correct Answer</option>
           <option value="answer_a">Option A</option>
           <option value="answer_b">Option B</option>
           <option value="answer_c">Option C</option>
           <option value="answer_d">Option D</option>
         </select>
       </div>
-      {/* pair */}
-      <div className="flex flex-col align-start justify-center gap-2 my-2">
+
+      {/* Topic Selection */}
+      <div className="flex flex-col gap-2 my-2">
         <span className="text-gray-400">
-          Related Topic<span className="text-red-400">*</span>
+          Related Topic <span className="text-red-400">*</span>
         </span>
         <select
           name="topicId"
-          id="topicId"
+          required
           onChange={onchangeHandler}
-          className="bg-gray-300/40 p-2 w-full rounded-lg outline-2 outline-teal-500"
+          className="bg-gray-300/40 p-2 w-full rounded-lg outline-teal-500"
         >
-          <option>Choose Related Topic</option>
-          {allTopics?.map((item: any, i: number) => (
-            <option key={i} value={item?.id}>
-              {item?.topic}
+          <option value="">Choose Related Topic</option>
+          {allTopics?.map((topic: any, index: number) => (
+            <option key={index} value={topic?._id}>
+              {topic?.title}
             </option>
           ))}
         </select>
       </div>
 
+      {/* Loading State or Submit Button */}
       {levelLoading ? (
-        <>
-          <Spinner />
-        </>
+        <Spinner />
       ) : (
-        <>
-          <button
-            className="bg-teal-600 rounded-lg p-2 px-4 my-4 mx-auto w-1/2 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500"
-            type="submit"
-          >
-            Add Question
-          </button>
-        </>
+        <button
+          type="submit"
+          className="bg-teal-600 rounded-lg p-2 px-4 my-4 mx-auto w-1/2 text-white cursor-pointer hover:bg-teal-500"
+        >
+          Add Question
+        </button>
       )}
     </form>
-    // </div>
   );
 };
 

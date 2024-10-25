@@ -40,7 +40,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               onClick={goBack}
             />
             <span className="font-bold text-xl text-brand-white">
-              About HIV/AIDS
+              {oneTopic?.title}
             </span>
           </div>
           {/* <div className="w-[80%] flex items-center py-12 gap-4">

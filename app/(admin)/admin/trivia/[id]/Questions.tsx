@@ -7,7 +7,7 @@ import { error, success } from "@/helpers/Alert";
 const Questions = ({ id }: any) => {
   const router = useRouter();
 
-  const base_url = process.env.REACT_APP_BASE_URL;
+  const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 
   const {
     // levelLoading,

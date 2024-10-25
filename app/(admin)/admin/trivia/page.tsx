@@ -76,7 +76,7 @@ const AllLevels = () => {
           allLevels.map((item: any) => (
             <div key={item._id} className="flex gap-2 items-start">
               <div
-                className="flex flex-col gap-6 justify-center items-center p-4 shadow-md rounded-md border-2 border-teal-600 w-[200px] h-[70px] cursor-pointer hover:shadow-xl"
+                className="flex flex-col gap-6 justify-center items-center p-4 shadow-md rounded-md border-2 border-teal-600 w-[200px] min-h-[70px] cursor-pointer hover:shadow-xl"
                 onClick={() => gotoLevel(item._id)}
               >
                 <span className="font-semibold">{item.name}</span>

@@ -34,24 +34,6 @@ const OneTopic = () => {
   return (
     <>
       <MainContainer>
-        {/* <div className="w-full flex items-center justify-between p-4">
-          <div className="w-full flex items-center justify-start gap-8">
-            <ArrowLeft
-              className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
-              onClick={goBack}
-            />
-            <span className="font-bold text-xl text-brand-dark">
-              {oneTopic?.title}
-            </span>
-          </div>
-          <Link
-            href={`/admin/knowledge/edit?id=${oneTopic?._id}`}
-            className="bg-teal-600 rounded-lg w-[120px] p-2 flex justify-center text-white capitalize hover:bg-teal-500"
-            // onClick={addLevel}
-          >
-            Edit Topic
-          </Link>
-        </div> */}
         <TopSection>
           <div className="w-full flex justify-between items-center p-2">
             <div className="w-full flex items-center justify-start gap-8">
