@@ -41,7 +41,10 @@ const AddQuestion = () => {
   // Filter out empty values from questionDetails
   const filterEmptyFields = (details: any) => {
     return Object.fromEntries(
-      Object.entries(details).filter(([_, value]) => value !== "")
+      Object.entries(details).filter(([_, value]) => {
+        console.log("🚀 ~ filterEmptyFields ~ _:", _);
+        return value !== "";
+      })
     );
   };
 
