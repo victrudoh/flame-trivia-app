@@ -46,7 +46,9 @@ const Page = () => {
             />
           ))
         ) : (
-          <span className="p-4">No topic</span>
+          <span className="w-full flex items-center justify-center font-geistsans font-semibold text-xl p-8 rounded-xl bg-brand-ash/60 mx-auto">
+            No Topics
+          </span>
         )}
         {/* <ListItem
           title={"About HIV/AIDS"}

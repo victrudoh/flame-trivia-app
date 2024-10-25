@@ -7,9 +7,13 @@ import React from "react";
 import img from "@/assets/imgs/card_thumbnail.png";
 import ListItem from "../knowledge/ListItem";
 import Link from "next/link";
+import { useGeneralContext } from "@/context/GenralContext";
 
 const Home = () => {
   const progress = (456 / 676) * 100; // Calculate progress percentage
+
+  const { allLevels }: any = useGeneralContext();
+  console.log("🚀 ~ Home ~ allLevels:", allLevels);
 
   return (
     <>
@@ -50,80 +54,32 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="w-full rounded-xl bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
+        <div className="w-full rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
           <span className="font-semibold text-base font-geistsans w-full text-left">
             Levels
           </span>
-          <ListItem
+          {allLevels ? (
+            allLevels.map((item: any, i: number) => (
+              <ListItem
+                key={i}
+                title={item?.name}
+                body={item?.description}
+                thumbnail={item?.image || img}
+                link={`/v1/trivia/${item?._id}`}
+              />
+            ))
+          ) : (
+            <span className="w-full flex items-center justify-center font-geistsans font-semibold text-xl p-8 rounded-xl bg-brand-ash/60 mx-auto">
+              No Levels
+            </span>
+          )}
+          {/* <ListItem
             title={"About HIV/AIDS"}
             level={"Level 1"}
             quizzes={"12 Quizzes"}
             thumbnail={img}
             link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 2"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 3"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 4"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 5"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 6"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 7"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 8"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 9"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
-          <ListItem
-            title={"About HIV/AIDS"}
-            level={"Level 10"}
-            quizzes={"12 Quizzes"}
-            thumbnail={img}
-            link={"/v1/trivia/12"}
-          />
+          /> */}
         </div>
       </MainContainer>
     </>
