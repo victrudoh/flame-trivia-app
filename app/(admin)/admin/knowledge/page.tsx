@@ -8,7 +8,7 @@ import Link from "next/link";
 // import { useRouter } from "next/navigation";
 import React, { Suspense, useEffect } from "react";
 
-export const AllTopics = () => {
+const AllTopics = () => {
   // const router = useRouter();
 
   // const gotoStudent = async (id: any) => {
@@ -93,12 +93,14 @@ export const AllTopics = () => {
   );
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <AllTopics />
     </Suspense>
   );
-}
+};
+
+export default Page;
 
 // export default AllTopics;
