@@ -1,5 +1,6 @@
 "use client";
 
+import AuthLayout from "@/app/(auth)/auth/layout";
 import { info } from "../../helpers/Alert";
 import { useGeneralContext } from "@/context/GenralContext";
 import { useRouter } from "next/navigation";
@@ -10,11 +11,11 @@ const AdminNavbar = () => {
   const router = useRouter();
 
   const logoutHandler = () => {
+    info("You were logged out.");
     localStorage.removeItem("auth_token");
     localStorage.removeItem("userId");
-    router.push("/auth");
-    info("You were logged out.");
-    window.location.reload();
+    router.push(`/auth/login`);
+    return <AuthLayout />;
   };
 
   return (

@@ -9,6 +9,7 @@ import TopSection from "@/components/topSection/page";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css"; // If you're using the bubble theme
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 

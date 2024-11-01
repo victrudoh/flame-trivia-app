@@ -29,13 +29,11 @@ const Page = () => {
   };
 
   const handleLogout = () => {
-    // deleteCookie("auth_token");
-    router.push("/auth");
     info("You were logged out.");
     localStorage.removeItem("auth_token");
     localStorage.removeItem("userId");
-    // dispatch(logout());
-    // window.location.reload();
+    router.push(`/auth/login`);
+    return <AuthLayout />;
   };
 
   useEffect(() => {

@@ -9,6 +9,7 @@ import Image from "next/image";
 import TopSection from "@/components/topSection/page";
 import MainContainer from "@/components/mainContainer/page";
 import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css"; // If you're using the bubble theme
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -18,6 +19,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
 
   const { getOneTopic, oneTopic }: any = useGeneralContext();
+  console.log("🚀 ~ Page ~ oneTopic:", oneTopic);
 
   useEffect(() => {
     if (params?.id) {
