@@ -10,9 +10,10 @@ const AdminNavbar = () => {
   const router = useRouter();
 
   const logoutHandler = () => {
-    info("You were logged out");
-    localStorage.removeItem("token");
-    router.push("/");
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("userId");
+    router.push("/auth");
+    info("You were logged out.");
     window.location.reload();
   };
 

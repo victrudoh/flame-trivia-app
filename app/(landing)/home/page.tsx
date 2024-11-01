@@ -1,7 +1,7 @@
 "use client";
 
 import TopSection from "@/components/topSection/page";
-import { Settings, User, Wallet } from "lucide-react";
+import { PowerIcon, User, Wallet } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -11,7 +11,7 @@ import chat from "@/assets/imgs/landing/chat.png";
 import location from "@/assets/imgs/landing/location.png";
 import { useRouter } from "next/navigation";
 import AuthLayout from "@/app/(auth)/auth/layout";
-import { error } from "@/helpers/Alert";
+import { error, info } from "@/helpers/Alert";
 import { useGeneralContext } from "@/context/GenralContext";
 
 const Page = () => {
@@ -26,6 +26,16 @@ const Page = () => {
       router.push(`/auth/login`);
       return <AuthLayout />;
     }
+  };
+
+  const handleLogout = () => {
+    // deleteCookie("auth_token");
+    router.push("/auth");
+    info("You were logged out.");
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("userId");
+    // dispatch(logout());
+    // window.location.reload();
   };
 
   useEffect(() => {
@@ -45,8 +55,11 @@ const Page = () => {
               </span>
             </div>
             {/* right */}
-            <span className="flex gap-2 rounded-full bg-brand-white cursor-pointer shadow-lg p-2 text-brand-dark font-bold font-geistsans text-base">
-              <Settings />
+            <span
+              onClick={() => handleLogout()}
+              className="flex gap-2 rounded-full bg-brand-white cursor-pointer shadow-lg p-2 text-brand-dark font-bold font-geistsans text-base hover:bg-brand-main hover:text-brand-white"
+            >
+              <PowerIcon />
             </span>
           </div>
         </TopSection>
