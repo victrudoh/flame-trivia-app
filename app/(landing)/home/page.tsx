@@ -3,14 +3,35 @@
 import TopSection from "@/components/topSection/page";
 import { Settings, User, Wallet } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 import knowledge from "@/assets/imgs/landing/knowledge.png";
 import trivia from "@/assets/imgs/landing/trivia.png";
 import chat from "@/assets/imgs/landing/chat.png";
 import location from "@/assets/imgs/landing/location.png";
+import { useRouter } from "next/navigation";
+import AuthLayout from "@/app/(auth)/auth/layout";
+import { error } from "@/helpers/Alert";
+import { useGeneralContext } from "@/context/GenralContext";
 
 const Page = () => {
+  const router = useRouter();
+  const { user }: any = useGeneralContext();
+
+  const checkToken = async () => {
+    const token = localStorage.getItem("auth_token");
+
+    if (!token) {
+      error("Please login to continue.");
+      router.push(`/auth/login`);
+      return <AuthLayout />;
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   return (
     <>
       <div className="text-brand-dark flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
@@ -20,7 +41,7 @@ const Page = () => {
             <div className="flex gap-2 items-center">
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
               <span className="font-normal font-geistsans text-base text-brand-white">
-                Edi Khan
+                {user.firstName} {user.lastName}
               </span>
             </div>
             {/* right */}
@@ -36,7 +57,9 @@ const Page = () => {
               <Wallet />
               <div className="font-bold text-base">Current Balance</div>
             </div>
-            <div className="font-bold text-base">4354</div>
+            <div className="font-bold text-base">
+              {user.currentBalance || 0}
+            </div>
           </div>
         </div>
         <div className="w-full overflow-y-auto  p-4 flex flex-col items-center justify-start gap-4 h-full">

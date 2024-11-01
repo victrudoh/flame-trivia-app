@@ -12,7 +12,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 const Home = () => {
   const progress = (456 / 676) * 100; // Calculate progress percentage
 
-  const { allLevels }: any = useGeneralContext();
+  const { user, allLevels }: any = useGeneralContext();
   console.log("🚀 ~ Home ~ allLevels:", allLevels);
 
   return (
@@ -27,13 +27,13 @@ const Home = () => {
               </Link>
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
               <span className="font-normal font-geistsans text-base text-brand-white">
-                Edi Khan
+                {user?.firstName} {user?.lastName}
               </span>
             </div>
             {/* right */}
             <span className="flex gap-2 rounded-xl bg-brand-white shadow-lg p-2 text-brand-dark font-bold font-geistsans text-base">
               <Earth />
-              4354
+              {user?.currentBalance || 0}
             </span>
           </div>
         </TopSection>
@@ -44,7 +44,7 @@ const Home = () => {
               <CookieIcon />
               <div className="font-medium text-sm">Ninja Level</div>
             </div>
-            <div className="font-medium text-sm">456/676</div>
+            <div className="font-medium text-sm">{user?.userXp || 456}/676</div>
           </div>
           {/* bottom */}
           <div className="w-full rounded-lg bg-brand-grayish">

@@ -1,26 +1,34 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import axios from "axios";
+import { success, error } from "@/helpers/Alert";
 import { createContext, useContext, useEffect, useState } from "react";
-import { error } from "@/helpers/Alert";
 
 export const GeneralContext = createContext({});
 
 const GeneralProvider = (props: any) => {
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+  const router = useRouter();
+
+  // MISC
+  const [token, setToken] = useState() as any;
 
   // LOADERS
   const [authLoading, setAuthLoading] = useState(false);
   const [levelLoading, setLevelLoading] = useState(false);
   const [topicLoading, setTopicLoading] = useState(false);
 
+  // USER
+  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState();
+
   // AUTH
   const [signupDetails, setSignupDetails] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phone: "",
     password: "",
-    isCompany: "",
   });
   const [verifyEmailDetails, setVerifyEmailDetails] = useState({
     id: "",
@@ -58,6 +66,201 @@ const GeneralProvider = (props: any) => {
   //************/
   //*******/
 
+  // AUTH
+  const handleSignup = async (e: any) => {
+    setAuthLoading(true);
+    // console.log("signupDetails", signupDetails);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/register`,
+        signupDetails,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ handleSignup ~ response:", response);
+      setAuthLoading(false);
+      if (response.status === 200) {
+        success("Signup Successful");
+        success("Please go to your email to continue the process.");
+        router.push(`/auth/verify`);
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ handleSignup ~ err:", err);
+      setAuthLoading(false);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err.response?.data?.message);
+      // error(err.message);
+    }
+  };
+
+  const handleLogin = async (e: any) => {
+    setAuthLoading(true);
+    // console.log("loginDetails", loginDetails);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+        loginDetails,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ handleLogin ~ response:", response);
+      const token = response.data.data.token;
+      const userId = response.data.data.user?._id;
+      setAuthLoading(false);
+      if (response.status === 200) {
+        success("Login Successful");
+        localStorage.setItem("auth_token", token);
+        localStorage.setItem("userId", userId);
+        setUser(response.data.data.user);
+        if (response.data.data.user.role === "admin") {
+          router.push(`/admin`);
+        }
+        if (response.data.data.user.role === "user") {
+          router.push(`/home`);
+        }
+        // window.location.reload();
+      }
+    } catch (err: any) {
+      setAuthLoading(false);
+      console.log("🚀 ~ handleLogin ~ err:", err);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err.response?.data?.message);
+      // error(err.message);
+    }
+  };
+
+  const handleVerifyEmail = async () => {
+    setAuthLoading(true);
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?id=${verifyEmailDetails.id}&emailToken=${verifyEmailDetails.emailToken}`,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ handleVerifyEmail ~ response:", response);
+      setAuthLoading(false);
+      if (response.status === 200) {
+        success("Email Verified Successfully");
+        setVerifyEmailDetails((item: any) => ({
+          ...item,
+          verified: true,
+        }));
+        router.push("/auth/login");
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ handleVerifyEmail ~ err:", err);
+      setAuthLoading(false);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err?.response?.data?.message);
+      // error(err.message);
+    }
+  };
+
+  const handleForgotPassword = async (email: any) => {
+    setAuthLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/forgot-password`,
+        { email },
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ handleForgotPassword ~ response:", response);
+      setAuthLoading(false);
+      if (response.status === 200) {
+        success("Reset Email Sent Successfully");
+        success("Please check email to continue.");
+        // router.push(`/auth/reset`);
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ handleForgotPassword ~ err:", err);
+      setAuthLoading(false);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err?.response?.data?.message);
+      // error(err.message);
+    }
+  };
+
+  const handleResetPassword = async (e: any) => {
+    setAuthLoading(true);
+    // console.log("resetPasswordDetails", resetPasswordDetails);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/reset-password?id=${resetPasswordDetails.id}&resetToken=${resetPasswordDetails.resetToken}`,
+        resetPasswordDetails,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ handleResetPassword ~ response:", response);
+      setAuthLoading(false);
+      if (response.status === 200) {
+        success("Password reset successfully.");
+        success("Please login to continue.");
+        router.push(`/auth/login`);
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ handleResetPassword ~ err:", err);
+      setAuthLoading(false);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err.message);
+    }
+  };
+
+  // USER
+  const getOneUser = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/one?id=${userId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+            // "x-access-token": localStorage.getItem("auth_token"),
+          },
+        }
+      );
+      // console.log("🚀 ~ getOneUser ~ response:", response);
+      if (response.status === 200) {
+        setUser(response.data.data.user);
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ getOneUser ~ err:", err);
+      error(
+        err.response?.data?.message
+          ? err?.response?.data?.message
+          : err.response?.data?.error
+      );
+    }
+  };
+
   // LEVELS
   // Get levels
   const getAllLevels = async () => {
@@ -68,7 +271,7 @@ const GeneralProvider = (props: any) => {
           "content-type": "application/json",
         },
       });
-      console.log("🚀 ~ getAllLevels ~ response:", response);
+      // console.log("🚀 ~ getAllLevels ~ response:", response);
       setAllLevels(response.data.data.allLevels);
       setLevelLoading(false);
     } catch (ex: any) {
@@ -90,7 +293,7 @@ const GeneralProvider = (props: any) => {
           "content-type": "application/json",
         },
       });
-      console.log("🚀 ~ getOneLevel ~ response:", response);
+      // console.log("🚀 ~ getOneLevel ~ response:", response);
       setOneLevel(response.data.data.level);
     } catch (err: any) {
       error(err?.response?.data?.message);
@@ -112,7 +315,7 @@ const GeneralProvider = (props: any) => {
           },
         }
       );
-      console.log("🚀 ~ getAllQuestions ~ response:", response);
+      // console.log("🚀 ~ getAllQuestions ~ response:", response);
       setAllQuestions(response.data.data.allQuestions);
     } catch (err: any) {
       error(err?.response?.data?.message);
@@ -153,7 +356,7 @@ const GeneralProvider = (props: any) => {
           "content-type": "application/json",
         },
       });
-      console.log("🚀 ~ getTopics ~ response:", response);
+      // console.log("🚀 ~ getTopics ~ response:", response);
       setAllTopics(response.data.data.allTopics);
       setTopicLoading(false);
     } catch (ex: any) {
@@ -185,9 +388,19 @@ const GeneralProvider = (props: any) => {
 
   useEffect(() => {
     console.log("__3d1k4N.init");
+    const cachedUserId = localStorage.getItem("userId");
+    const cachedToken = localStorage.getItem("auth_token");
+    if (cachedUserId) setUserId(cachedUserId);
+    if (cachedToken) setToken(cachedToken);
     getAllLevels();
     getAllTopics();
   }, []);
+
+  useEffect(() => {
+    if (userId) {
+      getOneUser();
+    }
+  }, [userId]);
 
   useEffect(() => {
     if (levelId) {
@@ -206,13 +419,24 @@ const GeneralProvider = (props: any) => {
         setTopicLoading,
         setLevelLoading,
 
+        // Misc
+        user,
+        token,
+
+        setUser,
+
         // Auth
         loginDetails,
         signupDetails,
         verifyEmailDetails,
         resetPasswordDetails,
+        handleLogin,
+        handleSignup,
         setLoginDetails,
         setSignupDetails,
+        handleVerifyEmail,
+        handleResetPassword,
+        handleForgotPassword,
         setVerifyEmailDetails,
         setResetPasswordDetails,
 

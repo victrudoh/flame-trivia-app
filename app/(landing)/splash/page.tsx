@@ -43,7 +43,7 @@ const Splash: React.FC = () => {
 
   const nextImage = () => {
     if (currentIndex === images.length - 1) {
-      router.push("/"); // Redirect to home after the last image
+      router.push("/auth"); // Redirect to home after the last image
     } else {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }
@@ -56,7 +56,7 @@ const Splash: React.FC = () => {
   };
 
   const handleSkip = () => {
-    router.push("/home");
+    router.push("/auth");
   };
 
   const goToImage = (index: number) => {
