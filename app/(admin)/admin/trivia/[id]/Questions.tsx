@@ -149,10 +149,10 @@ const Questions = ({ id }: any) => {
   );
 };
 
-export default function Page() {
+export default function Page({ id }: any) {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Questions />
+      <Questions id={id} />
     </Suspense>
   );
 }
