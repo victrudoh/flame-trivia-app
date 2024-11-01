@@ -59,3 +59,18 @@ body {
 .gradient-fx {
   @apply bg-gradient-to-r from-brand-main via-brand-main to-indigo-500;
 }
+
+/* Trivia Card CSS */
+.trivia-card-container {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.fall-off-left {
+  transform: translateX(-100vw) rotate(-20deg);
+  opacity: 0;
+}
+
+.fall-off-right {
+  transform: translateX(100vw) rotate(20deg);
+  opacity: 0;
+}

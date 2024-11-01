@@ -18,6 +18,7 @@ const GeneralProvider = (props: any) => {
   const [authLoading, setAuthLoading] = useState(false);
   const [levelLoading, setLevelLoading] = useState(false);
   const [topicLoading, setTopicLoading] = useState(false);
+  const [triviaLoading, setTriviaLoading] = useState(false);
 
   // USER
   const [userId, setUserId] = useState("");
@@ -49,7 +50,9 @@ const GeneralProvider = (props: any) => {
   // Levels
   const [allLevels, setAllLevels] = useState();
   const [oneLevel, setOneLevel] = useState();
+  console.log("🚀 ~ GeneralProvider ~ oneLevel:", oneLevel);
   const [levelId, setLevelId] = useState();
+  console.log("🚀 ~ GeneralProvider ~ levelId:", levelId);
   const [switchLevelPanel, setSwitchLevelPanel] = useState("questions");
 
   // QUESTIONS
@@ -59,6 +62,9 @@ const GeneralProvider = (props: any) => {
   // KNOWLEDGE BASE
   const [allTopics, setAllTopics] = useState();
   const [oneTopic, setOneTopic] = useState();
+
+  //TRIVIA
+  const [oneTest, setOneTest] = useState();
 
   //*******/
   //************/
@@ -275,13 +281,10 @@ const GeneralProvider = (props: any) => {
       setAllLevels(response.data.data.allLevels);
       setLevelLoading(false);
     } catch (ex: any) {
+      console.log("🚀 ~ getAllLevels ~ ex:", ex);
       error(ex?.response?.data?.message);
       error(ex?.response?.data?.error);
       setLevelLoading(false);
-      console.log(
-        "🚀 ~ file: AppContext.jsx:72 ~ getAllLevels ~ error:",
-        error
-      );
     }
   };
 
@@ -298,7 +301,7 @@ const GeneralProvider = (props: any) => {
     } catch (err: any) {
       error(err?.response?.data?.message);
       error(err?.response?.data?.error);
-      console.log("🚀 ~ file: AppContext.jsx:96 ~ getOneLevel ~ error:", error);
+      console.log("🚀 ~ file: AppContext.jsx:96 ~ getOneLevel ~ error:", err);
     }
   };
 
@@ -322,7 +325,7 @@ const GeneralProvider = (props: any) => {
       error(err?.response?.data?.error);
       console.log(
         "🚀 ~ file: AppContext.jsx:115 ~ getAllQuestions ~ error:",
-        error
+        err
       );
     }
   };
@@ -341,7 +344,7 @@ const GeneralProvider = (props: any) => {
       error(err?.response?.data?.error);
       console.log(
         "🚀 ~ file: AppContext.jsx:132 ~ getOneQuestion ~ error:",
-        error
+        err
       );
     }
   };
@@ -363,11 +366,11 @@ const GeneralProvider = (props: any) => {
       error(ex?.response?.data?.message);
       error(ex?.response?.data?.error);
       setTopicLoading(false);
-      console.log("🚀 ~ file: AppContext.jsx:72 ~ getTopics ~ error:", error);
+      console.log("🚀 ~ file: AppContext.jsx:72 ~ getTopics ~ error:", ex);
     }
   };
 
-  // Get one question
+  // Get one topic
   const getOneTopic = async (id: any) => {
     try {
       const response = await axios.get(`${base_url}/topics/one?id=${id}`, {
@@ -379,10 +382,33 @@ const GeneralProvider = (props: any) => {
     } catch (err: any) {
       error(err?.response?.data?.message);
       error(err?.response?.data?.error);
-      console.log(
-        "🚀 ~ file: AppContext.jsx:132 ~ getOneTopic ~ error:",
-        error
+      console.log("🚀 ~ file: AppContext.jsx:132 ~ getOneTopic ~ error:", err);
+    }
+  };
+
+  // TRIVIA
+  // Start test
+  const handleStartTest = async (levelId: any) => {
+    try {
+      setTriviaLoading(true);
+      const response = await axios.get(
+        `${base_url}/tests/add?levelId=${
+          levelId || oneLevel?.id
+        }&userId=${userId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
       );
+      console.log("🚀 ~ handleStartTest ~ response:", response);
+      setOneTest(response.data.data.test);
+      setTriviaLoading(false);
+    } catch (ex: any) {
+      console.log("🚀 ~ handleStartTest ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setTriviaLoading(false);
     }
   };
 
@@ -408,6 +434,13 @@ const GeneralProvider = (props: any) => {
     }
   }, [levelId]);
 
+  useEffect(() => {
+    if (oneLevel) {
+      console.log("🚀 ~ useEffect ~ oneLevel:", oneLevel);
+      setLevelId(oneLevel.id);
+    }
+  }, [oneLevel]);
+
   return (
     <GeneralContext.Provider
       value={{
@@ -415,13 +448,16 @@ const GeneralProvider = (props: any) => {
         authLoading,
         topicLoading,
         levelLoading,
+        triviaLoading,
         setAuthLoading,
         setTopicLoading,
         setLevelLoading,
+        setTriviaLoading,
 
         // Misc
         user,
         token,
+        userId,
 
         setUser,
 
@@ -469,6 +505,11 @@ const GeneralProvider = (props: any) => {
         getOneTopic,
         setAllTopics,
         getAllTopics,
+
+        // Trivia
+        oneTest,
+        setOneTest,
+        handleStartTest,
       }}
     >
       {props.children}

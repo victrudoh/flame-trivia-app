@@ -68,7 +68,7 @@ const Home = () => {
                 title={item?.name}
                 body={item?.description}
                 thumbnail={item?.image || img}
-                link={`/v1/trivia/${item?._id}`}
+                link={`/v1/trivia/test?levelId=${item?._id}`}
               />
             ))
           ) : (
