@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
 
-const Login = () => {
+const Forgot = () => {
   const { handleForgotPassword, authLoading }: any = useGeneralContext();
 
   const [email, setEmail] = useState();
@@ -123,4 +123,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Forgot;

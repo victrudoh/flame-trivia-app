@@ -4,7 +4,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 import axios from "axios";
 import { error, success } from "@/helpers/Alert";
 
-export const Questions = ({ id }: any) => {
+const Questions = ({ id }: any) => {
   const router = useRouter();
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;

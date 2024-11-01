@@ -9,7 +9,7 @@ import Image from "next/image";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
 
-export const Login = () => {
+const Verify = () => {
   const { setVerifyEmailDetails, handleVerifyEmail, authLoading }: any =
     useGeneralContext();
 
@@ -69,7 +69,7 @@ export const Login = () => {
 export default function Page() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Login />
+      <Verify />
     </Suspense>
   );
 }

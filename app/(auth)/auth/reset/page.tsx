@@ -11,7 +11,7 @@ import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
 
-export const Login = () => {
+const Reset = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { handleResetPassword, setResetPasswordDetails, authLoading }: any =
     useGeneralContext();
@@ -191,7 +191,7 @@ export const Login = () => {
 export default function Page() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Login />
+      <Reset />
     </Suspense>
   );
 }

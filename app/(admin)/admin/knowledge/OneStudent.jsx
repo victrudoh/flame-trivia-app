@@ -6,7 +6,7 @@ import AppContext from "../../../context/AppContext";
 import axios from "axios";
 import { error, success } from "../../../helpers/Alert";
 
-export const OneStudent = () => {
+const OneStudent = () => {
   const {
     userId,
     setUserId,
@@ -112,12 +112,14 @@ export const OneStudent = () => {
   );
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <OneStudent />
     </Suspense>
   );
-}
+};
+
+export default Page;
 
 // export default OneStudent;

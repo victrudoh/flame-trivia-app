@@ -4,7 +4,7 @@ import AppContext from "../../../context/AppContext";
 import axios from "axios";
 import { error, success } from "../../../helpers/Alert";
 
-export const Students = () => {
+const Students = () => {
   const { courseId, setCourseId, resultsByCourse, getResultsByCourse } =
     useContext(AppContext);
   // console.log(
