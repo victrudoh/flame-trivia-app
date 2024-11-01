@@ -392,9 +392,7 @@ const GeneralProvider = (props: any) => {
     try {
       setTriviaLoading(true);
       const response = await axios.get(
-        `${base_url}/tests/add?levelId=${
-          levelId || oneLevel?.id
-        }&userId=${userId}`,
+        `${base_url}/tests/add?levelId=${levelId}&userId=${userId}`,
         {
           headers: {
             "content-type": "application/json",
@@ -433,13 +431,6 @@ const GeneralProvider = (props: any) => {
       getAllQuestions(levelId);
     }
   }, [levelId]);
-
-  useEffect(() => {
-    if (oneLevel) {
-      console.log("🚀 ~ useEffect ~ oneLevel:", oneLevel);
-      setLevelId(oneLevel.id);
-    }
-  }, [oneLevel]);
 
   return (
     <GeneralContext.Provider
