@@ -41,7 +41,7 @@ const Page = () => {
             <div className="flex gap-2 items-center">
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
               <span className="font-normal font-geistsans text-base text-brand-white">
-                {user.firstName} {user.lastName}
+                {user?.firstName} {user?.lastName}
               </span>
             </div>
             {/* right */}
@@ -58,7 +58,7 @@ const Page = () => {
               <div className="font-bold text-base">Current Balance</div>
             </div>
             <div className="font-bold text-base">
-              {user.currentBalance || 0}
+              {user?.currentBalance || 0}
             </div>
           </div>
         </div>
