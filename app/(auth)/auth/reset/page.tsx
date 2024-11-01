@@ -42,7 +42,7 @@ const Reset = () => {
     <>
       <MainContainer>
         {/* TopSection */}
-        <div className="gradient-fx w-[98%] rounded-xl flex items-center justify-center sticky top-2">
+        <div className="gradient-fx w-[98%] rounded-xl flex items-center justify-center top-2">
           <div className="w-full flex flex-col justify-between items-center p-2">
             <div className="w-full flex items-center justify-center p-4 my-2">
               <Image
