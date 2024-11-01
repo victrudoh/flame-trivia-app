@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AppContext from "../../../context/AppContext";
@@ -190,4 +190,12 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Questions />
+    </Suspense>
+  );
+}
+
+// export default Questions;

@@ -6,9 +6,9 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 // import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
-const AllTopics = () => {
+export const AllTopics = () => {
   // const router = useRouter();
 
   // const gotoStudent = async (id: any) => {
@@ -93,4 +93,12 @@ const AllTopics = () => {
   );
 };
 
-export default AllTopics;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AllTopics />
+    </Suspense>
+  );
+}
+
+// export default AllTopics;

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 
 import AppContext from "../../../context/AppContext";
 import axios from "axios";
 import { error, success } from "../../../helpers/Alert";
 
-const Students = () => {
+export const Students = () => {
   const { courseId, setCourseId, resultsByCourse, getResultsByCourse } =
     useContext(AppContext);
   // console.log(
@@ -18,12 +18,9 @@ const Students = () => {
 
   const deleteHandler = async (id) => {
     try {
-      const response = await axios.delete(
-        `${base_url}/tests/delete?id=${id}`,
-        {
-          headers: { "content-type": "application/json" },
-        }
-      );
+      const response = await axios.delete(`${base_url}/tests/delete?id=${id}`, {
+        headers: { "content-type": "application/json" },
+      });
       // console.log("response", response);
       if (response.status === 200) {
         success("Deleted test successfully");
@@ -124,4 +121,12 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Students />
+    </Suspense>
+  );
+}
+
+// export default Students;

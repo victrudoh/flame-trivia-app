@@ -2,7 +2,7 @@
 
 import MainContainer from "@/components/mainContainer/page";
 // import { ArrowLeft } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 import logo from "@/assets/imgs/logo.jpg";
 import { useGeneralContext } from "@/context/GenralContext";
@@ -11,7 +11,7 @@ import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
 
-const Login = () => {
+export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { handleResetPassword, setResetPasswordDetails, authLoading }: any =
     useGeneralContext();
@@ -188,4 +188,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Login />
+    </Suspense>
+  );
+}
+
+// export default Login;

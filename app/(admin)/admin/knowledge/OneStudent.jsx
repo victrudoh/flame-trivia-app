@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import StudentDetails from "./StudentDetails";
 import StudentResult from "./StudentResult";
@@ -6,7 +6,7 @@ import AppContext from "../../../context/AppContext";
 import axios from "axios";
 import { error, success } from "../../../helpers/Alert";
 
-const OneStudent = () => {
+export const OneStudent = () => {
   const {
     userId,
     setUserId,
@@ -112,4 +112,12 @@ const OneStudent = () => {
   );
 };
 
-export default OneStudent;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OneStudent />
+    </Suspense>
+  );
+}
+
+// export default OneStudent;

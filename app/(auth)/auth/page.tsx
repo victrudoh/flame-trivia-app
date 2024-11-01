@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Login from "./login/page";
 
 const page = () => {
   return (
     <>
-      <Login />
+      <Suspense>
+        <Login />
+      </Suspense>
     </>
   );
 };

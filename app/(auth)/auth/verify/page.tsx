@@ -1,7 +1,7 @@
 "use client";
 
 import MainContainer from "@/components/mainContainer/page";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
 import logo from "@/assets/imgs/logo.jpg";
 import { useGeneralContext } from "@/context/GenralContext";
@@ -9,7 +9,7 @@ import Image from "next/image";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
 
-const Login = () => {
+export const Login = () => {
   const { setVerifyEmailDetails, handleVerifyEmail, authLoading }: any =
     useGeneralContext();
 
@@ -66,4 +66,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Login />
+    </Suspense>
+  );
+}
+
+// export default Login;

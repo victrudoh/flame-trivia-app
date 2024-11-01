@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useGeneralContext } from "@/context/GenralContext";
 import axios from "axios";
 import { error, success } from "@/helpers/Alert";
 
-const Questions = ({ id }: any) => {
+export const Questions = ({ id }: any) => {
   const router = useRouter();
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
@@ -149,4 +149,12 @@ const Questions = ({ id }: any) => {
   );
 };
 
-export default Questions;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Questions />
+    </Suspense>
+  );
+}
+
+// export default Questions;
