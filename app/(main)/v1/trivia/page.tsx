@@ -8,11 +8,12 @@ import img from "@/assets/imgs/card_thumbnail.png";
 import ListItem from "../knowledge/ListItem";
 import Link from "next/link";
 import { useGeneralContext } from "@/context/GenralContext";
+import Spinner from "@/components/spinner/Spinner";
 
 const Home = () => {
   const progress = (456 / 676) * 100; // Calculate progress percentage
 
-  const { user, allLevels }: any = useGeneralContext();
+  const { user, allLevels, levelLoading }: any = useGeneralContext();
   console.log("🚀 ~ Home ~ allLevels:", allLevels);
 
   return (
@@ -58,7 +59,9 @@ const Home = () => {
           <span className="font-semibold text-base font-geistsans w-full text-left">
             Levels
           </span>
-          {allLevels ? (
+          {levelLoading ? (
+            <Spinner />
+          ) : allLevels ? (
             allLevels.map((item: any, i: number) => (
               <ListItem
                 key={i}

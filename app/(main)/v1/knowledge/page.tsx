@@ -8,9 +8,10 @@ import MainContainer from "@/components/mainContainer/page";
 import img from "@/assets/imgs/knowledge-base/article_img.jpg";
 import Link from "next/link";
 import { useGeneralContext } from "@/context/GenralContext";
+import Spinner from "@/components/spinner/Spinner";
 
 const Page = () => {
-  const { allTopics }: any = useGeneralContext();
+  const { allTopics, topicLoading }: any = useGeneralContext();
   console.log("🚀 ~ Page ~ allTopics:", allTopics);
 
   return (
@@ -35,7 +36,9 @@ const Page = () => {
 
       {/* Bottom section with scrolling */}
       <div className="w-full overflow-y-auto rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
-        {allTopics ? (
+        {topicLoading ? (
+          <Spinner />
+        ) : allTopics ? (
           allTopics.map((item: any, i: number) => (
             <ListItem
               key={i}
