@@ -10,7 +10,7 @@ const TriviaCard = ({
 }: any) => {
   return (
     <>
-      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] rounded-xl px-4 py-8">
+      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-md mx-auto rounded-xl px-4 py-8">
         <span className="font-bold text-base">QUESTION {index + 1}</span>
         <div className="rounded-xl w-full min-h-[25vh] bg-brand-grayish/20 text-center font-medium text-sm flex items-center justify-center p-4 border-brand-grayish/20 border-[0.3px]">
           {data?.question?.question || "No Question"}
