@@ -14,7 +14,6 @@ const Home = () => {
   const progress = (456 / 676) * 100; // Calculate progress percentage
 
   const { user, allLevels, levelLoading }: any = useGeneralContext();
-  console.log("🚀 ~ Home ~ allLevels:", allLevels);
 
   return (
     <>

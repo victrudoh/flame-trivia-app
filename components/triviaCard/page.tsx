@@ -8,7 +8,6 @@ const TriviaCard = ({
   hasNext,
   hasPrevious,
 }: any) => {
-  console.log("🚀 ~ TriviaCard ~ data:", data);
   return (
     <>
       <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] rounded-xl px-4 py-8">

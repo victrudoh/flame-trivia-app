@@ -21,6 +21,7 @@ const EditTopic = () => {
     getAllTopics,
     getOneTopic,
     oneTopic,
+    token,
   }: any = useGeneralContext();
 
   const [image, setImage] = useState<File | null>(null);
@@ -66,7 +67,7 @@ const EditTopic = () => {
   };
 
   const onEditorChange = (value: string) => {
-    console.log("Editor value:", value); // Check if it logs correctly
+    // console.log("Editor value:", value); // Check if it logs correctly
     setFormData((prev) => ({ ...prev, body: value }));
   };
 
@@ -90,7 +91,12 @@ const EditTopic = () => {
       const response = await axios.put(
         `${base_url}/topics/edit?id=${oneTopic?._id}`,
         data,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-access-token": token,
+          },
+        }
       );
 
       if (response.status === 200) {
@@ -109,7 +115,12 @@ const EditTopic = () => {
       setTopicLoading(true);
       const response = await axios.delete(
         `${base_url}/topics/delete?id=${id}`,
-        { headers: { "content-type": "application/json" } }
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
       );
 
       if (response.status === 200) {

@@ -10,8 +10,7 @@ import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
 
 const Verify = () => {
-  const { setVerifyEmailDetails, handleVerifyEmail, authLoading }: any =
-    useGeneralContext();
+  const { setVerifyEmailDetails, authLoading }: any = useGeneralContext();
 
   //localhost:3000/auth/verify?id=6720ab0313804820a8a83981&emailToken=gaE_202410291029399
 
@@ -26,7 +25,6 @@ const Verify = () => {
         id: id,
         emailToken: token,
       }));
-      handleVerifyEmail();
     }
   }, []);
 

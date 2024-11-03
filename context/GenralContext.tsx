@@ -50,9 +50,7 @@ const GeneralProvider = (props: any) => {
   // Levels
   const [allLevels, setAllLevels] = useState();
   const [oneLevel, setOneLevel] = useState();
-  console.log("🚀 ~ GeneralProvider ~ oneLevel:", oneLevel);
   const [levelId, setLevelId] = useState();
-  console.log("🚀 ~ GeneralProvider ~ levelId:", levelId);
   const [switchLevelPanel, setSwitchLevelPanel] = useState("questions");
 
   // QUESTIONS
@@ -150,6 +148,10 @@ const GeneralProvider = (props: any) => {
   const handleVerifyEmail = async () => {
     setAuthLoading(true);
     try {
+      // console.log(
+      //   "🚀 ~ handleVerifyEmail ~ verifyEmailDetails:",
+      //   verifyEmailDetails
+      // );
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?id=${verifyEmailDetails.id}&emailToken=${verifyEmailDetails.emailToken}`,
         {
@@ -308,7 +310,7 @@ const GeneralProvider = (props: any) => {
   // QUESTIONS
   // Get questions
   const getAllQuestions = async (id: any) => {
-    console.log("🚀 ~ getAllQuestions ~ id:", id);
+    // console.log("🚀 ~ getAllQuestions ~ id:", id);
     try {
       const response = await axios.get(
         `${base_url}/questions/all?levelId=${id}`,
@@ -396,10 +398,11 @@ const GeneralProvider = (props: any) => {
         {
           headers: {
             "content-type": "application/json",
+            "x-access-token": token,
           },
         }
       );
-      console.log("🚀 ~ handleStartTest ~ response:", response);
+      // console.log("🚀 ~ handleStartTest ~ response:", response);
       setOneTest(response.data.data.test);
       setTriviaLoading(false);
     } catch (ex: any) {
@@ -425,6 +428,12 @@ const GeneralProvider = (props: any) => {
       getOneUser();
     }
   }, [userId]);
+
+  useEffect(() => {
+    if (verifyEmailDetails?.id && verifyEmailDetails.emailToken) {
+      handleVerifyEmail();
+    }
+  }, [verifyEmailDetails]);
 
   useEffect(() => {
     if (levelId) {

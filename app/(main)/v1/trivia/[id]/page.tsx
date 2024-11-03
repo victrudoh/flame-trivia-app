@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";

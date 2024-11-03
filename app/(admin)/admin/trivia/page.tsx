@@ -17,8 +17,8 @@ const AllLevels = () => {
     getAllLevels,
     // getResultsByLevel,
     allLevels,
+    token,
   }: any = useGeneralContext();
-  console.log("🚀 ~ AllLevels ~ allLevels:", allLevels);
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
@@ -41,7 +41,12 @@ const AllLevels = () => {
       setLevelLoading(true);
       const response = await axios.delete(
         `${base_url}/levels/delete?id=${id}`,
-        { headers: { "content-type": "application/json" } }
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
       );
 
       if (response.status === 200) {

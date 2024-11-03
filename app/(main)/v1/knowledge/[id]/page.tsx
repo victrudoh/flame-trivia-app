@@ -14,12 +14,9 @@ import "react-quill/dist/quill.bubble.css"; // If you're using the bubble theme
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 const Page = ({ params }: { params: { id: string } }) => {
-  console.log("🚀 ~ Page ~ params:", params);
-
   const router = useRouter();
 
   const { getOneTopic, oneTopic }: any = useGeneralContext();
-  console.log("🚀 ~ Page ~ oneTopic:", oneTopic);
 
   useEffect(() => {
     if (params?.id) {

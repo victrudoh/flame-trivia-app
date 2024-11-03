@@ -12,7 +12,6 @@ import Spinner from "@/components/spinner/Spinner";
 
 const Page = () => {
   const { allTopics, topicLoading }: any = useGeneralContext();
-  console.log("🚀 ~ Page ~ allTopics:", allTopics);
 
   return (
     // <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">

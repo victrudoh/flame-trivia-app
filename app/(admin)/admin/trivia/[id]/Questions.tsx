@@ -16,6 +16,7 @@ const Questions = ({ id }: any) => {
     allQuestions,
     getOneQuestion,
     getAllQuestions,
+    token,
   }: any = useGeneralContext();
 
   let sn = 1;
@@ -30,7 +31,10 @@ const Questions = ({ id }: any) => {
       const response = await axios.delete(
         `${base_url}/questions/delete?id=${id}`,
         {
-          headers: { "content-type": "application/json" },
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
         }
       );
       // console.log("response", response);

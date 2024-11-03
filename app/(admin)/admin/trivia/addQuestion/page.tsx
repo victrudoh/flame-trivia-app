@@ -17,7 +17,8 @@ const AddQuestion = () => {
     levelId,
     allTopics,
     getAllQuestions,
-  }: any = useGeneralContext();
+  }: // token,
+  any = useGeneralContext();
 
   const goBack = async () => {
     if (levelId) {
@@ -64,7 +65,12 @@ const AddQuestion = () => {
       const response = await axios.post(
         `${base_url}/questions/add?levelId=${levelId}`,
         filteredDetails,
-        { headers: { "content-type": "application/json" } }
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": `${localStorage.getItem("auth_token")}`,
+          },
+        }
       );
 
       if (response.status === 200) {

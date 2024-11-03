@@ -11,7 +11,7 @@ const AddLevel = () => {
   const router = useRouter();
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
-  const { levelLoading, setLevelLoading, getAllLevels }: any =
+  const { levelLoading, setLevelLoading, getAllLevels, token }: any =
     useGeneralContext();
 
   const goBack = async () => {
@@ -26,16 +26,19 @@ const AddLevel = () => {
   const createLevel = async (e: any) => {
     e.preventDefault();
     setLevelLoading(true);
-    console.log("levelDetails", levelDetails);
+    // console.log("levelDetails", levelDetails);
     try {
       const response = await axios.post(
         `${base_url}/levels/add`,
         levelDetails,
         {
-          headers: { "content-type": "application/json" },
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
         }
       );
-      console.log("🚀 ~ createLevel ~ response:", response);
+      // console.log("🚀 ~ createLevel ~ response:", response);
       setLevelLoading(false);
       if (response.status === 200) {
         success("New level created.");

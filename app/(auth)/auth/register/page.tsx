@@ -145,7 +145,7 @@ const Register = () => {
                   type="submit"
                   className="transition-fx max-w-full h-[44px] capitalize bg-brand-main/20 cursor-pointer rounded-3xl flex items-center justify-center text-brand-white hover:bg-brand-main"
                 >
-                  LOGIN
+                  REGISTER
                 </button>
               )}
             </div>

@@ -11,7 +11,7 @@ import Editor from "@/components/QuillEditor/Editor"; // Ensure Editor component
 const AddTopic = () => {
   const router = useRouter();
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
-  const { topicLoading, setTopicLoading, getAllTopics }: any =
+  const { topicLoading, setTopicLoading, getAllTopics, token }: any =
     useGeneralContext();
 
   const goBack = async () => {
@@ -65,9 +65,12 @@ const AddTopic = () => {
 
     try {
       const response = await axios.post(`${base_url}/topics/add`, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "x-access-token": token,
+        },
       });
-      console.log("🚀 ~ createTopic ~ response:", response);
+      // console.log("🚀 ~ createTopic ~ response:", response);
       setTopicLoading(false);
 
       if (response.status === 200) {
