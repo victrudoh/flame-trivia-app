@@ -60,13 +60,13 @@ const TakeTest = () => {
   return (
     <MainContainer>
       <TopSection>
-        <div className="w-[80%] flex items-center py-12 gap-4">
+        <div className="w-[80%] flex items-center justify-start py-12 gap-4">
           <ArrowLeft
             className="bg-brand-white shadow-lg w-10 h-10 p-1 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
             onClick={goBack}
           />
-          <div className="flex flex-col items-start gap-[2px]">
-            <span className="font-bold text-sm text-brand-white w-[90%]">
+          <div className="flex flex-col items-start gap-[2px] flex-wrap max-w-[80%]">
+            <span className="font-bold text-sm text-brand-white">
               {oneLevel?.name || oneTest?.levelTitle}
             </span>
           </div>
