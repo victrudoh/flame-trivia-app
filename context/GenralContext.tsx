@@ -63,6 +63,7 @@ const GeneralProvider = (props: any) => {
 
   //TRIVIA
   const [oneTest, setOneTest] = useState();
+  const [nextQuestion, setNextQuestion] = useState(false);
 
   //*******/
   //************/
@@ -413,6 +414,41 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  // Answer question
+  const handleAnswerQuestion = async (
+    testId: any,
+    index: any,
+    questionId: any,
+    answer: any,
+    levelId: any
+  ) => {
+    try {
+      setTriviaLoading(true);
+      const response = await axios.post(
+        `${base_url}/tests/answer?testId=${testId}&questionId=${questionId}&index=${index}`,
+        { answer: answer },
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      console.log("🚀 ~ GeneralProvider ~ response:", response);
+      setTriviaLoading(false);
+      handleStartTest(levelId);
+      if (response.status === 200) {
+        setNextQuestion(true);
+      }
+      return response.data.data.test;
+    } catch (ex: any) {
+      console.log("🚀 ~ handleAnswerQuestion ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setTriviaLoading(false);
+    }
+  };
+
   useEffect(() => {
     console.log("__3d1k4N.init");
     const cachedUserId = localStorage.getItem("userId");
@@ -508,8 +544,11 @@ const GeneralProvider = (props: any) => {
 
         // Trivia
         oneTest,
+        nextQuestion,
         setOneTest,
         handleStartTest,
+        setNextQuestion,
+        handleAnswerQuestion,
       }}
     >
       {props.children}

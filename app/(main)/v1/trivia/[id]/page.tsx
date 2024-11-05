@@ -15,6 +15,10 @@ const Page = ({ params }: { params: { id: string } }) => {
     router.push("/v1/trivia");
   };
 
+  const gotoKnowledge = () => {
+    router.push("/v1/knowledge/671a995390c7fc0fa8666992");
+  };
+
   return (
     <>
       <MainContainer>
@@ -35,7 +39,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           </div>
           <CircleHelp
             className="bg-brand-white shadow-lg w-10 h-10 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
-            onClick={goBack}
+            onClick={gotoKnowledge}
           />
         </TopSection>
         {/* {params?.id} */}

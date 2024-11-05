@@ -13,9 +13,15 @@ type NavItemProps = {
 
 const NavItem = ({ link, icon }: NavItemProps) => {
   const pathname = usePathname();
+
+  const deleteQuestionIndex = () => {
+    localStorage.removeItem("questionIndex");
+  };
+
   return (
     <Link
       href={link}
+      onClick={deleteQuestionIndex}
       className={`transition-fx cursor-pointer text-3xl p-2 rounded-full text-brand-grayish hover:text-brand-main hover:bg-brand-main/30  ${
         pathname.includes(link) && `text-brand-main bg-brand-main/30`
       }`}

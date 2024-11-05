@@ -1,9 +1,9 @@
 "use client";
 
+import React, { Suspense, useEffect, useState } from "react";
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
 import { ArrowLeft, CircleHelp } from "lucide-react";
-import React, { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import TriviaCard from "@/components/triviaCard/page";
 import { useGeneralContext } from "@/context/GenralContext";
@@ -24,7 +24,14 @@ const TakeTest = () => {
   const router = useRouter();
 
   const goBack = () => {
+    localStorage.removeItem("questionIndex");
     router.push("/v1/trivia");
+  };
+
+  const gotoKnowledge = () => {
+    router.push(
+      `/v1/knowledge/${oneTest?.questions?.[currentIndex]?.question?.topicId}`
+    );
   };
 
   const searchParams = useSearchParams();
@@ -37,22 +44,36 @@ const TakeTest = () => {
     }
   }, [userId]);
 
+  // Load saved index from localStorage when the component mounts
+  useEffect(() => {
+    const savedIndex = localStorage.getItem("questionIndex");
+    if (savedIndex) {
+      setCurrentIndex(parseInt(savedIndex));
+    }
+  }, []);
+
+  // Update and save index immediately when navigating to the next/previous question
+  const updateIndex = (newIndex: any) => {
+    setCurrentIndex(newIndex);
+    localStorage.setItem("questionIndex", newIndex.toString());
+  };
+
   const handleNext = () => {
     if (currentIndex < oneTest.questions.length - 1) {
-      setAnimationClass("fall-off-left"); // Set animation for "next" transition
+      setAnimationClass("fall-off-left");
       setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1);
-        setAnimationClass(""); // Reset after transition
+        updateIndex(currentIndex + 1);
+        setAnimationClass("");
       }, 500);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setAnimationClass("fall-off-right"); // Set animation for "previous" transition
+      setAnimationClass("fall-off-right");
       setTimeout(() => {
-        setCurrentIndex((prev) => prev - 1);
-        setAnimationClass(""); // Reset after transition
+        updateIndex(currentIndex - 1);
+        setAnimationClass("");
       }, 500);
     }
   };
@@ -73,7 +94,7 @@ const TakeTest = () => {
         </div>
         <CircleHelp
           className="bg-brand-white shadow-lg w-10 h-10 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
-          onClick={goBack}
+          onClick={gotoKnowledge}
         />
       </TopSection>
 
@@ -84,6 +105,8 @@ const TakeTest = () => {
           <div className={`trivia-card-container ${animationClass}`}>
             <TriviaCard
               key={currentIndex}
+              testId={oneTest?._id}
+              levelId={levelId}
               data={oneTest.questions[currentIndex]}
               index={currentIndex}
               onNext={handleNext}
