@@ -12,6 +12,9 @@ const TriviaCard = ({
   // hasNext,
   // hasPrevious,
   levelId,
+  // hasTestEnded,
+  endTest,
+  setEndTest,
 }: any) => {
   const { nextQuestion, setNextQuestion, handleAnswerQuestion }: any =
     useGeneralContext();
@@ -27,7 +30,12 @@ const TriviaCard = ({
     if (nextQuestion) {
       const timer = setTimeout(() => {
         console.log("GOT NEXT QUESTION!");
-        onNext();
+        console.log("🚀 ~ endTest:", endTest);
+        if (!endTest) {
+          onNext();
+        } else {
+          setEndTest(endTest);
+        }
         setNextQuestion(false);
       }, 3000); // 3 seconds
 
@@ -62,7 +70,7 @@ const TriviaCard = ({
             }`}
           >
             <span
-              className={`transition-fx rounded-full p-4 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
+              className={`transition-fx rounded-full p-4 bg-brand-grayish/20 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
                 data?.attempted
                   ? data?.chosenAnswer === "answer_a"
                     ? data?.correctAnswer
@@ -108,7 +116,7 @@ const TriviaCard = ({
             }`}
           >
             <span
-              className={`transition-fx rounded-full p-4 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
+              className={`transition-fx rounded-full p-4 bg-brand-grayish/20 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
                 data?.attempted
                   ? data?.chosenAnswer === "answer_b"
                     ? data?.correctAnswer
@@ -153,7 +161,7 @@ const TriviaCard = ({
               }`}
             >
               <span
-                className={`transition-fx rounded-full p-4 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
+                className={`transition-fx rounded-full p-4 bg-brand-grayish/20 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
                   data?.attempted
                     ? data?.chosenAnswer === "answer_c"
                       ? data?.correctAnswer
@@ -198,7 +206,7 @@ const TriviaCard = ({
               }`}
             >
               <span
-                className={`transition-fx rounded-full p-4 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
+                className={`transition-fx rounded-full p-4 bg-brand-grayish/20 border-brand-grayish/20 border-[0.3px] group-hover:bg-green-500 group-hover:border-[0.9px] group-hover:border-brand-white ${
                   data?.attempted
                     ? data?.chosenAnswer === "answer_d"
                       ? data?.correctAnswer

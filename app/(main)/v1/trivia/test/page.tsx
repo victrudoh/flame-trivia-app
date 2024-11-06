@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import TriviaCard from "@/components/triviaCard/page";
 import { useGeneralContext } from "@/context/GenralContext";
 import Spinner from "@/components/spinner/Spinner";
+import TriviaEndCard from "@/components/triviaEndCard/page";
 
 const TakeTest = () => {
   const {
@@ -17,14 +18,19 @@ const TakeTest = () => {
     triviaLoading,
     handleStartTest,
     oneTest,
+    endTest,
+    setEndTest,
   }: any = useGeneralContext();
+  console.log("🚀 ~ TakeTest ~ oneTest:", oneTest);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("");
+  // const [endTest, setEndTest] = useState(false);
   const router = useRouter();
 
   const goBack = () => {
-    localStorage.removeItem("questionIndex");
+    // localStorage.removeItem("questionIndex");
+    // localStorage.removeItem(`${levelId}`);
     router.push("/v1/trivia");
   };
 
@@ -46,7 +52,9 @@ const TakeTest = () => {
 
   // Load saved index from localStorage when the component mounts
   useEffect(() => {
-    const savedIndex = localStorage.getItem("questionIndex");
+    // const savedIndex = localStorage.getItem("questionIndex");
+    const savedIndex = localStorage.getItem(`${levelId}`);
+
     if (savedIndex) {
       setCurrentIndex(parseInt(savedIndex));
     }
@@ -55,7 +63,8 @@ const TakeTest = () => {
   // Update and save index immediately when navigating to the next/previous question
   const updateIndex = (newIndex: any) => {
     setCurrentIndex(newIndex);
-    localStorage.setItem("questionIndex", newIndex.toString());
+    // localStorage.setItem("questionIndex", newIndex.toString());
+    localStorage.setItem(`${levelId}`, newIndex.toString());
   };
 
   const handleNext = () => {
@@ -102,19 +111,26 @@ const TakeTest = () => {
         <Spinner />
       ) : oneTest ? (
         <div className="relative w-full h-full flex flex-col items-center">
-          <div className={`trivia-card-container ${animationClass}`}>
-            <TriviaCard
-              key={currentIndex}
-              testId={oneTest?._id}
-              levelId={levelId}
-              data={oneTest.questions[currentIndex]}
-              index={currentIndex}
-              onNext={handleNext}
-              onPrevious={handlePrevious}
-              hasPrevious={currentIndex > 0}
-              hasNext={currentIndex < oneTest.questions.length - 1}
-            />
-          </div>
+          {endTest ? (
+            <TriviaEndCard data={oneTest} />
+          ) : (
+            <div className={`trivia-card-container ${animationClass}`}>
+              <TriviaCard
+                key={currentIndex}
+                testId={oneTest?._id}
+                levelId={levelId}
+                data={oneTest?.questions[currentIndex]}
+                index={currentIndex}
+                onNext={handleNext}
+                onPrevious={handlePrevious}
+                hasPrevious={currentIndex > 0}
+                hasNext={currentIndex < oneTest?.questions?.length - 1}
+                hasTestEnded={oneTest?.testEnded}
+                endTest={endTest}
+                setEndTest={setEndTest}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <Spinner />

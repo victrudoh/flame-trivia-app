@@ -64,6 +64,7 @@ const GeneralProvider = (props: any) => {
   //TRIVIA
   const [oneTest, setOneTest] = useState();
   const [nextQuestion, setNextQuestion] = useState(false);
+  const [endTest, setEndTest] = useState(false);
 
   //*******/
   //************/
@@ -439,6 +440,10 @@ const GeneralProvider = (props: any) => {
       handleStartTest(levelId);
       if (response.status === 200) {
         setNextQuestion(true);
+        if (response.data.data.test.testEnded) {
+          setEndTest(true);
+        }
+        // handleStartTest(levelId);
       }
       return response.data.data.test;
     } catch (ex: any) {
@@ -543,8 +548,10 @@ const GeneralProvider = (props: any) => {
         getAllTopics,
 
         // Trivia
+        endTest,
         oneTest,
         nextQuestion,
+        setEndTest,
         setOneTest,
         handleStartTest,
         setNextQuestion,
