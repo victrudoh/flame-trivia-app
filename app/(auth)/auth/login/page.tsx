@@ -27,9 +27,9 @@ const Login = () => {
     <>
       <MainContainer>
         {/* TopSection */}
-        <div className="gradient-fx w-[98%] rounded-xl flex items-center justify-center top-2">
+        <div className="gradient-fx w-[98%] rounded-xl flex items-center justify-center">
           <div className="w-full flex flex-col justify-between items-center p-2">
-            <div className="w-full flex items-center justify-center p-4 my-2">
+            <div className="w-full flex items-center justify-center p-2 my-2">
               <Image
                 src={logo} // Replace with your actual logo image source
                 alt="Logo"
@@ -47,7 +47,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-between gap-4 font-normal text-sm text-brand-grayish h-max min-h-[70vh]">
+        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-between gap-4 font-normal text-sm text-brand-grayish">
           <form
             onSubmit={handleLogin}
             className="w-full flex flex-col justify-between gap-4 py-4"
@@ -125,7 +125,7 @@ const Login = () => {
             </div>
           </form>
           {/* divider */}
-          <span className="font-geistsans text-base font-normal flex flex-col items-center gap-2 w-full mt-12">
+          <span className="font-geistsans text-base font-normal flex flex-col items-center gap-2 w-full mt-auto mb-2">
             <div className="w-full h-[0.1px] mt-4 bg-brand-grayish lg:w-[90%]"></div>
             <div className="flex w-full items-center justify-center gap-2 text-xs">
               If you don&apos;t have an account{" "}

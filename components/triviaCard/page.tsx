@@ -4,7 +4,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 import React, { useEffect } from "react";
 
 const TriviaCard = ({ testId, data, index, onNext, hasNext, levelId }: any) => {
-  console.log("🚀 ~ data:", data);
+  // console.log("🚀 ~ data:", data);
   const {
     nextQuestion,
     setNextQuestion,

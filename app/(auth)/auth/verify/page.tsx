@@ -34,7 +34,7 @@ const Verify = () => {
         {/* TopSection */}
         <div className="gradient-fx w-[98%] rounded-xl flex items-center justify-center top-2">
           <div className="w-full flex flex-col justify-between items-center p-2">
-            <div className="w-full flex items-center justify-center p-4 my-2">
+            <div className="w-full flex items-center justify-center p-2 my-2">
               <Image
                 src={logo} // Replace with your actual logo image source
                 alt="Logo"
@@ -52,7 +52,7 @@ const Verify = () => {
             </div>
           </div>
         </div>
-        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-between gap-4 font-normal text-sm text-brand-grayish h-max min-h-[70vh]">
+        <div className="w-full rounded-xl bg-brand-white p-6 flex flex-col items-center justify-between gap-4 font-normal text-sm text-brand-grayish">
           {authLoading && (
             <span className="w-full h-[44px] my-12 flex items-center justify-center text-brand-white">
               <Spinner />
