@@ -13,6 +13,7 @@ const TriviaCard = ({ testId, data, index, onNext, hasNext, levelId }: any) => {
   }: any = useGeneralContext();
 
   const answerQuestion = (answer: any) => {
+    // Prevent sending new answer for question with answer already
     if (data?.attempted) {
       return;
     }
@@ -23,7 +24,6 @@ const TriviaCard = ({ testId, data, index, onNext, hasNext, levelId }: any) => {
     if (nextQuestion) {
       const timer = setTimeout(() => {
         if (!hasNext) {
-          console.log("TEST ENDED!");
           localStorage.removeItem(`${levelId}`);
           handleEndTest(testId);
         }

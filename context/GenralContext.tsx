@@ -435,7 +435,7 @@ const GeneralProvider = (props: any) => {
           },
         }
       );
-      console.log("🚀 ~ GeneralProvider ~ response:", response);
+      // console.log("🚀 ~ GeneralProvider ~ response:", response);
       setTriviaLoading(false);
       handleStartTest(levelId);
       if (response.status === 200) {
@@ -467,7 +467,7 @@ const GeneralProvider = (props: any) => {
           },
         }
       );
-      console.log("🚀 ~ GeneralProvider ~ response:", response);
+      // console.log("🚀 ~ GeneralProvider ~ response:", response);
       setTriviaLoading(false);
       // handleStartTest(levelId);
       if (response.status === 200) {
