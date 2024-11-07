@@ -440,8 +440,42 @@ const GeneralProvider = (props: any) => {
       handleStartTest(levelId);
       if (response.status === 200) {
         setNextQuestion(true);
-        if (response.data.data.test.testEnded) {
-          setEndTest(true);
+        // if (response.data.data.test.testEnded) {
+        //   setEndTest(true);
+        // }
+        // handleStartTest(levelId);
+      }
+      return response.data.data.test;
+    } catch (ex: any) {
+      console.log("🚀 ~ handleAnswerQuestion ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setTriviaLoading(false);
+    }
+  };
+
+  // End Test
+  const handleEndTest = async (testId: any) => {
+    try {
+      setTriviaLoading(true);
+      const response = await axios.get(
+        `${base_url}/tests/end?testId=${testId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      console.log("🚀 ~ GeneralProvider ~ response:", response);
+      setTriviaLoading(false);
+      // handleStartTest(levelId);
+      if (response.status === 200) {
+        setNextQuestion(false);
+        setEndTest(true);
+        success(response.data?.data?.message);
+        if (response.data.data.test?.testEnded) {
+          setOneTest(response.data?.data?.test);
         }
         // handleStartTest(levelId);
       }
@@ -553,6 +587,7 @@ const GeneralProvider = (props: any) => {
         nextQuestion,
         setEndTest,
         setOneTest,
+        handleEndTest,
         handleStartTest,
         setNextQuestion,
         handleAnswerQuestion,
