@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { success, error } from "@/helpers/Alert";
@@ -104,4 +104,14 @@ const AllLevels = () => {
   );
 };
 
-export default AllLevels;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AllLevels />
+    </Suspense>
+  );
+};
+
+export default Page;
+
+// export default AllLevels;
