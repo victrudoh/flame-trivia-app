@@ -9,6 +9,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 import Image from "next/image";
 import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
+import SponsorBanners from "@/components/sponsorBanners/page";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,8 +39,8 @@ const Register = () => {
             </div>
             {/* title-bytext */}
             <div className="flex flex-col gap-2 items-center justify-center font-geistsans">
-              <span className="font-bold text-3xl text-brand-white">
-                Welcome To Health9ja
+              <span className="flex flex-col items-center font-semibold text-lg text-brand-white">
+                Welcome To <span className="font-bold text-4xl">Health9ja</span>
               </span>
               <span className="font-normal text-xs text-brand-white">
                 Let&apos;s learn more today
@@ -179,6 +180,8 @@ const Register = () => {
               </Link>
             </div>
           </span>
+          {/* Banners */}
+          <SponsorBanners />
         </div>
       </MainContainer>
     </>

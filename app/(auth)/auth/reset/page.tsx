@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
+import SponsorBanners from "@/components/sponsorBanners/page";
 
 const Reset = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -182,6 +183,8 @@ const Reset = () => {
               </Link>
             </div>
           </span>
+          {/* Banners */}
+          <SponsorBanners />
         </div>
       </MainContainer>
     </>

@@ -8,6 +8,7 @@ import { useGeneralContext } from "@/context/GenralContext";
 import Image from "next/image";
 import Spinner from "@/components/spinner/Spinner";
 import { useSearchParams } from "next/navigation";
+import SponsorBanners from "@/components/sponsorBanners/page";
 
 const Verify = () => {
   const { setVerifyEmailDetails, authLoading }: any = useGeneralContext();
@@ -59,6 +60,8 @@ const Verify = () => {
             </span>
           )}
         </div>
+        {/* Banners */}
+        <SponsorBanners />
       </MainContainer>
     </>
   );

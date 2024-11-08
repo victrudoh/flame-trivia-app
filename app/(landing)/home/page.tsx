@@ -93,9 +93,9 @@ const Page = () => {
                 Play Trivia Challenges
               </div>
               <div className="text-xs font-normal font-geistsans">
-                Play fun and Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolore, corrupti ex! Magnam similique quidem at sunt minus
-                dolorem eius molestias?
+                Take on fun and interactive health quizzes that boost your
+                knowledge while competing with friends to see who’s the health
+                champ!
               </div>
             </div>
           </Link>
@@ -116,9 +116,8 @@ const Page = () => {
                 Health Knowledge Base
               </div>
               <div className="text-xs font-normal font-geistsans">
-                Play fun and Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolore, corrupti ex! Magnam similique quidem at sunt minus
-                dolorem eius molestias?
+                Browse through awesome articles on health topics that matter to
+                you, from HIV/AIDS to other STIs.
               </div>
             </div>
           </Link>
@@ -139,9 +138,8 @@ const Page = () => {
                 Find Nearby Clinics
               </div>
               <div className="text-xs font-normal font-geistsans">
-                Play fun and Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolore, corrupti ex! Magnam similique quidem at sunt minus
-                dolorem eius molestias?
+                Need help? Use our facility finder to quickly find clinics and
+                health services close to you.
               </div>
             </div>
           </Link>
@@ -159,9 +157,8 @@ const Page = () => {
                 Chat With Experts
               </div>
               <div className="text-xs font-normal font-geistsans">
-                Play fun and Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolore, corrupti ex! Magnam similique quidem at sunt minus
-                dolorem eius molestias?
+                Got health questions? Chat with friendly health experts and get
+                answers you can trust, anytime
               </div>
             </div>
           </Link>
