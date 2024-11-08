@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 // import Students from "./Students";
 import Questions from "./Questions";
@@ -97,4 +97,14 @@ const OneLevel = () => {
   );
 };
 
-export default OneLevel;
+// export default OneLevel;
+
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OneLevel />
+    </Suspense>
+  );
+};
+
+export default Page;
