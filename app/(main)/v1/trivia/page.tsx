@@ -2,16 +2,17 @@
 
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
-import { ArrowLeft, CookieIcon, Earth, User } from "lucide-react";
+import { ArrowLeft, Earth, FlameIcon, User } from "lucide-react";
 import React from "react";
 import img from "@/assets/imgs/card_thumbnail.png";
 import ListItem from "../knowledge/ListItem";
 import Link from "next/link";
 import { useGeneralContext } from "@/context/GenralContext";
 import Spinner from "@/components/spinner/Spinner";
+// import FancyButton from "@/components/fancyButton/page";
 
 const Home = () => {
-  const progress = (456 / 676) * 100; // Calculate progress percentage
+  // const progress = (456 / 676) * 100; // Calculate progress percentage
 
   const { user, allLevels, levelLoading }: any = useGeneralContext();
 
@@ -38,21 +39,24 @@ const Home = () => {
           </div>
         </TopSection>
         <div className="flex flex-col gap-4 bg-brand-white shadow-lg p-2 w-[92%] mx-auto rounded-lg">
-          {/* top */}
           <div className="flex items-center justify-between">
             <div className="flex items-end gap-2">
-              <CookieIcon />
-              <div className="font-medium text-sm">Ninja Level</div>
+              <FlameIcon />
+              <div className="font-medium text-sm">Challenge Mode!</div>
             </div>
-            <div className="font-medium text-sm">{user?.userXp || 456}/676</div>
+            {/* <div className="font-medium text-sm">{user?.userXp || 456}/676</div> */}
           </div>
-          {/* bottom */}
-          <div className="w-full rounded-lg bg-brand-grayish">
+          {/* <div className="w-full rounded-lg bg-brand-grayish">
             <div
               className="h-2 rounded-lg bg-gradient-to-r from-yellow-400 to-red-500"
               style={{ width: `${progress}%` }}
             />
-          </div>
+          </div> */}
+          <span className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:scale-105">
+            Play Challenge Mode!{" "}
+            <span className="text-xs mx-1">(coming soon)</span>
+          </span>
+          {/* <FancyButton /> */}
         </div>
         <div className="w-full rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4">
           <span className="font-semibold text-base font-geistsans w-full text-left">
