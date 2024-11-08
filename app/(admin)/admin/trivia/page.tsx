@@ -28,7 +28,7 @@ const AllLevels = () => {
     await getAllQuestions(id);
     // await getResultsByLevel(id);
     await getOneLevel(id);
-    router.push(`/admin/trivia/${id}`);
+    router.push(`/admin/trivia/one?id=${id}`);
     // setLevelLoading(false);
   };
 

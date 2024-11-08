@@ -28,12 +28,12 @@ const slideTexts = [
   {
     title: "Explore Cool Health Tips",
     subtitle:
-      "Browse through awesome articles on health topics that matter to you, from HIV/AIDS to everyday wellness hacks.",
+      "Browse through awesome articles on health topics that matter to you, from HIV/AIDS to other STIs.",
   },
   {
     title: "Find Clinics Near You",
     subtitle:
-      "Need help? Use our map to quickly find clinics and health services close to you.",
+      "Need help? Use our facility finder to quickly find clinics and health services close to you.",
   },
 ];
 

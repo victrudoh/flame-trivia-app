@@ -1,15 +1,19 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 // import Students from "./Students";
 import Questions from "./Questions";
 import { useGeneralContext } from "@/context/GenralContext";
+import Link from "next/link";
 
-const OneLevel = ({ params }: { params: { id: string } }) => {
+const OneLevel = () => {
   const { switchLevelPanel, setSwitchLevelPanel, setLevelId }: any =
     useGeneralContext();
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
 
   const goBack = async () => {
     router.push("/admin/trivia");
@@ -20,10 +24,10 @@ const OneLevel = ({ params }: { params: { id: string } }) => {
   };
 
   useEffect(() => {
-    if (params?.id) {
-      setLevelId(params?.id);
+    if (id) {
+      setLevelId(id);
     }
-  }, [params?.id]);
+  }, [id]);
 
   return (
     <>
@@ -38,18 +42,18 @@ const OneLevel = ({ params }: { params: { id: string } }) => {
           <div className="flex items-center justify-end w-max">
             {switchLevelPanel === "questions" && (
               <span
-                className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500 mr-4"
+                className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500 mr-14"
                 onClick={gotoAddQuestion}
               >
                 Add New Question
               </span>
             )}
-            <span
-              className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500 mr-14"
-              onClick={gotoAddQuestion}
+            {/* <Link
+              href={`/admin/trivia/edit?id=${id}`}
+              className="bg-teal-600 rounded-lg p-2 px-4 flex items-center justify-center outline-none text-white cursor-pointer hover:bg-teal-500 mr-14" // onClick={addLevel}
             >
               Edit Topic
-            </span>
+            </Link> */}
           </div>
         </div>
         <div className="w-full flex justify-between p-4 px-14">
@@ -57,14 +61,20 @@ const OneLevel = ({ params }: { params: { id: string } }) => {
             <span
               className={
                 switchLevelPanel === "questions"
-                  ? "bg-teal-600 rounded-2xl p-2 px-4 font-bold cursor-pointer text-white"
+                  ? "bg-teal-600 rounded-2xl p-2 px-4 font-bold cursor-pointer text-white hover:bg-teal-300/30 hover:text-teal-600"
                   : "bg-teal-300/30 rounded-2xl p-2 px-4 text-teal-600 font-bold cursor-pointer hover:bg-teal-600 hover:text-white"
               }
               onClick={() => setSwitchLevelPanel("questions")}
             >
               Questions
             </span>
-            <span
+            <Link
+              href={`/admin/trivia/edit?id=${id}`}
+              className="bg-teal-600 rounded-2xl p-2 px-4 font-bold cursor-pointer text-white hover:bg-teal-300/30 hover:text-teal-600"
+            >
+              Edit Topic
+            </Link>
+            {/* <span
               className={
                 switchLevelPanel === "students"
                   ? "bg-teal-600 rounded-2xl p-2 px-4 font-bold cursor-pointer text-white"
@@ -73,12 +83,12 @@ const OneLevel = ({ params }: { params: { id: string } }) => {
               onClick={() => setSwitchLevelPanel("students")}
             >
               Students
-            </span>
+            </span> */}
           </div>
           {switchLevelPanel === "students" && <>{/* <Students /> */}</>}
           {switchLevelPanel === "questions" && (
             <>
-              <Questions id={params?.id} />
+              <Questions id={id} />
             </>
           )}
         </div>
