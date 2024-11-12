@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import MainContainer from "@/components/mainContainer/page";
 import TopSection from "@/components/topSection/page";
-import { ArrowLeft, CircleHelp } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import TriviaCard from "@/components/triviaCard/page";
 import { useGeneralContext } from "@/context/GenralContext";
