@@ -104,7 +104,7 @@ const Splash: React.FC = () => {
                 <Image
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="object-cover w-full h-[400px]"
+                  className="object-cover w-full h-[350px]"
                 />
               </motion.div>
             ))}
