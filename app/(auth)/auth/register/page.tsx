@@ -128,12 +128,12 @@ const Register = () => {
                   </svg>
                 </div>
               </div>
-              <Link
+              {/* <Link
                 href={"/auth/forgot"}
                 className="font-bold text-sm text-brand-grayish w-max hover:text-brand-main"
               >
                 Forgot Password?
-              </Link>
+              </Link> */}
             </div>
             {/* left bottom */}
             <div className="flex flex-col gap-4 pt-auto justify-start mt-6">
@@ -144,7 +144,7 @@ const Register = () => {
               ) : (
                 <button
                   type="submit"
-                  className="transition-fx max-w-full h-[44px] capitalize bg-brand-main/20 cursor-pointer rounded-3xl flex items-center justify-center text-brand-white hover:bg-brand-main"
+                  className="transition-fx w-full h-[44px] capitalize bg-brand-main cursor-pointer rounded-3xl flex items-center justify-center text-brand-white hover:bg-brand-main/60"
                 >
                   REGISTER
                 </button>

@@ -52,7 +52,7 @@ const Home = () => {
               style={{ width: `${progress}%` }}
             />
           </div> */}
-          <span className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:scale-105">
+          <span className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:bg-gradient-to-l">
             Play Challenge Mode!{" "}
             <span className="text-xs mx-1">(coming soon)</span>
           </span>

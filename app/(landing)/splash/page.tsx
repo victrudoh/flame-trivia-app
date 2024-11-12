@@ -5,16 +5,27 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import image1 from "@/assets/imgs/splash/1png.png";
-import image2 from "@/assets/imgs/splash/2png.png";
-import image3 from "@/assets/imgs/splash/3png.png";
-import image4 from "@/assets/imgs/splash/4png.png";
+import logo from "@/assets/imgs/splash/logo.jpg";
+import quiz from "@/assets/imgs/splash/1png.png";
+import chat from "@/assets/imgs/splash/2png.png";
+import knowledge from "@/assets/imgs/splash/3png.png";
+import map from "@/assets/imgs/splash/4png.png";
 import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 
-const images = [image1, image2, image3, image4];
+const images = [logo, knowledge, quiz, chat, map];
 
 // Texts to display with each image
 const slideTexts = [
+  {
+    title: "Welcome to Health9ja",
+    subtitle:
+      "A youth-friendly online One-Stop-Shop for health information, exciting quiz challenge, counseling, support and referral services at your fingers -tip.",
+  },
+  {
+    title: "Explore Cool Health Tips",
+    subtitle:
+      "Browse through awesome articles on health topics that matter to you, from HIV/AIDS to other STIs.",
+  },
   {
     title: "Level Up Your Health IQ",
     subtitle:
@@ -25,11 +36,7 @@ const slideTexts = [
     subtitle:
       "Got health questions? Chat with friendly health experts and get answers you can trust, anytime",
   },
-  {
-    title: "Explore Cool Health Tips",
-    subtitle:
-      "Browse through awesome articles on health topics that matter to you, from HIV/AIDS to other STIs.",
-  },
+
   {
     title: "Find Clinics Near You",
     subtitle:
@@ -97,7 +104,7 @@ const Splash: React.FC = () => {
                 <Image
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-[400px]"
                 />
               </motion.div>
             ))}

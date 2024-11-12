@@ -118,7 +118,7 @@ const Login = () => {
               ) : (
                 <button
                   type="submit"
-                  className="transition-fx w-full h-[44px] capitalize bg-brand-main/20 cursor-pointer rounded-3xl flex items-center justify-center text-brand-white hover:bg-brand-main"
+                  className="transition-fx w-full h-[44px] capitalize bg-brand-main cursor-pointer rounded-3xl flex items-center justify-center text-brand-white hover:bg-brand-main/60"
                 >
                   LOGIN
                 </button>

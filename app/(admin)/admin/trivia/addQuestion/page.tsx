@@ -23,7 +23,7 @@ const AddQuestion = () => {
   const goBack = async () => {
     if (levelId) {
       getAllQuestions(levelId);
-      router.push(`/admin/trivia/${levelId}`);
+      router.push(`/admin/trivia/one?id=${levelId}`);
     } else {
       router.push(`/admin/trivia`);
     }
