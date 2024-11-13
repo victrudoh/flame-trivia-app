@@ -104,7 +104,7 @@ const ChatPage = () => {
         </div>
 
         {/* Message input box (fixed to the bottom) */}
-        <div className="glass-fx fixed bottom-0 max-w-screen-md w-full px-1 z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
+        <div className="glass-fx fixed bottom-0 max-w-screen-sm w-full px-1 z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
           <input
             type="text"
             value={newMessage}

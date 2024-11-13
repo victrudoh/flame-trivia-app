@@ -17,8 +17,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Trivia App",
-  description: "Flame of Hope Trivia App",
+  title: "Health9ja",
+  description: "Learn about HIV/AIDS and other STIs",
 };
 
 export default function RootLayout({

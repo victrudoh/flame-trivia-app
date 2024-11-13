@@ -24,7 +24,7 @@ export default async function MainLayout({ children }: any) {
     checkToken();
   }, []);
   return (
-    <div className="gradient-fx flex flex-col min-h-screen max-w-screen-md mx-auto">
+    <div className="gradient-fx flex flex-col min-h-screen max-w-screen-sm mx-auto">
       <div className="flex-grow w-full pb-[40px]">{children}</div>
       <MobileNav />
     </div>

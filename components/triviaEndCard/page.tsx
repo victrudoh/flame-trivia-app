@@ -23,7 +23,7 @@ const TriviaEndCard = ({ data }: any) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-md mx-auto rounded-xl px-4 py-8">
+      <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-sm mx-auto rounded-xl px-4 py-8">
         <span className="font-bold text-base">TEST ENDED</span>
         <div className="rounded-xl w-full min-h-[25vh] bg-brand-grayish/20 text-center font-medium text-sm flex flex-col items-start justify-start p-4 pt-8 border-brand-grayish/20 border-[0.3px]">
           {/* {data?.question?.question || "No Question"} */}
@@ -92,7 +92,7 @@ export default TriviaEndCard;
 //   return (
 //     <>
 //       {isCelebrating && <Confetti width={width} height={height} />}
-//       <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-md mx-auto rounded-xl px-4 py-8">
+//       <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-sm mx-auto rounded-xl px-4 py-8">
 //         <span className="font-bold text-base">TEST ENDED</span>
 //         <div className="rounded-xl w-full min-h-[25vh] bg-brand-grayish/20 text-center font-medium text-sm flex flex-col items-start justify-start p-4 pt-8 border-brand-grayish/20 border-[0.3px]">
 //           <div className="flex justify-between items-center w-[80%] mx-auto">

@@ -29,7 +29,7 @@ const MobileNav = () => {
   }, []);
 
   return (
-    <div className="glass-fx fixed bottom-0 max-w-screen-md w-full z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
+    <div className="glass-fx fixed bottom-0 max-w-screen-sm w-full z-50 h-[72px] rounded-t-xl bg-brand-white flex items-center justify-evenly gap-2">
       <NavItem link="/v1/trivia" icon={home} />
       <NavItem link="/v1/knowledge" icon={knowledge} />
       <NavItem link="/v1/location" icon={location} />
