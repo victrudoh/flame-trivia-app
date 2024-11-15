@@ -59,9 +59,9 @@ const Verify = () => {
               <Spinner />
             </span>
           )}
+          {/* Banners */}
+          <SponsorBanners />
         </div>
-        {/* Banners */}
-        <SponsorBanners />
       </MainContainer>
     </>
   );
