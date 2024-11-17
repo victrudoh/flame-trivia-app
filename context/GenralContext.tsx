@@ -89,8 +89,9 @@ const GeneralProvider = (props: any) => {
       setAuthLoading(false);
       if (response.status === 200) {
         success("Signup Successful");
-        success("Please go to your email to continue the process.");
-        router.push(`/auth/verify`);
+        // success("Please go to your email to continue the process.");
+        // router.push(`/auth/verify`);
+        router.push(`/auth/login`);
       }
     } catch (err: any) {
       console.log("🚀 ~ handleSignup ~ err:", err);
