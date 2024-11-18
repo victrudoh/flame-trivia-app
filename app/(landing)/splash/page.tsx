@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import logo from "@/assets/imgs/splash/logo1.jpg";
+import logo from "@/assets/imgs/splash/logo.jpg";
 import quiz from "@/assets/imgs/splash/1png.png";
 import chat from "@/assets/imgs/splash/2png.png";
 import knowledge from "@/assets/imgs/splash/3png.png";
@@ -106,7 +106,7 @@ const Splash: React.FC = () => {
                 <Image
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="object-cover w-full h-[480px]"
+                  className="object-cover w-full h-[350px]"
                 />
               </motion.div>
             ))}
