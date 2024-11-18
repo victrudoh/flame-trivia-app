@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import logo from "@/assets/imgs/splash/logo.jpg";
+import logo from "@/assets/imgs/splash/logo1.jpg";
 import quiz from "@/assets/imgs/splash/1png.png";
 import chat from "@/assets/imgs/splash/2png.png";
 import knowledge from "@/assets/imgs/splash/3png.png";
@@ -80,7 +80,7 @@ const Splash: React.FC = () => {
           <div className="w-full flex justify-end px-4">
             <button
               onClick={handleSkip}
-              className="text-lg font-semibold text-brand-white font-geistsans"
+              className="text-lg font-semibold text-brand-white font-geistsans p-2"
             >
               {currentIndex === images.length - 1 ? "Finish" : "Skip"}
             </button>
@@ -106,7 +106,7 @@ const Splash: React.FC = () => {
                 <Image
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="object-cover w-full h-[350px]"
+                  className="object-cover w-full h-[480px]"
                 />
               </motion.div>
             ))}

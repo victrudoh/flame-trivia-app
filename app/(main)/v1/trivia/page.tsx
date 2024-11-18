@@ -9,12 +9,31 @@ import ListItem from "../knowledge/ListItem";
 import Link from "next/link";
 import { useGeneralContext } from "@/context/GenralContext";
 import Spinner from "@/components/spinner/Spinner";
+// import AuthLayout from "@/app/(auth)/auth/layout";
+// import { useRouter } from "next/navigation";
+// import { error } from "@/helpers/Alert";
 // import FancyButton from "@/components/fancyButton/page";
 
 const Home = () => {
   // const progress = (456 / 676) * 100; // Calculate progress percentage
 
   const { user, allLevels, levelLoading }: any = useGeneralContext();
+
+  // const router = useRouter();
+
+  // const checkToken = async () => {
+  //   const token = localStorage.getItem("auth_token");
+
+  //   if (!token) {
+  //     error("Please login to continue.");
+  //     router.push(`/auth/login`);
+  //     return <AuthLayout />;
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   return (
     <>

@@ -3,7 +3,7 @@
 import TopSection from "@/components/topSection/page";
 import { PowerIcon, User, Wallet } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
 import knowledge from "@/assets/imgs/landing/knowledge.png";
 import trivia from "@/assets/imgs/landing/trivia.png";
@@ -11,22 +11,22 @@ import chat from "@/assets/imgs/landing/chat.png";
 import location from "@/assets/imgs/landing/location.png";
 import { useRouter } from "next/navigation";
 import AuthLayout from "@/app/(auth)/auth/layout";
-import { error, info } from "@/helpers/Alert";
+import { info } from "@/helpers/Alert";
 import { useGeneralContext } from "@/context/GenralContext";
 
 const Page = () => {
   const router = useRouter();
   const { user }: any = useGeneralContext();
 
-  const checkToken = async () => {
-    const token = localStorage.getItem("auth_token");
+  // const checkToken = async () => {
+  //   const token = localStorage.getItem("auth_token");
 
-    if (!token) {
-      error("Please login to continue.");
-      router.push(`/auth/login`);
-      return <AuthLayout />;
-    }
-  };
+  //   if (!token) {
+  //     error("Please login to continue.");
+  //     router.push(`/auth/login`);
+  //     return <AuthLayout />;
+  //   }
+  // };
 
   const handleLogout = () => {
     info("You were logged out.");
@@ -36,9 +36,9 @@ const Page = () => {
     return <AuthLayout />;
   };
 
-  useEffect(() => {
-    checkToken();
-  }, []);
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   return (
     <>
