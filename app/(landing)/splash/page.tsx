@@ -19,7 +19,7 @@ const slideTexts = [
   {
     title: "Welcome to Health9ja",
     subtitle:
-      "A youth-friendly online One-Stop-Shop for health information, exciting quiz challenge, counseling, support and referral services at your finger-tips.",
+      "A youth-friendly online One-Stop-Shop for health information, exciting quiz challenge, counseling, support and referral services at your fingertips.",
   },
   {
     title: "Explore Cool Health Tips",
