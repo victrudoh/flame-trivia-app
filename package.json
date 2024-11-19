@@ -1,14 +1,18 @@
 {
-  "name": "flame-app",
+  "name": "health9ja",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export"
   },
   "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
     "@types/leaflet": "^1.9.12",
     "axios": "^1.7.2",
     "cookies-next": "^4.2.1",
@@ -24,7 +28,8 @@
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",
     "react-toastify": "^10.0.5",
-    "react-use": "^17.5.1"
+    "react-use": "^17.5.1",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^20",

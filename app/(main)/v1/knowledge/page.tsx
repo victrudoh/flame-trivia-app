@@ -44,7 +44,7 @@ const Page = () => {
               title={item?.title}
               body={item?.description}
               thumbnail={item?.image || img}
-              link={`/v1/knowledge/${item?._id}`}
+              link={`/v1/knowledge/one?id=${item?._id}`}
             />
           ))
         ) : (

@@ -36,7 +36,7 @@ const TakeTest = () => {
 
   const gotoKnowledge = () => {
     router.push(
-      `/v1/knowledge/${oneTest?.questions?.[currentIndex]?.question?.topicId}`
+      `/v1/knowledge/one?id=${oneTest?.questions?.[currentIndex]?.question?.topicId}`
     );
   };
 
@@ -94,7 +94,7 @@ const TakeTest = () => {
     }
   }, [endTest]);
 
-  const checkToken = async () => {
+  const checkToken = () => {
     const token = localStorage.getItem("auth_token");
 
     if (!token) {

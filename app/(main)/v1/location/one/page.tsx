@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import TopSection from "@/components/topSection/page";
@@ -9,20 +9,23 @@ import MainContainer from "@/components/mainContainer/page";
 import img from "@/assets/imgs/facilities/heropng.png";
 
 // Dynamically import LGA data
-const Page = ({ params }: { params: { id: string } }) => {
+const OneLocation = () => {
   const [facilities, setFacilities] = useState<{ [key: string]: string[] }>({});
   const router = useRouter();
 
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
   useEffect(() => {
     // Import the data file dynamically based on the param.id
-    import(`@/app/(main)/v1/location/data/${params.id.toLowerCase()}`)
+    import(`@/app/(main)/v1/location/data/${id?.toLowerCase()}`)
       .then((module) => {
         setFacilities(module.default);
       })
       .catch((err) => {
         console.error("Error loading LGA data:", err);
       });
-  }, [params.id]);
+  }, [id]);
 
   const goBack = () => {
     router.push("/v1/location");
@@ -37,14 +40,14 @@ const Page = ({ params }: { params: { id: string } }) => {
               className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
             />
-            {params?.id !== "fct" && (
+            {id !== "fct" && (
               <span className="font-bold text-xl text-brand-white capitalize">
-                {params?.id} {params?.id !== "fct" && "State"}
+                {id} {id !== "fct" && "State"}
               </span>
             )}
-            {params?.id === "fct" && (
+            {id === "fct" && (
               <span className="font-bold text-xl text-brand-white uppercase">
-                {params?.id}
+                {id}
               </span>
             )}
           </div>
@@ -81,4 +84,12 @@ const Page = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default Page;
+// export default OneLocation;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OneLocation />
+    </Suspense>
+  );
+}

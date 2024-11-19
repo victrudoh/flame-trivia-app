@@ -24,16 +24,16 @@ const Page = () => {
       {/* Bottom section with scrolling */}
       <div className="w-full overflow-y-auto rounded-xl p-4 flex flex-col items-center justify-start gap-4 h-full">
         <ListItem
-          title={"Andrew Henry"}
-          body={"Facilitator."}
+          title={"Health Counselor 1"}
+          body={"Facilitator"}
           thumbnail={img}
           link={
             "http://wa.me/+2348034044418?text=Hello,+I’d+love+to+know+more+about+HIV/AIDS"
           }
         />
         <ListItem
-          title={"Mary Udoh"}
-          body={"Facilitator."}
+          title={"Health Counselor 2"}
+          body={"Facilitator"}
           thumbnail={img}
           link={
             "http://wa.me/+2347062822822?text=Hello,+I’d+love+to+know+more+about+HIV/AIDS"

@@ -1,8 +1,8 @@
 "use client";
 
 import { useGeneralContext } from "@/context/GenralContext";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { Suspense, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import img from "@/assets/imgs/knowledge-base/article_img.jpg";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
@@ -13,16 +13,19 @@ import "react-quill/dist/quill.bubble.css"; // If you're using the bubble theme
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
-const Page = ({ params }: { params: { id: string } }) => {
+const OneTopic = () => {
   const router = useRouter();
 
   const { getOneTopic, oneTopic }: any = useGeneralContext();
 
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
   useEffect(() => {
-    if (params?.id) {
-      getOneTopic(params?.id);
+    if (id) {
+      getOneTopic(id);
     }
-  }, [params?.id]);
+  }, [id]);
 
   const goBack = () => {
     router.push("/v1/knowledge");
@@ -85,4 +88,12 @@ const Page = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default Page;
+// export default OneTopic;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OneTopic />
+    </Suspense>
+  );
+}

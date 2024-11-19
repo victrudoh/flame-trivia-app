@@ -66,7 +66,7 @@ const Page = () => {
           <div className="flex items-center justify-between p-2">
             <div className="flex items-end gap-2">
               <Wallet />
-              <div className="font-bold text-base">Current Balance</div>
+              <div className="font-bold text-base">Current Points</div>
             </div>
             <div className="font-bold text-base">
               {user?.currentBalance || 0}
