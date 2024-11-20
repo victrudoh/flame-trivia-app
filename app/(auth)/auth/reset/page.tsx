@@ -31,7 +31,8 @@ const Reset = () => {
     }
   }, []);
 
-  const onchangeHandler = async (e: any) => {
+  const onchangeHandler = (e: any) => {
+    // const onchangeHandler = async (e: any) => {
     e.persist();
     setResetPasswordDetails((resetPasswordDetails: any) => ({
       ...resetPasswordDetails,
