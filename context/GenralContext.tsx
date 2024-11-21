@@ -91,7 +91,11 @@ const GeneralProvider = (props: any) => {
         success("Signup Successful");
         // success("Please go to your email to continue the process.");
         // router.push(`/auth/verify`);
+        // window.location.reload(false);
         router.push(`/auth/login`);
+        //  router.push(`/auth/login`).then(() => {
+        //   window.location.reload();
+        // });
       }
     } catch (err: any) {
       console.log("🚀 ~ handleSignup ~ err:", err);
@@ -131,7 +135,8 @@ const GeneralProvider = (props: any) => {
           router.push(`/admin`);
         }
         if (response.data.data.user.role === "user") {
-          router.push(`/home`);
+          // router.push(`/home`);
+          window.location.href = "/home";
         }
         // window.location.reload();
       }

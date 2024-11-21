@@ -99,7 +99,9 @@ const TakeTest = () => {
 
     if (!token) {
       error("Please login to continue.");
-      router.push(`/auth/login`);
+      // window.location.reload();
+      // router.push(`/auth/login`);
+      window.location.href = "/auth/login";
       return <AuthLayout />;
     }
   };
