@@ -19,7 +19,7 @@ const slideTexts = [
   {
     title: "Welcome to Health9ja",
     subtitle:
-      "A youth-friendly online One-Stop-Shop for health information, exciting quiz challenge, counseling, support and referral services at your fingertips.",
+      "A youth-friendly One-Stop-App for health info, exciting trivia quiz games, counseling & referral services at your fingertips.",
   },
   {
     title: "Explore Cool Health Tips",
@@ -146,7 +146,7 @@ const Splash: React.FC = () => {
               <h2 className="text-xl font-bold text-brand-white font-geistsans">
                 {slideTexts[currentIndex].title}
               </h2>
-              <p className="font-medium text-sm text-brand-white font-geistsans">
+              <p className="font-medium text-sm text-brand-white font-geistsans h-[70px]">
                 {slideTexts[currentIndex].subtitle}
               </p>
             </div>
