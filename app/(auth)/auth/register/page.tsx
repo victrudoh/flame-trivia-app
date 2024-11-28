@@ -128,12 +128,12 @@ const Register = () => {
                   </svg>
                 </div>
               </div>
-              {/* <Link
-                href={"/auth/forgot"}
+              <Link
+                href={"/privacy"}
                 className="font-bold text-sm text-brand-grayish w-max hover:text-brand-main"
               >
-                Forgot Password?
-              </Link> */}
+                Privacy Policy
+              </Link>
             </div>
             {/* left bottom */}
             <div className="flex flex-col gap-4 pt-auto justify-start mt-6">
