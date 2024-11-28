@@ -69,9 +69,7 @@ const Page = () => {
               <Wallet />
               <div className="font-bold text-base">Current Points</div>
             </div>
-            <div className="font-bold text-base">
-              {user?.currentBalance || 0}
-            </div>
+            <div className="font-bold text-base">{user?.userPoints || 0}</div>
           </div>
         </div>
         <div className="w-full overflow-y-auto  p-4 flex flex-col items-center justify-start gap-4 h-full">

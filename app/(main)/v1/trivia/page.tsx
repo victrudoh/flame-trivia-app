@@ -53,7 +53,7 @@ const Home = () => {
             {/* right */}
             <span className="flex gap-2 rounded-xl bg-brand-white shadow-lg p-2 text-brand-dark font-bold font-geistsans text-base">
               <Earth />
-              {user?.currentBalance || 0}
+              {user?.userPoints || 0}
             </span>
           </div>
         </TopSection>
@@ -71,10 +71,13 @@ const Home = () => {
               style={{ width: `${progress}%` }}
             />
           </div> */}
-          <span className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:bg-gradient-to-l">
+          <Link
+            href={`/v1/trivia/challenge`}
+            className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:bg-gradient-to-l"
+          >
             Play Challenge Mode!{" "}
             <span className="text-xs mx-1">(coming soon)</span>
-          </span>
+          </Link>
           {/* <FancyButton /> */}
         </div>
         <div className="w-full rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4">

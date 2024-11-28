@@ -66,6 +66,9 @@ const GeneralProvider = (props: any) => {
   const [nextQuestion, setNextQuestion] = useState(false);
   const [endTest, setEndTest] = useState(false);
 
+  // CHALLENGE
+  const [oneChallenge, setOneChallenge] = useState();
+
   //*******/
   //************/
   // FUNCTIONS
@@ -494,6 +497,59 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  // CHALLENGE MODE
+  const handleStartChallenge = async () => {
+    try {
+      setTriviaLoading(true);
+      const response = await axios.get(
+        `${base_url}/tests/challenge/add?userId=${userId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      console.log("🚀 ~ handleStartChallenge ~ response:", response);
+      setOneChallenge(response.data.data.test);
+      setTriviaLoading(false);
+    } catch (ex: any) {
+      console.log("🚀 ~ handleStartChallenge ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      if (
+        ex?.response?.data?.message ===
+        "Error: You have already completed a challenge today"
+      ) {
+        router.push("/v1/trivia");
+      }
+      setTriviaLoading(false);
+    }
+  };
+
+  const handleEndChallenge = async () => {
+    try {
+      setTriviaLoading(true);
+      const response = await axios.get(
+        `${base_url}/tests/challenge/end?challengeId=${userId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      console.log("🚀 ~ handleStartChallenge ~ response:", response);
+      setOneChallenge(response.data.data.test);
+      setTriviaLoading(false);
+    } catch (ex: any) {
+      console.log("🚀 ~ handleStartChallenge ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setTriviaLoading(false);
+    }
+  };
+
   useEffect(() => {
     console.log("__3d1k4N.init");
     const cachedUserId = localStorage.getItem("userId");
@@ -597,6 +653,12 @@ const GeneralProvider = (props: any) => {
         handleStartTest,
         setNextQuestion,
         handleAnswerQuestion,
+
+        // Challenge
+        oneChallenge,
+        setOneChallenge,
+        handleEndChallenge,
+        handleStartChallenge,
       }}
     >
       {props.children}
