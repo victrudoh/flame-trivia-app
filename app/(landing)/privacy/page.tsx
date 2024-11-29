@@ -23,7 +23,7 @@ const OneTopic = () => {
               className="bg-brand-white shadow-lg w-10 h-10 p-1 ml-4 rounded-full cursor-pointer hover:bg-brand-white/60 hover:text-brand-dark"
               onClick={goBack}
             />
-            <span className="font-bold text-xl text-brand-white">
+            <span className="font-bold text-lg text-brand-white">
               Privacy Policy For Health9ja
             </span>
           </div>
@@ -80,12 +80,12 @@ const OneTopic = () => {
               We may automatically collect certain information about your device
               and usage of the App, including:
               <span>
-                <strong>• Device Information:</strong>
+                <strong>• Device Information: </strong>
                 Device model, operating system, unique device identifiers, and
                 mobile network information.
               </span>
               <span>
-                <strong>• Log Information:</strong>IP address, app usage data,
+                <strong>• Log Information: </strong>IP address, app usage data,
                 pages viewed, and other diagnostic data. • Location Data:
                 Approximate or precise geolocation data (with your permission).{" "}
               </span>

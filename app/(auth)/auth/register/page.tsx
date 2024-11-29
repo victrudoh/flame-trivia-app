@@ -84,6 +84,19 @@ const Register = () => {
               </div>
               <div className="flex flex-col justify-center">
                 <span className="font-medium text-sm text-gray-500 font-geistsans mb-2">
+                  Username
+                </span>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Enter username"
+                  onChange={onchangeHandler}
+                  className="max-w-full h-[40px] px-2 py-[12px] border border-brand-grayish rounded-lg text-brand-grayish bg-transparent"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="font-medium text-sm text-gray-500 font-geistsans mb-2">
                   Email Address
                 </span>
                 <input
@@ -91,6 +104,19 @@ const Register = () => {
                   name="email"
                   id="email"
                   placeholder="Enter Email Address"
+                  onChange={onchangeHandler}
+                  className="max-w-full h-[40px] px-2 py-[12px] border border-brand-grayish rounded-lg text-brand-grayish bg-transparent"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="font-medium text-sm text-gray-500 font-geistsans mb-2">
+                  Phone Number
+                </span>
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="Enter Phone Number"
                   onChange={onchangeHandler}
                   className="max-w-full h-[40px] px-2 py-[12px] border border-brand-grayish rounded-lg text-brand-grayish bg-transparent"
                 />
@@ -132,7 +158,7 @@ const Register = () => {
                 href={"/privacy"}
                 className="font-bold text-sm text-brand-grayish w-max hover:text-brand-main"
               >
-                Privacy Policy
+                Read Our Privacy Policy
               </Link>
             </div>
             {/* left bottom */}

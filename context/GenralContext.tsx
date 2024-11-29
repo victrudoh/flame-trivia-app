@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { success, error } from "@/helpers/Alert";
+import { success, error, info } from "@/helpers/Alert";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const GeneralContext = createContext({});
@@ -277,6 +277,39 @@ const GeneralProvider = (props: any) => {
           ? err?.response?.data?.message
           : err.response?.data?.error
       );
+    }
+  };
+
+  const handleDeleteAccount = async (id: any) => {
+    setAuthLoading(true);
+    console.log("🚀 ~ handleDeleteAccount ~ id:", id);
+    try {
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/delete?id=${id}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      console.log("🚀 ~ handleDeleteAccount ~ response:", response);
+      if (response.status === 200) {
+        // success("Reset Email Sent Successfully");
+        info("You deleted your account.");
+        setAuthLoading(false);
+        router.push(`/auth/login`);
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ handleDeleteAccount ~ err:", err);
+      setAuthLoading(false);
+      error(
+        err?.response?.data?.message
+          ? err?.response?.data?.message
+          : err?.response?.data?.error || err?.message
+      );
+      // error(err?.response?.data?.message);
+      // error(err.message);
     }
   };
 
@@ -612,6 +645,9 @@ const GeneralProvider = (props: any) => {
         handleForgotPassword,
         setVerifyEmailDetails,
         setResetPasswordDetails,
+
+        //User
+        handleDeleteAccount,
 
         // Levels
         levelId,

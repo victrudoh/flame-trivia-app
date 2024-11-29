@@ -47,12 +47,12 @@ const Page = () => {
         <TopSection>
           <div className="w-full px-4 flex items-center justify-between">
             {/* left */}
-            <div className="flex gap-2 items-center">
-              <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
+            <Link href="/profile" className="group flex gap-2 items-center">
+              <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full group-hover:bg-brand-ash" />
               <span className="font-normal font-geistsans text-base text-brand-white">
                 {user?.firstName} {user?.lastName}
               </span>
-            </div>
+            </Link>
             {/* right */}
             <span
               onClick={() => handleLogout()}
