@@ -8,7 +8,7 @@ import React from "react";
 
 const Leaderboard = ({ players, currentUser }: any) => {
   // Sort players by score in descending order
-  const sortedPlayers = players.sort((a, b) => b.score - a.score);
+  const sortedPlayers = players.sort((a: any, b: any) => b.score - a.score);
   const topTen = sortedPlayers.slice(0, 10);
 
   // Find the current user's position
