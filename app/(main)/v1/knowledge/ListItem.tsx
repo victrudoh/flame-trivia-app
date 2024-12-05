@@ -19,6 +19,7 @@ const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
               className="rounded-lg"
               width={58}
               height={58}
+              crossOrigin="anonymous"
             />
           </div>
           <div className="flex flex-col gap-2 items-start justify-between text-brand-dark">

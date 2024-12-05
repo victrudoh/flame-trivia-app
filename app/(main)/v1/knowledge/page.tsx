@@ -44,6 +44,7 @@ const Page = () => {
               title={item?.title}
               body={item?.description}
               thumbnail={item?.image || img}
+              // thumbnail="https://res.cloudinary.com/damaged/image/upload/v1729366697/Damaged-1729366697229.jpg"
               link={`/v1/knowledge/one?id=${item?._id}`}
             />
           ))

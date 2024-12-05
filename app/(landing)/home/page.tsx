@@ -62,7 +62,7 @@ const Page = () => {
             </span>
           </div>
         </TopSection>
-        <div className="flex flex-col gap-4 bg-brand-white shadow-lg p-2 w-[92%] mx-auto rounded-lg font-geistsans">
+        <Link href={"/leaderboard"} className="flex flex-col gap-4 bg-brand-white shadow-lg p-2 w-[92%] mx-auto rounded-lg font-geistsans">
           {/* top */}
           <div className="flex items-center justify-between p-2">
             <div className="flex items-end gap-2">
@@ -71,7 +71,7 @@ const Page = () => {
             </div>
             <div className="font-bold text-base">{user?.userPoints || 0}</div>
           </div>
-        </div>
+        </Link>
         <div className="w-full overflow-y-auto  p-4 flex flex-col items-center justify-start gap-4 h-full">
           {/* cards */}
           <Link

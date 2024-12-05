@@ -1,0 +1,13 @@
+{
+  "resourcesDirectory": "./assets/imgs",
+  "icon": {
+    "source": "health9ja1024.png",
+    "backgroundColor": "#FFFFFF",
+    "padding": 0
+  },
+  "splash": {
+    "source": "splash.png",
+    "backgroundColor": "#FFFFFF",
+    "padding": 0
+  }
+}
