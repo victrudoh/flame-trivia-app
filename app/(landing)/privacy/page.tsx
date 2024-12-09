@@ -10,7 +10,8 @@ const OneTopic = () => {
   const router = useRouter();
 
   const goBack = () => {
-    router.push("/auth/register");
+    // router.push("/auth/register");
+    router.push("/beep/register");
   };
 
   return (

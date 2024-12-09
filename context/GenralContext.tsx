@@ -69,6 +69,9 @@ const GeneralProvider = (props: any) => {
   // CHALLENGE
   const [oneChallenge, setOneChallenge] = useState();
 
+  // LEADERBOARD
+  const [leaderboard, setLeaderboard] = useState();
+
   //*******/
   //************/
   // FUNCTIONS
@@ -95,7 +98,8 @@ const GeneralProvider = (props: any) => {
         // success("Please go to your email to continue the process.");
         // router.push(`/auth/verify`);
         // window.location.reload(false);
-        router.push(`/auth/login`);
+        // router.push(`/auth/login`);
+        router.push(`/beep/login`);
         //  router.push(`/auth/login`).then(() => {
         //   window.location.reload();
         // });
@@ -239,7 +243,8 @@ const GeneralProvider = (props: any) => {
       if (response.status === 200) {
         success("Password reset successfully.");
         success("Please login to continue.");
-        router.push(`/auth/login`);
+        // router.push(`/auth/login`);
+        router.push(`/beep/login`);
       }
     } catch (err: any) {
       console.log("🚀 ~ handleResetPassword ~ err:", err);
@@ -298,7 +303,8 @@ const GeneralProvider = (props: any) => {
         // success("Reset Email Sent Successfully");
         info("You deleted your account.");
         setAuthLoading(false);
-        router.push(`/auth/login`);
+        // router.push(`/auth/login`);
+        router.push(`/beep/login`);
       }
     } catch (err: any) {
       console.log("🚀 ~ handleDeleteAccount ~ err:", err);
@@ -583,6 +589,8 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  // LEADERBOARD
+
   useEffect(() => {
     console.log("__3d1k4N.init");
     const cachedUserId = localStorage.getItem("userId");
@@ -695,6 +703,10 @@ const GeneralProvider = (props: any) => {
         setOneChallenge,
         handleEndChallenge,
         handleStartChallenge,
+
+        // Leaderboard
+        leaderboard,
+        setLeaderboard,
       }}
     >
       {props.children}

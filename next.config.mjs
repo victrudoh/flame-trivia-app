@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -9,7 +10,8 @@ const nextConfig = {
     ],
     // Enable Cloudinary domains
     domains: ["res.cloudinary.com"],
-    unoptimized: false, // Re-enable Next.js's image optimization
+    // unoptimized: false, // Re-enable Next.js's image optimization
+    unoptimized: true,
   },
 };
 

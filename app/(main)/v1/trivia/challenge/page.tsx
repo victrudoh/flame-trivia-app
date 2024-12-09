@@ -22,6 +22,7 @@ const TakeTest = () => {
     endTest,
     setEndTest,
   }: any = useGeneralContext();
+  console.log("🚀 ~ TakeTest ~ oneChallenge:", oneChallenge);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("");
@@ -31,12 +32,6 @@ const TakeTest = () => {
   const goBack = () => {
     router.push("/v1/trivia");
   };
-
-  // const gotoKnowledge = () => {
-  //   router.push(
-  //     `/v1/knowledge/one?id=${oneChallenge?.questions?.[currentIndex]?.question?.topicId}`
-  //   );
-  // };
 
   const searchParams = useSearchParams();
   const levelId = searchParams.get("levelId");
@@ -97,7 +92,8 @@ const TakeTest = () => {
 
     if (!token) {
       error("Please login to continue.");
-      window.location.href = "/auth/login";
+      // window.location.href = "/auth/login";
+      window.location.href = "/beep/login";
       return <AuthLayout />;
     }
   };

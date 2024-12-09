@@ -33,7 +33,8 @@ const Page = () => {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("userId");
     // router.push(`/auth/login`);
-    window.location.href = "/auth/login";
+    // window.location.href = "/beep/login";
+    window.location.href = "/beep/login";
     return <AuthLayout />;
   };
 
@@ -62,7 +63,10 @@ const Page = () => {
             </span>
           </div>
         </TopSection>
-        <Link href={"/leaderboard"} className="flex flex-col gap-4 bg-brand-white shadow-lg p-2 w-[92%] mx-auto rounded-lg font-geistsans">
+        <Link
+          href={"/leaderboard"}
+          className="flex flex-col gap-4 bg-brand-white shadow-lg p-2 w-[92%] mx-auto rounded-lg font-geistsans"
+        >
           {/* top */}
           <div className="flex items-center justify-between p-2">
             <div className="flex items-end gap-2">
