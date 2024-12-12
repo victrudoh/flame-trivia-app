@@ -184,7 +184,7 @@ const Register = () => {
               Already have an account{" "}
               <Link
                 // href={"/auth/login"}
-                href={"/beep/login"}
+                href={"/auth/login"}
                 className="flex items-center
                   text-blue-700"
               >

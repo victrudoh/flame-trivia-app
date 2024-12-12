@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Splash from "./resplash/page";
+import Splash from "./splash/page";
 
 const Page = () => {
   return (

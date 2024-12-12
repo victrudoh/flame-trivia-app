@@ -4,7 +4,8 @@ import "@/app/globals.css";
 import AdminNavbar from "@/components/admin/AdminNavbar";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { useEffect } from "react";
-import AuthLayout from "../(auth)/auth/layout";
+// import AuthLayout from "../(auth)/auth/layout";
+// import AuthLayout from "../(auth)/auth/layout";
 import { error } from "@/helpers/Alert";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +18,7 @@ export default async function MainLayout({ children }: never) {
     if (!token) {
       error("Please login to continue.");
       router.push(`/auth/login`);
-      return <AuthLayout />;
+      // return <AuthLayout />;
     }
   };
 

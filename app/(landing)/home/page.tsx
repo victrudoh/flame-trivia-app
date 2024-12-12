@@ -9,13 +9,13 @@ import knowledge from "@/assets/imgs/landing/knowledge.png";
 import trivia from "@/assets/imgs/landing/trivia.png";
 import chat from "@/assets/imgs/landing/chat.png";
 import location from "@/assets/imgs/landing/location.png";
-// import { useRouter } from "next/navigation";
-import AuthLayout from "@/app/(auth)/auth/layout";
+import { useRouter } from "next/navigation";
+// import AuthLayout from "@/app/(auth)/auth/layout";
 import { info } from "@/helpers/Alert";
 import { useGeneralContext } from "@/context/GenralContext";
 
 const Page = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const { user }: any = useGeneralContext();
 
   // const checkToken = async () => {
@@ -32,10 +32,10 @@ const Page = () => {
     info("You were logged out.");
     localStorage.removeItem("auth_token");
     localStorage.removeItem("userId");
-    // router.push(`/auth/login`);
-    // window.location.href = "/beep/login";
-    window.location.href = "/beep/login";
-    return <AuthLayout />;
+    router.push(`/auth/login`);
+    // window.location.href = "/auth/login";
+    // window.location.href = "/auth/login";
+    // return <AuthLayout />;
   };
 
   // useEffect(() => {

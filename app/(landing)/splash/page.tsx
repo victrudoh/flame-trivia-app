@@ -29,12 +29,12 @@ const slideTexts = [
   {
     title: "Level Up Your Health IQ",
     subtitle:
-      "Take on fun and interactive health quizzes that boost your knowledge while competing with friends to see who the health champ is!",
+      "Take on fun and interactive health quizzes that boost your knowledge while competing with friends to see who’s the health champ!",
   },
   {
     title: "Talk to a Health Pro",
     subtitle:
-      "Got health questions? Chat with friendly health experts and get answers you can trust, anytime.",
+      "Got health questions? Chat with friendly health experts and get answers you can trust, anytime",
   },
 
   {
@@ -65,7 +65,7 @@ const Splash: React.FC = () => {
 
   const handleSkip = () => {
     // router.push("/auth");
-    router.push("/beep");
+    router.push("/home");
   };
 
   const goToImage = (index: number) => {

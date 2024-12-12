@@ -11,7 +11,7 @@ import Spinner from "@/components/spinner/Spinner";
 import TriviaEndCard from "@/components/triviaEndCard/page";
 import Confetti from "react-confetti";
 // import AuthLayout from "@/app/(auth)/auth/layout";
-// import { error } from "@/helpers/Alert";
+import { error } from "@/helpers/Alert";
 
 const TakeTest = () => {
   const {
@@ -96,15 +96,14 @@ const TakeTest = () => {
 
   const checkToken = () => {
     const token = localStorage.getItem("auth_token");
-
-    // if (!token) {
-    //   error("Please login to continue.");
-    //   // window.location.reload();
-    //   // router.push(`/auth/login`);
-    //   // window.location.href = "/auth/login";
-    //   window.location.href = "/beep/login";
-    //   return <AuthLayout />;
-    // }
+    if (!token) {
+      error("Please login to continue.");
+      router.push(`/auth/login`);
+      // window.location.reload();
+      // window.location.href = "/auth/login";
+      // window.location.href = "/auth/login";
+      // return <AuthLayout />;
+    }
   };
 
   useEffect(() => {

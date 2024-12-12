@@ -11,7 +11,7 @@ const OneTopic = () => {
 
   const goBack = () => {
     // router.push("/auth/register");
-    router.push("/beep/register");
+    router.push("/auth/register");
   };
 
   return (

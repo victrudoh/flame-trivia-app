@@ -1,6 +1,7 @@
 "use client";
 
 import { useGeneralContext } from "@/context/GenralContext";
+// import { error } from "@/helpers/Alert";
 import React, { useEffect } from "react";
 
 const ChallengeCard = ({
@@ -14,104 +15,54 @@ const ChallengeCard = ({
   console.log("🚀 ~ data:", data);
   const {
     oneChallenge,
-    // setOneChallenge,
+    setOneChallenge,
     nextQuestion,
     setNextQuestion,
     // handleAnswerQuestion,
-    handleEndTest,
+    handleEndChallenge,
   }: any = useGeneralContext();
   console.log("🚀 ~ oneChallenge:", oneChallenge);
 
-  // const answerQuestion = (answer: any) => {
-  //   // Prevent sending new answer for question with answer already
-  //   if (data?.attempted) {
-  //     return;
-  //   }
+  const handleAnswer = (isCorrect: boolean, chosenAnswer: string) => {
+    const question = {
+      ...oneChallenge.questions[index],
+      attempted: true,
+      chosenAnswer,
+      correctAnswer: isCorrect,
+    };
+    const updatedQuestions = oneChallenge.questions.map((q: any, i: number) =>
+      i === index ? question : q
+    );
 
-  //   setOneChallenge((prev: any) => ({
-  //     ...prev,
-  //   }));
-  //   const totalQuestions = oneChallenge.totalQuestions;
-  //   if (index >= 0 && index <= oneChallenge.questions.length - 1) {
-  //     if (data.question.correct_answer === answer) {
-  //       // Check if the chosen answer is correct
-  //       oneChallenge.questions[index] = {
-  //         ...oneChallenge.questions[index],
-  //         attempted: true,
-  //         correctAnswer: true,
-  //         chosenAnswer: answer,
-  //       };
+    const attemptedQuestions = updatedQuestions.filter(
+      (q: any) => q.attempted
+    ).length;
+    const correctAnswers = updatedQuestions.filter(
+      (q: any) => q.correctAnswer
+    ).length;
 
-  //       // Increase attempted question count
-  //       if (!oneChallenge.questions[index].attempted) {
-  //         if (oneChallenge.attemptedQuestions < totalQuestions) {
-  //           oneChallenge.attemptedQuestions++;
-  //         }
-  //       }
+    setOneChallenge({
+      ...oneChallenge,
+      questions: updatedQuestions,
+      attemptedQuestions,
+      correctAnswers,
+    });
+  };
 
-  //       let correct = 0;
-  //       let attempted = 0;
+  const answerQuestion = (answerKey: string) => {
+    if (data?.attempted) return;
 
-  //       oneChallenge.questions.map((item: any) => {
-  //         if (item.correctAnswer) {
-  //           correct++;
-  //         }
-  //         if (item.attempted) {
-  //           attempted++;
-  //         }
-  //       });
-
-  //       // Increase correct answer count
-  //       if (oneChallenge.correctAnswers < totalQuestions) {
-  //         oneChallenge.correctAnswers = correct;
-  //       }
-
-  //       oneChallenge.attemptedQuestions = attempted;
-
-  //       // Save the updated oneChallenge
-  //       await oneChallenge.save();
-
-  //       return oneChallenge;
-  //     } else {
-  //       oneChallenge.questions[index] = {
-  //         ...oneChallenge.questions[index],
-  //         attempted: true,
-  //         correctAnswer: false,
-  //         chosenAnswer: answer,
-  //       };
-
-  //       // Increase attempted question count
-  //       if (!oneChallenge.questions[index].attempted) {
-  //         if (oneChallenge.attemptedQuestions < totalQuestions) {
-  //           oneChallenge.attemptedQuestions++;
-  //         }
-  //       }
-
-  //       let attempted = 0;
-
-  //       oneChallenge.questions.map((item: any) => {
-  //         if (item.attempted) {
-  //           attempted++;
-  //         }
-  //       });
-
-  //       oneChallenge.attemptedQuestions = attempted;
-
-  //       // Save the updated oneChallenge
-  //       await oneChallenge.save();
-
-  //       return oneChallenge;
-  //     }
-  //   }
-  //   // handleAnswerQuestion(testId, index, data?.question?._id, answer, levelId);
-  // };
+    const isCorrect = data?.question?.correct_answer === answerKey;
+    handleAnswer(isCorrect, answerKey);
+    setNextQuestion(true);
+  };
 
   useEffect(() => {
     if (nextQuestion) {
       const timer = setTimeout(() => {
         if (!hasNext) {
           localStorage.removeItem(`${levelId}`);
-          handleEndTest(testId);
+          handleEndChallenge(testId);
         }
         onNext();
         setNextQuestion(false);
@@ -124,14 +75,16 @@ const ChallengeCard = ({
   return (
     <>
       <div className="flex flex-col items-center justify-start gap-4 bg-brand-white w-[90vw] max-w-screen-sm mx-auto rounded-xl px-4 py-8">
-        <span className="font-bold text-base">QUESTION {index + 1} of 20</span>
+        <span className="font-bold text-base">
+          QUESTION {index + 1} of {oneChallenge?.totalQuestions}
+        </span>
         <div className="rounded-xl w-full min-h-[25vh] bg-brand-grayish/20 text-center font-medium text-sm flex items-center justify-center p-4 border-brand-grayish/20 border-[0.3px]">
           {data?.question?.question || "No Question"}
         </div>
 
         {/* Options */}
         <div
-          // onClick={() => answerQuestion("answer_a")}
+          onClick={() => answerQuestion("answer_a")}
           className="flex flex-col gap-2 items-center justify-start w-full"
         >
           <div
@@ -177,7 +130,7 @@ const ChallengeCard = ({
         {/* Repeat for other options */}
         {/* Option B */}
         <div
-          // onClick={() => answerQuestion("answer_b")}
+          onClick={() => answerQuestion("answer_b")}
           className="flex flex-col gap-2 items-center justify-start w-full"
         >
           <div
@@ -222,7 +175,7 @@ const ChallengeCard = ({
 
         {data?.question?.answer_c && (
           <div
-            // onClick={() => answerQuestion("answer_c")}
+            onClick={() => answerQuestion("answer_c")}
             className="flex flex-col gap-2 items-center justify-start w-full"
           >
             <div
@@ -267,7 +220,7 @@ const ChallengeCard = ({
         )}
         {data?.question?.answer_d && (
           <div
-            // onClick={() => answerQuestion("answer_d")}
+            onClick={() => answerQuestion("answer_d")}
             className="flex flex-col gap-2 items-center justify-start w-full"
           >
             <div

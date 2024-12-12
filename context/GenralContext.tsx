@@ -19,6 +19,7 @@ const GeneralProvider = (props: any) => {
   const [levelLoading, setLevelLoading] = useState(false);
   const [topicLoading, setTopicLoading] = useState(false);
   const [triviaLoading, setTriviaLoading] = useState(false);
+  const [leaderboardLoading, setLeaderboardLoading] = useState(false);
 
   // USER
   const [userId, setUserId] = useState("");
@@ -68,9 +69,11 @@ const GeneralProvider = (props: any) => {
 
   // CHALLENGE
   const [oneChallenge, setOneChallenge] = useState();
+  const [endChallenge, setEndChallenge] = useState(false);
 
   // LEADERBOARD
   const [leaderboard, setLeaderboard] = useState();
+  const [userLeaderboardPosition, setUserLeaderboardPostion] = useState();
 
   //*******/
   //************/
@@ -99,7 +102,7 @@ const GeneralProvider = (props: any) => {
         // router.push(`/auth/verify`);
         // window.location.reload(false);
         // router.push(`/auth/login`);
-        router.push(`/beep/login`);
+        router.push(`/auth/login`);
         //  router.push(`/auth/login`).then(() => {
         //   window.location.reload();
         // });
@@ -244,7 +247,7 @@ const GeneralProvider = (props: any) => {
         success("Password reset successfully.");
         success("Please login to continue.");
         // router.push(`/auth/login`);
-        router.push(`/beep/login`);
+        router.push(`/auth/login`);
       }
     } catch (err: any) {
       console.log("🚀 ~ handleResetPassword ~ err:", err);
@@ -304,7 +307,7 @@ const GeneralProvider = (props: any) => {
         info("You deleted your account.");
         setAuthLoading(false);
         // router.push(`/auth/login`);
-        router.push(`/beep/login`);
+        router.push(`/auth/login`);
       }
     } catch (err: any) {
       console.log("🚀 ~ handleDeleteAccount ~ err:", err);
@@ -569,8 +572,9 @@ const GeneralProvider = (props: any) => {
   const handleEndChallenge = async () => {
     try {
       setTriviaLoading(true);
-      const response = await axios.get(
-        `${base_url}/tests/challenge/end?challengeId=${userId}`,
+      const response = await axios.post(
+        `${base_url}/tests/challenge/end`,
+        { challenge: oneChallenge },
         {
           headers: {
             "content-type": "application/json",
@@ -578,9 +582,18 @@ const GeneralProvider = (props: any) => {
           },
         }
       );
-      console.log("🚀 ~ handleStartChallenge ~ response:", response);
-      setOneChallenge(response.data.data.test);
+      console.log("🚀 ~ handleEndChallenge ~ response:", response);
+      // setOneChallenge(response.data.data.test);
       setTriviaLoading(false);
+      if (response.status === 200) {
+        setNextQuestion(false);
+        setEndChallenge(true);
+        success(response.data?.data?.message);
+        // if (response.data.data.test?.testEnded) {
+        //   setOneTest(response.data?.data?.test);
+        // }
+      }
+      return response.data.data.test;
     } catch (ex: any) {
       console.log("🚀 ~ handleStartChallenge ~ ex:", ex);
       error(ex?.response?.data?.message);
@@ -590,6 +603,48 @@ const GeneralProvider = (props: any) => {
   };
 
   // LEADERBOARD
+  // Get LEaderboard
+  const getLeaderboard = async () => {
+    try {
+      setLeaderboardLoading(true);
+      const response = await axios.get(`${base_url}/users/leaderboard`, {
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      // console.log("🚀 ~ getLeaderboard ~ response:", response);
+      setLeaderboard(response.data.data.leaderboard);
+      setLeaderboardLoading(false);
+    } catch (ex: any) {
+      console.log("🚀 ~ getLeaderboard ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setLeaderboardLoading(false);
+    }
+  };
+
+  // get user position on leaderboard
+  const getUserLeaderboardPosition = async () => {
+    try {
+      setLeaderboardLoading(true);
+      const response = await axios.get(
+        `${base_url}/users/leaderboard/position?userId=${userId}`,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      // console.log("🚀 ~ getUserLeaderboardPosition ~ response:", response);
+      setUserLeaderboardPostion(response.data.data);
+      setLeaderboardLoading(false);
+    } catch (ex: any) {
+      console.log("🚀 ~ getLeaderboard ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setLeaderboardLoading(false);
+    }
+  };
 
   useEffect(() => {
     console.log("__3d1k4N.init");
@@ -599,11 +654,13 @@ const GeneralProvider = (props: any) => {
     if (cachedToken) setToken(cachedToken);
     getAllLevels();
     getAllTopics();
+    getLeaderboard();
   }, []);
 
   useEffect(() => {
     if (userId) {
       getOneUser();
+      getUserLeaderboardPosition();
     }
   }, [userId]);
 
@@ -627,16 +684,17 @@ const GeneralProvider = (props: any) => {
         topicLoading,
         levelLoading,
         triviaLoading,
+        leaderboardLoading,
         setAuthLoading,
         setTopicLoading,
         setLevelLoading,
         setTriviaLoading,
+        setLeaderboardLoading,
 
         // Misc
         user,
         token,
         userId,
-
         setUser,
 
         // Auth
@@ -662,7 +720,6 @@ const GeneralProvider = (props: any) => {
         allLevels,
         oneLevel,
         switchLevelPanel,
-
         setLevelId,
         setOneLevel,
         getOneLevel,
@@ -673,7 +730,6 @@ const GeneralProvider = (props: any) => {
         // Questions
         oneQuestion,
         allQuestions,
-
         setOneQuestion,
         getOneQuestion,
         setAllQuestions,
@@ -700,13 +756,18 @@ const GeneralProvider = (props: any) => {
 
         // Challenge
         oneChallenge,
+        endChallenge,
+        setEndChallenge,
         setOneChallenge,
         handleEndChallenge,
         handleStartChallenge,
 
         // Leaderboard
         leaderboard,
+        userLeaderboardPosition,
+        getLeaderboard,
         setLeaderboard,
+        setUserLeaderboardPostion,
       }}
     >
       {props.children}

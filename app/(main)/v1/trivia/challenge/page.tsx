@@ -8,10 +8,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import ChallengeCard from "@/components/challengeCard/page";
 import { useGeneralContext } from "@/context/GenralContext";
 import Spinner from "@/components/spinner/Spinner";
-import TriviaEndCard from "@/components/triviaEndCard/page";
 import Confetti from "react-confetti";
-import AuthLayout from "@/app/(auth)/auth/layout";
 import { error } from "@/helpers/Alert";
+import ChallengeEndCard from "@/components/challengeEndCard/page";
 
 const TakeTest = () => {
   const {
@@ -19,8 +18,8 @@ const TakeTest = () => {
     triviaLoading,
     handleStartChallenge,
     oneChallenge,
-    endTest,
-    setEndTest,
+    endChallenge,
+    setEndChallenge,
   }: any = useGeneralContext();
   console.log("🚀 ~ TakeTest ~ oneChallenge:", oneChallenge);
 
@@ -75,9 +74,9 @@ const TakeTest = () => {
     }
   };
 
-  // Confetti effect on endTest
+  // Confetti effect on endChallenge
   useEffect(() => {
-    if (endTest) {
+    if (endChallenge) {
       // Any additional confetti setup or logic can be placed here if needed
       // Stop the confetti after 5 seconds
       const timer = setTimeout(() => {
@@ -85,16 +84,14 @@ const TakeTest = () => {
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [endTest]);
+  }, [endChallenge]);
 
   const checkToken = () => {
     const token = localStorage.getItem("auth_token");
 
     if (!token) {
       error("Please login to continue.");
-      // window.location.href = "/auth/login";
-      window.location.href = "/beep/login";
-      return <AuthLayout />;
+      router.push(`/auth/login`);
     }
   };
 
@@ -104,7 +101,7 @@ const TakeTest = () => {
 
   return (
     <MainContainer>
-      {endTest && isCelebrating && (
+      {endChallenge && isCelebrating && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
       <TopSection>
@@ -147,8 +144,8 @@ const TakeTest = () => {
         <Spinner />
       ) : oneChallenge ? (
         <div className="relative w-full h-full flex flex-col items-center">
-          {endTest ? (
-            <TriviaEndCard data={oneChallenge} />
+          {endChallenge ? (
+            <ChallengeEndCard data={oneChallenge} />
           ) : (
             <div className={`trivia-card-container ${animationClass}`}>
               <ChallengeCard
@@ -162,8 +159,8 @@ const TakeTest = () => {
                 hasPrevious={currentIndex > 0}
                 hasNext={currentIndex < oneChallenge?.questions?.length - 1}
                 hasTestEnded={oneChallenge?.testEnded}
-                endTest={endTest}
-                setEndTest={setEndTest}
+                endChallenge={endChallenge}
+                setEndChallenge={setEndChallenge}
               />
             </div>
           )}

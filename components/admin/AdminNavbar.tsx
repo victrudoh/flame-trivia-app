@@ -1,6 +1,6 @@
 "use client";
 
-import AuthLayout from "@/app/(auth)/auth/layout";
+// import AuthLayout from "@/app/(auth)/auth/layout";
 import { info } from "../../helpers/Alert";
 import { useGeneralContext } from "@/context/GenralContext";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ const AdminNavbar = () => {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("userId");
     router.push(`/auth/login`);
-    return <AuthLayout />;
+    // return <AuthLayout />;
   };
 
   return (

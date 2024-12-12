@@ -27,7 +27,7 @@ const Home = () => {
   //   if (!token) {
   //     error("Please login to continue.");
   //     router.push(`/auth/login`);
-  //     return <AuthLayout />;
+  //     // return <AuthLayout />;
   //   }
   // };
 
@@ -86,7 +86,7 @@ const Home = () => {
             className="transition-fx w-full py-3 px-4 text-brand-white font-semibold bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg text-center transition-colors duration-200 cursor-pointer hover:bg-gradient-to-l"
           >
             Play Challenge Mode!{" "}
-            <span className="text-xs mx-1">(coming soon)</span>
+            {/* <span className="text-xs mx-1">(coming soon)</span> */}
           </Link>
           {/* <FancyButton /> */}
         </div>

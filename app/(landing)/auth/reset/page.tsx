@@ -162,7 +162,7 @@ const Reset = () => {
               If you don&apos;t have an account{" "}
               <Link
                 // href={"/auth/register"}
-                href={"/beep/register"}
+                href={"/auth/register"}
                 className="flex items-center
                   text-blue-700"
               >
