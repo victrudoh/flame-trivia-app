@@ -45,6 +45,17 @@ const AdminSidebar = () => {
           <h3>Knowledge Base</h3>
         </Link>
         <Link
+          onClick={() => setSidebarActive("leaderboard")}
+          href="/admin/leaderboard"
+          className={
+            sidebarActive === "user"
+              ? "w-full p-3 flex items-center justify-evenly text-white bg-teal-600 transition-all duration-300 ease-in-out rounded-tr rounded-br ml-3 no-underline hover:text-white"
+              : "w-full p-3 flex items-center justify-evenly text-white bg-teal-500 transition-all duration-300 ease-in-out rounded-tr rounded-br hover:text-white hover:bg-teal-600 hover:ml-3"
+          }
+        >
+          <h3>Leaderboard</h3>
+        </Link>
+        <Link
           onClick={() => setSidebarActive("user")}
           href="/admin/user"
           className={

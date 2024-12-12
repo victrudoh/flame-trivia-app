@@ -552,7 +552,7 @@ const GeneralProvider = (props: any) => {
           },
         }
       );
-      console.log("🚀 ~ handleStartChallenge ~ response:", response);
+      // console.log("🚀 ~ handleStartChallenge ~ response:", response);
       setOneChallenge(response.data.data.test);
       setTriviaLoading(false);
     } catch (ex: any) {
@@ -561,7 +561,7 @@ const GeneralProvider = (props: any) => {
       error(ex?.response?.data?.error);
       if (
         ex?.response?.data?.message ===
-        "Error: You have already completed a challenge today"
+        "You have already completed a challenge today"
       ) {
         router.push("/v1/trivia");
       }
@@ -640,6 +640,27 @@ const GeneralProvider = (props: any) => {
       setLeaderboardLoading(false);
     } catch (ex: any) {
       console.log("🚀 ~ getLeaderboard ~ ex:", ex);
+      error(ex?.response?.data?.message);
+      error(ex?.response?.data?.error);
+      setLeaderboardLoading(false);
+    }
+  };
+
+  // Reset leaderboard
+  const resetLeaderboard = async () => {
+    try {
+      setLeaderboardLoading(true);
+      const response = await axios.get(`${base_url}/users/leaderboard/clear`, {
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      console.log("🚀 ~ resetLeaderboard ~ response:", response);
+      setLeaderboardLoading(false);
+      getLeaderboard();
+      success("Leaderboard Cleared");
+    } catch (ex: any) {
+      console.log("🚀 ~ resetLeaderboard ~ ex:", ex);
       error(ex?.response?.data?.message);
       error(ex?.response?.data?.error);
       setLeaderboardLoading(false);
@@ -767,6 +788,7 @@ const GeneralProvider = (props: any) => {
         userLeaderboardPosition,
         getLeaderboard,
         setLeaderboard,
+        resetLeaderboard,
         setUserLeaderboardPostion,
       }}
     >
