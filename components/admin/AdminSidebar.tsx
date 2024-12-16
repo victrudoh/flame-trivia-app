@@ -55,7 +55,7 @@ const AdminSidebar = () => {
         >
           <h3>Leaderboard</h3>
         </Link>
-        <Link
+        {/* <Link
           onClick={() => setSidebarActive("user")}
           href="/admin/user"
           className={
@@ -65,7 +65,7 @@ const AdminSidebar = () => {
           }
         >
           <h3>Users</h3>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
