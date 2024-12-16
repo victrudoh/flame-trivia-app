@@ -51,7 +51,8 @@ const Page = () => {
             <Link href="/profile" className="group flex gap-2 items-center">
               <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full group-hover:bg-brand-ash" />
               <span className="font-normal font-geistsans text-base text-brand-white">
-                {user?.username || `${user?.firstName} ${user?.lastName}`}
+                {user &&
+                  (user?.username || `${user?.firstName} ${user?.lastName}`)}
               </span>
             </Link>
             {/* right */}

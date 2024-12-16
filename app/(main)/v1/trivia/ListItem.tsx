@@ -12,17 +12,17 @@ const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
         className="group w-full p-4 border-brand-grayish/20 border-[0.3px] rounded-xl shadow-lg flex items-center justify-between"
       >
         <div className="flex items-center gap-4">
-          <div className="w-[58px] max-h-[58px]">
+          <div className="w-[40px] max-h-[40px]">
             <Image
               src={thumbnail}
               alt="img"
               className="rounded-lg"
-              width={58}
-              height={58}
+              width={40}
+              height={40}
               crossOrigin="anonymous"
             />
           </div>
-          <div className="w-[300px] flex flex-col gap-2 items-start justify-between text-brand-dark">
+          <div className="w-[70%] flex flex-col gap-2 items-start justify-between text-brand-dark">
             <span className="font-bold text-base">{title}</span>
             <span className="font-normal text-xs">
               {body && (

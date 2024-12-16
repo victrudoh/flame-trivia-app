@@ -48,7 +48,8 @@ const Home = () => {
               <Link href={"/profile"} className="flex items-center gap-2 w-max">
                 <User className="bg-brand-white shadow-lg w-9 h-9 p-1 rounded-full" />
                 <span className="font-normal font-geistsans text-base text-brand-white">
-                  {user?.username || `${user?.firstName} ${user?.lastName}`}
+                  {user &&
+                    (user?.username || `${user?.firstName} ${user?.lastName}`)}
                 </span>
               </Link>
             </div>
