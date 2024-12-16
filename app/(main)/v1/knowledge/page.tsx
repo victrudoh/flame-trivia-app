@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import ListItem from "./ListItem";
 import { ArrowLeft, Search } from "lucide-react";
 import TopSection from "@/components/topSection/page";
@@ -12,10 +12,14 @@ import Spinner from "@/components/spinner/Spinner";
 
 const Page = () => {
   const { allTopics, topicLoading }: any = useGeneralContext();
-  console.log("🚀 ~ Page ~ allTopics:", allTopics);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter topics based on the search query
+  const filteredTopics = allTopics?.filter((topic: any) =>
+    topic.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    // <div className="bg-brand-main text-brand-dark h-screen flex flex-col items-center justify-start text-lg font-geistsans gap-8 py-8">
     <MainContainer>
       {/* Top section */}
       <TopSection>
@@ -30,6 +34,8 @@ const Page = () => {
             id="search"
             className="bg-transparent font-medium text-sm w-full p-2 outline-none"
             placeholder="Search knowledge base"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)} // Update search query on input change
           />
         </div>
       </TopSection>
@@ -38,33 +44,23 @@ const Page = () => {
       <div className="w-full overflow-y-auto rounded-xl min-h-[80vh] bg-brand-white p-4 flex flex-col items-center justify-start gap-4 h-full">
         {topicLoading ? (
           <Spinner />
-        ) : allTopics ? (
-          allTopics.map((item: any, i: number) => (
+        ) : filteredTopics?.length > 0 ? (
+          filteredTopics.map((item: any, i: number) => (
             <ListItem
               key={i}
               title={item?.title}
               body={item?.description}
               thumbnail={item?.image || img}
-              // thumbnail="https://res.cloudinary.com/damaged/image/upload/v1729366697/Damaged-1729366697229.jpg"
               link={`/v1/knowledge/one?id=${item?._id}`}
             />
           ))
         ) : (
           <span className="w-full flex items-center justify-center font-geistsans font-semibold text-xl p-8 rounded-xl bg-brand-ash/60 mx-auto">
-            No Topics
+            No Topics Found
           </span>
         )}
-        {/* <ListItem
-          title={"About HIV/AIDS"}
-          body={
-            "HIV is a  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat totam iste est, vitae nulla nobis dolor nemo voluptas."
-          }
-          thumbnail={img}
-          link={"/v1/knowledge/12"}
-        /> */}
       </div>
     </MainContainer>
-    // </div>
   );
 };
 

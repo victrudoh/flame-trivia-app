@@ -98,11 +98,8 @@ const TakeTest = () => {
     const token = localStorage.getItem("auth_token");
     if (!token) {
       error("Please login to continue.");
-      router.push(`/auth/login`);
-      // window.location.reload();
-      // window.location.href = "/auth/login";
-      // window.location.href = "/auth/login";
-      // return <AuthLayout />;
+      // router.push(`/auth/login`);
+      router.push(`/v1/trivia`);
     }
   };
 

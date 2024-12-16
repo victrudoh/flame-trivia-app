@@ -9,9 +9,13 @@ import MainContainer from "@/components/mainContainer/page";
 const OneTopic = () => {
   const router = useRouter();
 
+  // const goBack = () => {
+  //   // router.push("/auth/register");
+  //   router.push("/auth/register");
+  // };
+
   const goBack = () => {
-    // router.push("/auth/register");
-    router.push("/auth/register");
+    router.back();
   };
 
   return (

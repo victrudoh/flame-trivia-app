@@ -22,7 +22,7 @@ const ListItem = ({ title, level, body, quizzes, thumbnail, link }: any) => {
               crossOrigin="anonymous"
             />
           </div>
-          <div className="flex flex-col gap-2 items-start justify-between text-brand-dark">
+          <div className="w-[300px] flex flex-col gap-2 items-start justify-between text-brand-dark">
             <span className="font-bold text-base">{title}</span>
             <span className="font-normal text-xs">
               {body && (

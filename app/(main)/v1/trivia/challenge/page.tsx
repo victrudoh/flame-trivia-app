@@ -91,7 +91,9 @@ const TakeTest = () => {
 
     if (!token) {
       error("Please login to continue.");
-      router.push(`/auth/login`);
+      // router.push(`/auth/login`);
+      // router.back();
+      router.push(`/v1/trivia`);
     }
   };
 

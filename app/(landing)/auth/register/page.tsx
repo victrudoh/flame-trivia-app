@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Spinner from "@/components/spinner/Spinner";
 import SponsorBanners from "@/components/sponsorBanners/page";
+import { EyeIcon } from "lucide-react";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -156,9 +157,9 @@ const Register = () => {
               </div>
               <Link
                 href={"/privacy"}
-                className="font-bold text-sm text-brand-grayish w-max hover:text-brand-main"
+                className="font-bold text-sm text-brand-grayish w-max flex items-center gap-2 hover:text-brand-main"
               >
-                Read Our Privacy Policy
+                <EyeIcon /> Read Our Privacy Policy
               </Link>
             </div>
             {/* left bottom */}

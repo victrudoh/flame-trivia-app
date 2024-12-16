@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import GeneralProvider from "@/context/GenralContext";
 import { ToastContainer } from "react-toastify";
+import Script from "next/script";
 // import bg from "@/assets/imgs/bg.png"; // Ensure the image path is correct
 
 const geistSans = localFont({
@@ -29,6 +30,21 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+        <head>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-M1F2GHSW1F`}
+          />
+
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M1F2GHSW1F');
+          `}
+          </Script>
+        </head>
         <body
           className="bg-brand-dark/65"
           style={
