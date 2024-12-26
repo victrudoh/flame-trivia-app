@@ -4,21 +4,23 @@ import "@/app/globals.css";
 import AdminNavbar from "@/components/admin/AdminNavbar";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { useEffect } from "react";
-// import AuthLayout from "../(auth)/auth/layout";
-// import AuthLayout from "../(auth)/auth/layout";
 import { error } from "@/helpers/Alert";
 import { useRouter } from "next/navigation";
 
-export default async function MainLayout({ children }: never) {
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
 
-  const checkToken = async () => {
-    const token = localStorage.getItem("auth_token");
-
-    if (!token) {
-      error("Please login to continue.");
-      router.push(`/auth/login`);
-      // return <AuthLayout />;
+  const checkToken = () => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("auth_token");
+      if (!token) {
+        error("Please login to continue.");
+        router.push(`/auth/login`);
+      }
     }
   };
 

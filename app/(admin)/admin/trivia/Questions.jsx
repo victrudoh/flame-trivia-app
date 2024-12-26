@@ -18,6 +18,8 @@ const Questions = () => {
     getAllQuestions,
   } = useContext(AppContext);
 
+  console.log("allQuestions", allQuestions);
+
   let sn = 1;
 
   const gotoQuestion = async (id) => {
@@ -126,7 +128,7 @@ const Questions = () => {
         ) : (
           <>
             <span className="w-full mx-auto">
-              No Questions, please add some
+              No Questions, please add some.
             </span>
           </>
         )}
